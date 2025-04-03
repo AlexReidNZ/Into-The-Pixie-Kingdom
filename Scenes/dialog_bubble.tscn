@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://boo1u2jyhcow5"]
+
+[ext_resource type="Script" path="res://Scripts/dialog_bubble.gd" id="1_7cttl"]
+
+[node name="DialogBubble" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+script = ExtResource("1_7cttl")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+fit_content = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
