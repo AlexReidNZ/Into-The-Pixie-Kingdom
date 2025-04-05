@@ -28,6 +28,9 @@ const animations := {
 ## Named after Wile E. Coyote from Looney Tunes, may he rest in peace. <3
 @export_range(0, 250, 5) var coyote_time_ms := 100
 
+## Chance to play "look around" animation when idle
+@export_range(0, 1, 0.05) var animate_look_around_chance := 0.2
+
 var last_jump_input_time_ms := -1
 var last_on_floor_time_ms := -1
 var jump_queued := false
@@ -49,14 +52,14 @@ func _process(delta: float) -> void:
 	
 func calculate_velocity_x(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
-		if direction:
+	if direction:
 		var move_speed := speed
 		if Input.get_action_strength("run"):
 			move_state = MoveState.RUNNING
-move_speed *= run_speed_multiplier
+			move_speed *= run_speed_multiplier
 		else:
 			move_state = MoveState.WALKING
-velocity.x = move_toward(velocity.x, direction * move_speed, speed * acceleration)
+		velocity.x = move_toward(velocity.x, direction * move_speed, speed * acceleration)
 		# keep sprite facing towards movement direction
 		animator.scale.x = roundi(direction)
 	else:
@@ -109,3 +112,11 @@ func set_move_state(value: MoveState) -> void:
 		return
 	move_state = value
 	animator.play(animations[move_state])
+
+
+func _on_animation_looped() -> void:
+	if move_state == MoveState.IDLE:
+		if randf() <= animate_look_around_chance:
+			animator.play("look_around")
+		else:
+			animator.play("idle")

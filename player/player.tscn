@@ -500,3 +500,5 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_le2a5")
 animation = &"walk"
 autoplay = "idle"
+
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animation_looped"]
