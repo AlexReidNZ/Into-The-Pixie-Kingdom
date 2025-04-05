@@ -8,7 +8,7 @@
 
 [node name="Stan" parent="." instance=ExtResource("2_ci6wn")]
 
-[node name="Player Body" parent="." instance=ExtResource("3_bb4ag")]
+[node name="Player" parent="." instance=ExtResource("3_bb4ag")]
 position = Vector2(315, -4)
 
-[node name="DialogBubble" parent="Player Body" instance=ExtResource("1_wqxky")]
+[node name="DialogBubble" parent="." instance=ExtResource("1_wqxky")]

@@ -1,21 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwi0bf6srol7t"]
+[gd_scene load_steps=5 format=3 uid="uid://bwi0bf6srol7t"]
 
-[ext_resource type="Script" path="res://Scenes/npc_body.gd" id="1_2467h"]
+[ext_resource type="Script" path="res://Scenes/npc.gd" id="1_2467h"]
 [ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="1_k487h"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_efujt"]
-size = Vector2(112, 118)
+[sub_resource type="CircleShape2D" id="CircleShape2D_b06dh"]
+radius = 61.69
 
-[node name="Npc Body" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhmoq"]
+radius = 91.11
+
+[node name="NpcBody" type="CharacterBody2D"]
 script = ExtResource("1_2467h")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_k487h")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 1)
 rotation = 3.14159
 scale = Vector2(1.14809, 1.14809)
-shape = SubResource("RectangleShape2D_efujt")
+shape = SubResource("CircleShape2D_b06dh")
+
+[node name="ChatDetection" type="Area2D" parent="."]
+position = Vector2(1.19209e-07, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChatDetection"]
+shape = SubResource("CircleShape2D_bhmoq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k487h")
