@@ -1,23 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfrj4t5rn0lay"]
+[gd_scene load_steps=5 format=3 uid="uid://cfrj4t5rn0lay"]
 
 [ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="1_bxnp0"]
 [ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://icon.svg" id="1_woxqj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mr6wc"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmkuf"]
+size = Vector2(59, 4)
+
 [node name="PlatformLevel" type="Node2D"]
 texture_filter = 1
 
 [node name="Player" parent="." instance=ExtResource("1_bxnp0")]
-position = Vector2(45, 99)
+z_index = 10
+position = Vector2(46, 123)
+jump_velocity = 300.0
+coyote_time_ms = 80
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(0, 140)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0, 1)
 shape = SubResource("WorldBoundaryShape2D_mr6wc")
 
 [node name="Icon2" type="Sprite2D" parent="Ground"]
 scale = Vector2(8.01, 0.03)
 texture = ExtResource("1_woxqj")
 centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(71, 104)
+
+[node name="Icon" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(0.460938, 0.03125)
+texture = ExtResource("1_woxqj")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(29.5, 2)
+shape = SubResource("RectangleShape2D_hmkuf")
