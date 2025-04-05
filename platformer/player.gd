@@ -1,10 +1,26 @@
 extends CharacterBody2D
 
 
-@export_range(1, 300) var speed = 100.0
-@export_range(0, 1) var deceleration = 0.5
-@export_range(1, 2) var run_speed_multiplier = 1.69
-@export_range(1, 300) var jump_velocity = 200.0
+enum MoveState {
+	IDLE,
+	WALKING,
+	RUNNING,
+	JUMPING,
+	FALLING,
+}
+
+const animations := {
+	MoveState.IDLE: "idle",
+	MoveState.WALKING: "walk",
+	MoveState.RUNNING: "run",
+	MoveState.JUMPING: "jump",
+	MoveState.FALLING: "fall",
+}
+
+@export_range(1, 300, 1) var speed := 100.0
+@export_range(0, 1, 0.05) var deceleration := 0.5
+@export_range(1, 2, 0.01) var run_speed_multiplier := 1.69
+@export_range(100, 500) var jump_velocity := 250
 
 ## Time (in milliseconds) the player can press jump before/after touching the ground.
 ## Named after Wile E. Coyote from Looney Tunes, may he rest in peace. <3
@@ -13,36 +29,53 @@ extends CharacterBody2D
 var last_jump_input_time_ms := -1
 var last_on_floor_time_ms := -1
 var jump_queued := false
+var move_state := MoveState.IDLE:
+	set = set_move_state
 
 @onready var animator: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	else:
-		last_on_floor_time_ms = Time.get_ticks_msec()
+	calculate_velocity_x(delta)
+	calculate_velocity_y(delta)
 
 	if jump_queued:
 		try_jump()
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	move_and_slide()
+	
+	
+func calculate_velocity_x(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	var speed_mutliplier = 1 + Input.get_action_strength("run") * run_speed_multiplier
 	if direction:
 		velocity.x = direction * speed * speed_mutliplier
+		animator.scale.x = roundi(direction)
+		if Input.get_action_strength("run"):
+			move_state = MoveState.RUNNING
+		else:
+			move_state = MoveState.WALKING
 	else:
 		# Deceleration by speed
 		velocity.x = move_toward(velocity.x, 0, speed * deceleration)
+		if not velocity.x:
+			move_state = MoveState.IDLE
 
-	move_and_slide()
 
+func calculate_velocity_y(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		if velocity.y < 0:
+			move_state = MoveState.JUMPING
+		else:
+			move_state = MoveState.FALLING
+	else:
+		last_on_floor_time_ms = Time.get_ticks_msec()
+			
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
-		queue_jump()
+		queue_jump()			
 		
 		
 func queue_jump() -> void:
@@ -60,8 +93,15 @@ func try_jump() -> void:
 		# jump can stay queued in this case
 		return
 		
-		jump_queued = false
-		last_on_floor_time_ms = -1
-		# Negative Y direction is upwards in 2D space
-		velocity.y = -jump_velocity
-		
+	jump_queued = false
+	last_on_floor_time_ms = -1
+	# Negative Y direction is upwards in 2D space
+	velocity.y = -jump_velocity
+				
+
+func set_move_state(value: MoveState) -> void:
+	# only process when move_state changes to a new state
+	if move_state == value:
+		return
+	move_state = value
+	animator.play(animations[move_state])
