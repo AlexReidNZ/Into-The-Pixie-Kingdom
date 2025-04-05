@@ -6,7 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dh0t1jc6p484g" path="res://player/animations/girl walking right - out.png" id="4_wwj8c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ckqf"]
-radius = 8.0
+height = 48.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cs7a"]
+atlas = ExtResource("3_bgbgm")
+region = Rect2(1291, 0, 36, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ibj6"]
 atlas = ExtResource("2_6cm6y")
@@ -60,6 +64,18 @@ region = Rect2(473, 0, 32, 54)
 atlas = ExtResource("2_6cm6y")
 region = Rect2(516, 0, 32, 54)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4mjh"]
+atlas = ExtResource("3_bgbgm")
+region = Rect2(187, 0, 36, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkiop"]
+atlas = ExtResource("3_bgbgm")
+region = Rect2(233, 0, 36, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pblws"]
+atlas = ExtResource("3_bgbgm")
+region = Rect2(279, 0, 36, 54)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_52x8x"]
 atlas = ExtResource("3_bgbgm")
 region = Rect2(3, 0, 36, 54)
@@ -75,18 +91,6 @@ region = Rect2(95, 0, 36, 54)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjgo2"]
 atlas = ExtResource("3_bgbgm")
 region = Rect2(141, 0, 36, 54)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u4mjh"]
-atlas = ExtResource("3_bgbgm")
-region = Rect2(187, 0, 36, 54)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hkiop"]
-atlas = ExtResource("3_bgbgm")
-region = Rect2(233, 0, 36, 54)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pblws"]
-atlas = ExtResource("3_bgbgm")
-region = Rect2(279, 0, 36, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6dkt6"]
 atlas = ExtResource("3_bgbgm")
@@ -172,10 +176,6 @@ region = Rect2(1199, 0, 36, 54)
 atlas = ExtResource("3_bgbgm")
 region = Rect2(1245, 0, 36, 54)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0cs7a"]
-atlas = ExtResource("3_bgbgm")
-region = Rect2(1291, 0, 36, 54)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_fy2so"]
 atlas = ExtResource("3_bgbgm")
 region = Rect2(1337, 0, 36, 54)
@@ -240,6 +240,14 @@ region = Rect2(234, 0, 26, 52)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_0cs7a")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7ibj6")
 }, {
 "duration": 1.0,
@@ -281,6 +289,20 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 8.3
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4mjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkiop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pblws")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -421,6 +443,41 @@ animations = [{
 "texture": SubResource("AtlasTexture_5dowc")
 }],
 "loop": true,
+"name": &"run",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rkk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_518or")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmj21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fulqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsl6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd17n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgh5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydvo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n8rh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dowc")
+}],
+"loop": true,
 "name": &"walk",
 "speed": 8.3
 }]
@@ -429,6 +486,7 @@ animations = [{
 script = ExtResource("1_mehl8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 26)
 limit_left = 0
 limit_bottom = 144
 position_smoothing_enabled = true
@@ -439,8 +497,6 @@ shape = SubResource("CapsuleShape2D_7ckqf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_le2a5")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.836154

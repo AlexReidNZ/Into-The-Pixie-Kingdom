@@ -6,37 +6,37 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mr6wc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmkuf"]
-size = Vector2(59, 4)
+size = Vector2(66, 6)
 
 [node name="PlatformLevel" type="Node2D"]
 texture_filter = 1
 
 [node name="Player" parent="." instance=ExtResource("1_bxnp0")]
 z_index = 10
-position = Vector2(46, 123)
-jump_velocity = 300.0
+position = Vector2(42, 114)
+jump_velocity = 360
 coyote_time_ms = 80
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(0, 140)
+position = Vector2(0, 137)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(0, 1)
 shape = SubResource("WorldBoundaryShape2D_mr6wc")
 
 [node name="Icon2" type="Sprite2D" parent="Ground"]
-scale = Vector2(8.01, 0.03)
+scale = Vector2(8.01, 0.0546875)
 texture = ExtResource("1_woxqj")
 centered = false
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(71, 104)
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(117, 82)
 
-[node name="Icon" type="Sprite2D" parent="StaticBody2D"]
-scale = Vector2(0.460938, 0.03125)
+[node name="Icon" type="Sprite2D" parent="Platform"]
+scale = Vector2(0.515625, 0.046875)
 texture = ExtResource("1_woxqj")
 centered = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(29.5, 2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(33, 3)
 shape = SubResource("RectangleShape2D_hmkuf")
