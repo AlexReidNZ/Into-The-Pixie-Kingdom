@@ -17,9 +17,11 @@ const animations := {
 	MoveState.FALLING: "fall",
 }
 
-@export_range(1, 300, 1) var speed := 100.0
-@export_range(0, 1, 0.05) var deceleration := 0.5
+## Walking rate in pixels per second
+@export_range(1, 300) var speed := 100
 @export_range(1, 2, 0.01) var run_speed_multiplier := 1.69
+@export_range(0, 1, 0.01) var acceleration := 0.5
+@export_range(0, 1, 0.01) var deceleration := 0.5
 @export_range(100, 500) var jump_velocity := 250
 
 ## Time (in milliseconds) the player can press jump before/after touching the ground.
@@ -47,16 +49,18 @@ func _process(delta: float) -> void:
 	
 func calculate_velocity_x(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
-	var speed_mutliplier = 1 + Input.get_action_strength("run") * run_speed_multiplier
-	if direction:
-		velocity.x = direction * speed * speed_mutliplier
-		animator.scale.x = roundi(direction)
+		if direction:
+		var move_speed := speed
 		if Input.get_action_strength("run"):
 			move_state = MoveState.RUNNING
+move_speed *= run_speed_multiplier
 		else:
 			move_state = MoveState.WALKING
+velocity.x = move_toward(velocity.x, direction * move_speed, speed * acceleration)
+		# keep sprite facing towards movement direction
+		animator.scale.x = roundi(direction)
 	else:
-		# Deceleration by speed
+		# deceleration by speed
 		velocity.x = move_toward(velocity.x, 0, speed * deceleration)
 		if not velocity.x:
 			move_state = MoveState.IDLE
