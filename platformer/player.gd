@@ -51,8 +51,15 @@ func queue_jump() -> void:
 	
 
 func try_jump() -> void:
-	if (Time.get_ticks_msec() < last_on_floor_time_ms + coyote_time_ms 
-			and Time.get_ticks_msec() < last_jump_input_time_ms + coyote_time_ms):
+	# been too long since player input
+	if Time.get_ticks_msec() > last_jump_input_time_ms + coyote_time_ms:
+		jump_queued = false
+		return
+	# been too long since player was touching the floor
+	if Time.get_ticks_msec() > last_on_floor_time_ms + coyote_time_ms:
+		# jump can stay queued in this case
+		return
+		
 		jump_queued = false
 		last_on_floor_time_ms = -1
 		# Negative Y direction is upwards in 2D space
