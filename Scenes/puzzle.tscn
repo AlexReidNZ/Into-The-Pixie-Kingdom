@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://2mwt4d6tmrrx"]
+[gd_scene load_steps=5 format=3 uid="uid://2mwt4d6tmrrx"]
+
+[ext_resource type="Texture2D" uid="uid://bnbhkr51fpin1" path="res://Sprites/Puzzle/largegrid.png" id="1_lwupl"]
+[ext_resource type="Script" path="res://Scripts/puzzle/PuzzleManager.gd" id="1_wwo6t"]
+[ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://icon.svg" id="2_gids3"]
+[ext_resource type="PackedScene" uid="uid://d23147d2e8rcu" path="res://Scenes/GridSquare.tscn" id="2_s6aqq"]
 
 [node name="Puzzle" type="Node2D"]
+script = ExtResource("1_wwo6t")
+GridSquare = ExtResource("2_s6aqq")
+PuzzHeight = 6
+PuzzWidth = 6
+
+[node name="GridBackground" type="Sprite2D" parent="."]
+modulate = Color(0.0125428, 0.00383091, 0, 1)
+texture = ExtResource("2_gids3")
+
+[node name="Grid" type="Sprite2D" parent="."]
+texture = ExtResource("1_lwupl")
