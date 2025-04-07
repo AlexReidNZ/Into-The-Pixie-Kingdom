@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhs05ayfbjvxk"]
+
+[ext_resource type="Texture2D" uid="uid://bnbhkr51fpin1" path="res://Sprites/Puzzle/largegrid.png" id="1_4djxd"]
+[ext_resource type="Texture2D" uid="uid://dr0bhba3548lc" path="res://Sprites/Puzzle/border.png" id="1_somam"]
+[ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://icon.svg" id="3_aaok5"]
+[ext_resource type="Script" path="res://Scripts/puzzle/PuzzleBlock.gd" id="4_e45fn"]
+
+[node name="Puzzle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridBorderSprite" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = -75.5
+offset_right = 75.5
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_somam")
+
+[node name="GridSprite" type="TextureRect" parent="GridBorderSprite"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -66.5
+offset_right = 66.5
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4djxd")
+
+[node name="PuzzleBlock" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 304.0
+offset_right = 542.0
+offset_bottom = 432.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_aaok5")
+script = ExtResource("4_e45fn")
