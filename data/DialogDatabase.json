@@ -1,0 +1,7 @@
+{
+  "Stan": [
+	{ "speaker": "Stan", "line": "Hey there!" },
+	{ "speaker": "Player", "line": "Uh... hi?" },
+	{ "speaker": "Stan", "line": "Nice weather today." }
+  ]
+}
