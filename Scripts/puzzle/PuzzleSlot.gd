@@ -2,12 +2,11 @@ extends TextureRect
 
 func _get_drag_data(at_position: Vector2) -> Variant:
 	var data = {}
-	data["origin_texture"] = texture
 	
 	var dragTexture = TextureRect.new()
 	dragTexture.expand = true
 	dragTexture.texture = texture
-	dragTexture.size = dragTexture.texture.get_size()
+	dragTexture.size = Vector2(20,20)
 	
 	#use a control node to offset the drag preview so it is under the mouse instead of off to the side
 	var control = Control.new()
@@ -19,7 +18,7 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	return true
-	return false
 	
 func _drop_data(at_position: Vector2, data: Variant) -> void:
+	texture = data["origin_texture"]
 	pass
