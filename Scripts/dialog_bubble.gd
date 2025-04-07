@@ -1,6 +1,7 @@
 extends Control
 
 @export var text_speed: float = 0.05
+@export var max_lines: int = 3
 
 var dialog_lines: Array = []
 var line_index: int = 0
@@ -11,7 +12,7 @@ var full_text: String = ""
 var char_index: int = 0
 var current_speaker_node: Node2D = null
 
-@onready var text_label: RichTextLabel = $RichTextLabel
+@onready var text_label: RichTextLabel = $Panel/RichTextLabel
 @onready var timer: Timer = $Timer
 
 func _ready() -> void:
@@ -44,7 +45,7 @@ func _start_new_line() -> void:
 
 	current_speaker_node = get_speaker_node(speaker_name)
 	if current_speaker_node:
-		global_position = current_speaker_node.global_position + Vector2(0, -50)
+		global_position = current_speaker_node.global_position + Vector2(20, -180)
 		print("=== DIALOG DEBUG ===")
 		print("Line index:", line_index)
 		print("Speaker:", speaker_name)
@@ -61,6 +62,15 @@ func _on_Timer_timeout() -> void:
 	if char_index < full_text.length():
 		text_label.text += full_text[char_index]
 		char_index += 1
+
+		# Check if adding this character causes the text to exceed our max_lines limit.
+		if text_label.get_line_count() > max_lines:
+			# Remove the overflowing character.
+			text_label.text = text_label.text.substr(0, text_label.text.length() - 1)
+			char_index -= 1
+			# Pause typing until the player confirms to continue.
+			is_typing = false
+			timer.stop()
 	else:
 		is_typing = false
 		timer.stop()
@@ -71,15 +81,24 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_select"):
 		if is_typing:
+			# Fast-forward: finish current text immediately.
 			timer.stop()
 			is_typing = false
 			text_label.text = full_text
 		else:
-			line_index += 1
-			if line_index < dialog_lines.size():
-				_start_new_line()
+			# If there's still text left that wasn't shown due to pagination, resume typing.
+			if char_index < full_text.length():
+				# Clear the current page and resume typing the remaining text.
+				text_label.text = ""
+				is_typing = true
+				timer.start()
 			else:
-				_end_dialog()
+				# The current line is complete, move on to the next one.
+				line_index += 1
+				if line_index < dialog_lines.size():
+					_start_new_line()
+				else:
+					_end_dialog()
 
 func _end_dialog() -> void:
 	dialog_active = false
