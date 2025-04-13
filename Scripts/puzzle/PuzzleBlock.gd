@@ -10,11 +10,8 @@ func  _process(delta: float) -> void:
 		if Input.is_action_pressed("click"):
 			global_position = get_global_mouse_position()
 		elif Input.is_action_just_released("click"):
-			print("drag stopped")
-			puzzleManager.is_dragging = false
+			DropPiece()
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
 
 func _on_area_2d_mouse_entered() -> void:
 	if not puzzleManager.is_dragging:
@@ -22,8 +19,11 @@ func _on_area_2d_mouse_entered() -> void:
 		draggable = true
 		scale = Vector2(1.05,1.05)
 
-
 func _on_area_2d_mouse_exited() -> void:
 	if not puzzleManager.is_dragging:
 		draggable = false
 		scale = Vector2(1,1)
+
+func DropPiece():
+	print("drag stopped")
+	puzzleManager.is_dragging = false
