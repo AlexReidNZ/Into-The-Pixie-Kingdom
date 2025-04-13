@@ -1,17 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhs05ayfbjvxk"]
+[gd_scene load_steps=6 format=3 uid="uid://bhs05ayfbjvxk"]
 
-[ext_resource type="Texture2D" uid="uid://bnbhkr51fpin1" path="res://Sprites/Puzzle/largegrid.png" id="1_4djxd"]
-[ext_resource type="Texture2D" uid="uid://dr0bhba3548lc" path="res://Sprites/Puzzle/border.png" id="1_somam"]
+[ext_resource type="Script" path="res://Scripts/puzzle/puzzleManager.gd" id="1_5hm6r"]
+[ext_resource type="Texture2D" uid="uid://b3wxwjhe2nv4k" path="res://Sprites/Puzzle/ivypath frame02.png" id="1_ldf3w"]
 [ext_resource type="Texture2D" uid="uid://v1oxex72lfiq" path="res://Sprites/Puzzle/tiles/tileLine.png" id="3_acm4a"]
 [ext_resource type="Script" path="res://Scripts/puzzle/PuzzleBlock.gd" id="4_e45fn"]
-[ext_resource type="Texture2D" uid="uid://c03hes262uh6y" path="res://Sprites/Puzzle/tiles/tileF.png" id="5_gd016"]
-[ext_resource type="PackedScene" uid="uid://dpbk473o0mgwi" path="res://Scenes/Puzzle/PuzzleSlot.tscn" id="5_q23f7"]
-[ext_resource type="Texture2D" uid="uid://c6n0y1an0l85k" path="res://Sprites/Puzzle/tiles/tileLlong.png" id="6_svmv2"]
-[ext_resource type="Texture2D" uid="uid://empwd5qprnq6" path="res://Sprites/Puzzle/tiles/tileLShort.png" id="7_c4khe"]
-[ext_resource type="Texture2D" uid="uid://gklra3sxlh4l" path="res://Sprites/Puzzle/tiles/tileP.png" id="8_ow7ls"]
-[ext_resource type="Texture2D" uid="uid://bdhfr6ajpfqxs" path="res://Sprites/Puzzle/tiles/tileS.png" id="9_kyv07"]
-[ext_resource type="Texture2D" uid="uid://bx1mwfpvoafl1" path="res://Sprites/Puzzle/tiles/tileSmall.png" id="10_yx7of"]
-[ext_resource type="Texture2D" uid="uid://08py7oee0p4n" path="res://Sprites/Puzzle/tiles/tileT.png" id="11_e5tnr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja1nt"]
 
 [node name="Puzzle" type="Control"]
 layout_mode = 3
@@ -20,323 +14,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_5hm6r")
 
 [node name="GridBorderSprite" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.5
-offset_top = -75.5
-offset_right = 75.5
-offset_bottom = 75.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -832.0
+offset_bottom = -479.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_somam")
+mouse_filter = 2
+texture = ExtResource("1_ldf3w")
 
-[node name="GridSprite" type="TextureRect" parent="GridBorderSprite"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -66.5
-offset_top = -66.5
-offset_right = 66.5
-offset_bottom = 66.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_4djxd")
+[node name="PuzzlePieceStraight" type="Node2D" parent="."]
+position = Vector2(100, 100)
+script = ExtResource("4_e45fn")
 
-[node name="PuzzleBlock" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 841.0
-offset_top = 230.0
-offset_right = 928.0
-offset_bottom = 251.0
+[node name="Sprite2D" type="Sprite2D" parent="PuzzlePieceStraight"]
 texture = ExtResource("3_acm4a")
-script = ExtResource("4_e45fn")
 
-[node name="PuzzleBlock2" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 713.0
-offset_top = 221.0
-offset_right = 778.0
-offset_bottom = 286.0
-texture = ExtResource("5_gd016")
-script = ExtResource("4_e45fn")
+[node name="Area2D" type="Area2D" parent="PuzzlePieceStraight"]
 
-[node name="PuzzleBlock3" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 716.0
-offset_top = 326.0
-offset_right = 781.0
-offset_bottom = 391.0
-texture = ExtResource("6_svmv2")
-script = ExtResource("4_e45fn")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieceStraight/Area2D"]
+scale = Vector2(4, 1)
+shape = SubResource("RectangleShape2D_ja1nt")
 
-[node name="PuzzleBlock4" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 873.0
-offset_top = 313.0
-offset_right = 916.0
-offset_bottom = 378.0
-texture = ExtResource("7_c4khe")
-script = ExtResource("4_e45fn")
-
-[node name="PuzzleBlock5" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 391.0
-offset_top = 285.0
-offset_right = 434.0
-offset_bottom = 350.0
-texture = ExtResource("8_ow7ls")
-script = ExtResource("4_e45fn")
-
-[node name="PuzzleBlock6" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 346.0
-offset_top = 225.0
-offset_right = 411.0
-offset_bottom = 268.0
-texture = ExtResource("9_kyv07")
-script = ExtResource("4_e45fn")
-
-[node name="PuzzleBlock7" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 321.0
-offset_top = 300.0
-offset_right = 364.0
-offset_bottom = 321.0
-texture = ExtResource("10_yx7of")
-script = ExtResource("4_e45fn")
-
-[node name="PuzzleBlock8" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 330.0
-offset_top = 362.0
-offset_right = 373.0
-offset_bottom = 427.0
-texture = ExtResource("11_e5tnr")
-script = ExtResource("4_e45fn")
-
-[node name="PuzzleSlots" type="Node" parent="."]
-
-[node name="PuzzleSlot" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 511.0
-offset_top = 259.0
-offset_right = -620.0
-offset_bottom = -368.0
-
-[node name="PuzzleSlot2" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 533.0
-offset_top = 259.0
-offset_right = -598.0
-offset_bottom = -368.0
-
-[node name="PuzzleSlot3" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 555.0
-offset_top = 259.0
-offset_right = -576.0
-offset_bottom = -368.0
-
-[node name="PuzzleSlot4" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 577.0
-offset_top = 259.0
-offset_right = -554.0
-offset_bottom = -368.0
-
-[node name="PuzzleSlot5" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 599.0
-offset_top = 259.0
-offset_right = -532.0
-offset_bottom = -368.0
-
-[node name="PuzzleSlot6" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 621.0
-offset_top = 259.0
-offset_right = -510.0
-offset_bottom = -368.0
-
-[node name="PuzzleSlot7" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 511.0
-offset_top = 281.0
-offset_right = -620.0
-offset_bottom = -346.0
-
-[node name="PuzzleSlot8" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 533.0
-offset_top = 281.0
-offset_right = -598.0
-offset_bottom = -346.0
-
-[node name="PuzzleSlot9" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 555.0
-offset_top = 281.0
-offset_right = -576.0
-offset_bottom = -346.0
-
-[node name="PuzzleSlot10" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 577.0
-offset_top = 281.0
-offset_right = -554.0
-offset_bottom = -346.0
-
-[node name="PuzzleSlot11" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 599.0
-offset_top = 281.0
-offset_right = -532.0
-offset_bottom = -346.0
-
-[node name="PuzzleSlot12" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 621.0
-offset_top = 281.0
-offset_right = -510.0
-offset_bottom = -346.0
-
-[node name="PuzzleSlot13" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 511.0
-offset_top = 303.0
-offset_right = -620.0
-offset_bottom = -324.0
-
-[node name="PuzzleSlot14" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 533.0
-offset_top = 303.0
-offset_right = -598.0
-offset_bottom = -324.0
-
-[node name="PuzzleSlot15" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 555.0
-offset_top = 303.0
-offset_right = -576.0
-offset_bottom = -324.0
-
-[node name="PuzzleSlot16" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 577.0
-offset_top = 303.0
-offset_right = -554.0
-offset_bottom = -324.0
-
-[node name="PuzzleSlot17" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 599.0
-offset_top = 303.0
-offset_right = -532.0
-offset_bottom = -324.0
-
-[node name="PuzzleSlot18" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 621.0
-offset_top = 303.0
-offset_right = -510.0
-offset_bottom = -324.0
-
-[node name="PuzzleSlot19" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 511.0
-offset_top = 325.0
-offset_right = -620.0
-offset_bottom = -302.0
-
-[node name="PuzzleSlot20" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 533.0
-offset_top = 325.0
-offset_right = -598.0
-offset_bottom = -302.0
-
-[node name="PuzzleSlot21" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 555.0
-offset_top = 325.0
-offset_right = -576.0
-offset_bottom = -302.0
-
-[node name="PuzzleSlot22" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 577.0
-offset_top = 325.0
-offset_right = -554.0
-offset_bottom = -302.0
-
-[node name="PuzzleSlot23" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 599.0
-offset_top = 325.0
-offset_right = -532.0
-offset_bottom = -302.0
-
-[node name="PuzzleSlot24" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 621.0
-offset_top = 325.0
-offset_right = -510.0
-offset_bottom = -302.0
-
-[node name="PuzzleSlot25" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 511.0
-offset_top = 347.0
-offset_right = -620.0
-offset_bottom = -280.0
-
-[node name="PuzzleSlot26" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 533.0
-offset_top = 347.0
-offset_right = -598.0
-offset_bottom = -280.0
-
-[node name="PuzzleSlot27" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 555.0
-offset_top = 347.0
-offset_right = -576.0
-offset_bottom = -280.0
-
-[node name="PuzzleSlot28" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 577.0
-offset_top = 347.0
-offset_right = -554.0
-offset_bottom = -280.0
-
-[node name="PuzzleSlot29" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 599.0
-offset_top = 347.0
-offset_right = -532.0
-offset_bottom = -280.0
-
-[node name="PuzzleSlot30" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 621.0
-offset_top = 347.0
-offset_right = -510.0
-offset_bottom = -280.0
-
-[node name="PuzzleSlot31" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 511.0
-offset_top = 369.0
-offset_right = -620.0
-offset_bottom = -258.0
-
-[node name="PuzzleSlot32" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 533.0
-offset_top = 369.0
-offset_right = -598.0
-offset_bottom = -258.0
-
-[node name="PuzzleSlot33" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 555.0
-offset_top = 369.0
-offset_right = -576.0
-offset_bottom = -258.0
-
-[node name="PuzzleSlot34" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 577.0
-offset_top = 369.0
-offset_right = -554.0
-offset_bottom = -258.0
-
-[node name="PuzzleSlot35" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 599.0
-offset_top = 369.0
-offset_right = -532.0
-offset_bottom = -258.0
-
-[node name="PuzzleSlot36" parent="PuzzleSlots" instance=ExtResource("5_q23f7")]
-offset_left = 621.0
-offset_top = 369.0
-offset_right = -510.0
-offset_bottom = -258.0
+[connection signal="body_entered" from="PuzzlePieceStraight/Area2D" to="PuzzlePieceStraight" method="_on_area_2d_body_entered"]
+[connection signal="mouse_entered" from="PuzzlePieceStraight/Area2D" to="PuzzlePieceStraight" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="PuzzlePieceStraight/Area2D" to="PuzzlePieceStraight" method="_on_area_2d_mouse_exited"]

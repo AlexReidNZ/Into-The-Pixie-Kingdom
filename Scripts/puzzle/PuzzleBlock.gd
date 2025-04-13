@@ -1,25 +1,29 @@
-extends TextureRect
+extends Node2D
 
-func _get_drag_data(at_position: Vector2) -> Variant:
-	var data = {}
-	data["origin_texture"] = texture
-	
-	var dragTexture = TextureRect.new()
-	dragTexture.expand = true
-	dragTexture.texture = texture
-	dragTexture.size = dragTexture.texture.get_size()
-	
-	#use a control node to offset the drag preview so it is under the mouse instead of off to the side
-	var control = Control.new()
-	control.add_child(dragTexture)
-	dragTexture.position = -0.5 * dragTexture.size
-	set_drag_preview(control)
-	
-	return data
+@onready var puzzleManager = $".."
+var draggable = false
+var is_droppable = false
+var body_Ref
 
-func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
-	return true
-	return false
-	
-func _drop_data(at_position: Vector2, data: Variant) -> void:
-	pass
+func  _process(delta: float) -> void:
+	if draggable:
+		if Input.is_action_pressed("click"):
+			global_position = get_global_mouse_position()
+		elif Input.is_action_just_released("click"):
+			print("drag stopped")
+			puzzleManager.is_dragging = false
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+
+func _on_area_2d_mouse_entered() -> void:
+	if not puzzleManager.is_dragging:
+		puzzleManager.is_dragging = true
+		draggable = true
+		scale = Vector2(1.05,1.05)
+
+
+func _on_area_2d_mouse_exited() -> void:
+	if not puzzleManager.is_dragging:
+		draggable = false
+		scale = Vector2(1,1)
