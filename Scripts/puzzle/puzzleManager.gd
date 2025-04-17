@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 		WinPuzzle()
 
 func WinPuzzle():
-	#TODO: puzzle won fucntionality
+	print("puzzle complete")
 	pass
 
 func PuzzleWon():
