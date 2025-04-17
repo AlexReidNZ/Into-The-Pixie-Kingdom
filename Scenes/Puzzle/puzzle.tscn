@@ -1,14 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhs05ayfbjvxk"]
+[gd_scene load_steps=9 format=3 uid="uid://bhs05ayfbjvxk"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle/puzzleManager.gd" id="1_5hm6r"]
 [ext_resource type="Texture2D" uid="uid://b3wxwjhe2nv4k" path="res://Sprites/Puzzle/ivypath frame02.png" id="1_ldf3w"]
-[ext_resource type="Script" path="res://Scripts/puzzle/PuzzleBlock.gd" id="4_e45fn"]
-[ext_resource type="Texture2D" uid="uid://ofny1pcydivk" path="res://Sprites/Puzzle/tiles/Twig2.png" id="5_jidqo"]
+[ext_resource type="PackedScene" uid="uid://cyhmn6hjhlm2f" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_l.tscn" id="4_nn40a"]
+[ext_resource type="PackedScene" uid="uid://bro3kv71gwr07" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_l_long.tscn" id="5_eydqa"]
 [ext_resource type="PackedScene" uid="uid://dpbk473o0mgwi" path="res://Scenes/Puzzle/PuzzleSlot.tscn" id="5_q23f7"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5k6i8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja1nt"]
+[ext_resource type="PackedScene" uid="uid://c1vruqq0sq1c5" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_square.tscn" id="6_lw41j"]
+[ext_resource type="PackedScene" uid="uid://b7sjuewe0grbs" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_straight_l.tscn" id="7_66gki"]
+[ext_resource type="PackedScene" uid="uid://bifq4bdf61s8b" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_straight_m.tscn" id="8_nma7n"]
 
 [node name="Puzzle" type="Control"]
 layout_mode = 3
@@ -148,123 +147,31 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("1_ldf3w")
 
-[node name="PuzzlePieceStraight" type="Node2D" parent="."]
-position = Vector2(200, 233)
-script = ExtResource("4_e45fn")
+[node name="PuzzlePieceL" parent="." instance=ExtResource("4_nn40a")]
+position = Vector2(820, 325)
 
-[node name="GridColliders" type="Node2D" parent="PuzzlePieceStraight"]
+[node name="PuzzlePieceL2" parent="." instance=ExtResource("4_nn40a")]
+position = Vector2(908, 329)
+rotation = 3.14159
 
-[node name="Collider1" type="Area2D" parent="PuzzlePieceStraight/GridColliders"]
-position = Vector2(-30, 0)
-collision_layer = 64
-collision_mask = 128
+[node name="PuzzlePieceLLong" parent="." instance=ExtResource("5_eydqa")]
+position = Vector2(256, 307)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieceStraight/GridColliders/Collider1"]
-scale = Vector2(0.1, 0.1)
-shape = SubResource("CircleShape2D_5k6i8")
-debug_color = Color(0.981629, 0, 0.369384, 0.42)
+[node name="PuzzlePieceSquare" parent="." instance=ExtResource("6_lw41j")]
+position = Vector2(322, 222)
 
-[node name="Collider2" type="Area2D" parent="PuzzlePieceStraight/GridColliders"]
-position = Vector2(-10, 0)
-collision_layer = 64
-collision_mask = 128
+[node name="PuzzlePieceSquare2" parent="." instance=ExtResource("6_lw41j")]
+position = Vector2(305, 421)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieceStraight/GridColliders/Collider2"]
-scale = Vector2(0.1, 0.1)
-shape = SubResource("CircleShape2D_5k6i8")
-debug_color = Color(0.981629, 0, 0.369384, 0.42)
+[node name="PuzzlePieceSquare3" parent="." instance=ExtResource("6_lw41j")]
+position = Vector2(159, 391)
 
-[node name="Collider3" type="Area2D" parent="PuzzlePieceStraight/GridColliders"]
-position = Vector2(10, 0)
-collision_layer = 64
-collision_mask = 128
+[node name="PuzzlePieceSquare4" parent="." instance=ExtResource("6_lw41j")]
+position = Vector2(176, 228)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieceStraight/GridColliders/Collider3"]
-scale = Vector2(0.1, 0.1)
-shape = SubResource("CircleShape2D_5k6i8")
-debug_color = Color(0.981629, 0, 0.369384, 0.42)
-
-[node name="Collider4" type="Area2D" parent="PuzzlePieceStraight/GridColliders"]
-position = Vector2(30, 0)
-collision_layer = 64
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieceStraight/GridColliders/Collider4"]
-scale = Vector2(0.1, 0.1)
-shape = SubResource("CircleShape2D_5k6i8")
-debug_color = Color(0.981629, 0, 0.369384, 0.42)
-
-[node name="Sprite2D" type="Sprite2D" parent="PuzzlePieceStraight"]
+[node name="PuzzlePieceStraightL" parent="." instance=ExtResource("7_66gki")]
+position = Vector2(837, 187)
 rotation = 1.5708
-texture = ExtResource("5_jidqo")
 
-[node name="Area2D" type="Area2D" parent="PuzzlePieceStraight"]
-collision_layer = 32
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieceStraight/Area2D"]
-scale = Vector2(4, 1)
-shape = SubResource("RectangleShape2D_ja1nt")
-
-[node name="PuzzlePieceStraight2" type="Node2D" parent="."]
-position = Vector2(199, 303)
-script = ExtResource("4_e45fn")
-
-[node name="GridColliders" type="Node2D" parent="PuzzlePieceStraight2"]
-
-[node name="Collider1" type="Area2D" parent="PuzzlePieceStraight2/GridColliders"]
-position = Vector2(-30, 0)
-collision_layer = 64
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieceStraight2/GridColliders/Collider1"]
-scale = Vector2(0.1, 0.1)
-shape = SubResource("CircleShape2D_5k6i8")
-debug_color = Color(0.981629, 0, 0.369384, 0.42)
-
-[node name="Collider2" type="Area2D" parent="PuzzlePieceStraight2/GridColliders"]
-position = Vector2(-10, 0)
-collision_layer = 64
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieceStraight2/GridColliders/Collider2"]
-scale = Vector2(0.1, 0.1)
-shape = SubResource("CircleShape2D_5k6i8")
-debug_color = Color(0.981629, 0, 0.369384, 0.42)
-
-[node name="Collider3" type="Area2D" parent="PuzzlePieceStraight2/GridColliders"]
-position = Vector2(10, 0)
-collision_layer = 64
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieceStraight2/GridColliders/Collider3"]
-scale = Vector2(0.1, 0.1)
-shape = SubResource("CircleShape2D_5k6i8")
-debug_color = Color(0.981629, 0, 0.369384, 0.42)
-
-[node name="Collider4" type="Area2D" parent="PuzzlePieceStraight2/GridColliders"]
-position = Vector2(30, 0)
-collision_layer = 64
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieceStraight2/GridColliders/Collider4"]
-scale = Vector2(0.1, 0.1)
-shape = SubResource("CircleShape2D_5k6i8")
-debug_color = Color(0.981629, 0, 0.369384, 0.42)
-
-[node name="Sprite2D" type="Sprite2D" parent="PuzzlePieceStraight2"]
-rotation = 1.5708
-texture = ExtResource("5_jidqo")
-
-[node name="Area2D" type="Area2D" parent="PuzzlePieceStraight2"]
-collision_layer = 32
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieceStraight2/Area2D"]
-scale = Vector2(4, 1)
-shape = SubResource("RectangleShape2D_ja1nt")
-
-[connection signal="mouse_entered" from="PuzzlePieceStraight/Area2D" to="PuzzlePieceStraight" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="PuzzlePieceStraight/Area2D" to="PuzzlePieceStraight" method="_on_area_2d_mouse_exited"]
-[connection signal="mouse_entered" from="PuzzlePieceStraight2/Area2D" to="PuzzlePieceStraight2" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="PuzzlePieceStraight2/Area2D" to="PuzzlePieceStraight2" method="_on_area_2d_mouse_exited"]
+[node name="PuzzlePieceStraightM" parent="." instance=ExtResource("8_nma7n")]
+position = Vector2(944, 170)

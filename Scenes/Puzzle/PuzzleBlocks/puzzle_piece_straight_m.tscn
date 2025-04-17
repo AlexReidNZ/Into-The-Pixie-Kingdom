@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://bifq4bdf61s8b"]
+
+[ext_resource type="Script" path="res://Scripts/puzzle/PuzzleBlock.gd" id="1_pbfrt"]
+[ext_resource type="Texture2D" uid="uid://do4mxm4w6oloy" path="res://Sprites/Puzzle/tiles/Twig6.png" id="2_f6bcl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5k6i8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja1nt"]
+
+[node name="PuzzlePieceStraightM" type="Node2D"]
+position = Vector2(764, 213)
+script = ExtResource("1_pbfrt")
+
+[node name="GridColliders" type="Node2D" parent="."]
+
+[node name="Collider1" type="Area2D" parent="GridColliders"]
+position = Vector2(-20, 0)
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridColliders/Collider1"]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_5k6i8")
+debug_color = Color(0.981629, 0, 0.369384, 0.42)
+
+[node name="Collider2" type="Area2D" parent="GridColliders"]
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridColliders/Collider2"]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_5k6i8")
+debug_color = Color(0.981629, 0, 0.369384, 0.42)
+
+[node name="Collider3" type="Area2D" parent="GridColliders"]
+position = Vector2(20, 0)
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridColliders/Collider3"]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_5k6i8")
+debug_color = Color(0.981629, 0, 0.369384, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_f6bcl")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_ja1nt")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

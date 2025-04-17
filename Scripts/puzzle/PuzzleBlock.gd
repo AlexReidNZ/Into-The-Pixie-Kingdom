@@ -19,7 +19,6 @@ func  _process(delta: float) -> void:
 
 func _on_area_2d_mouse_entered() -> void:
 	if not puzzleManager.is_dragging:
-		puzzleManager.is_dragging = true
 		draggable = true
 		scale = Vector2(1.05,1.05)
 
@@ -34,14 +33,16 @@ func DropPiece():
 		print("valid")
 		for area in gridColliders:
 			area.get_overlapping_areas()[0].slotTaken = true
-		
 		global_position -= gridColliders[0].global_position - gridColliders[0].get_overlapping_areas()[0].global_position
 	else:
-		set_global_position(start_pos)
+		for area in gridColliders:
+			if area.has_overlapping_areas(): #if pos not valid and overlaps grid, return to start pos
+				set_global_position(start_pos)
 	puzzleManager.is_dragging = false
 
 func StartDrag():
 	start_pos = global_position
+	puzzleManager.is_dragging = true
 	for area in gridColliders:
 		if area.has_overlapping_areas(): #if piece is in the grid
 			area.get_overlapping_areas()[0].slotTaken = false
