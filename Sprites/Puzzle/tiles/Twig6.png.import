@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c03hes262uh6y"
-path="res://.godot/imported/tileF.png-5ec82133d3545be72c7719ca11afa932.ctex"
+uid="uid://do4mxm4w6oloy"
+path="res://.godot/imported/Twig6.png-ff3ac58729ae5e0784245edea50f490e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Puzzle/tiles/tileF.png"
-dest_files=["res://.godot/imported/tileF.png-5ec82133d3545be72c7719ca11afa932.ctex"]
+source_file="res://Sprites/Puzzle/tiles/Twig6.png"
+dest_files=["res://.godot/imported/Twig6.png-ff3ac58729ae5e0784245edea50f490e.ctex"]
 
 [params]
 
