@@ -31,13 +31,16 @@ func DropPiece():
 	print("drag stopped")
 	if is_valid_position():
 		print("valid")
-		for area in gridColliders:
-			area.get_overlapping_areas()[0].slotTaken = true
 		global_position -= gridColliders[0].global_position - gridColliders[0].get_overlapping_areas()[0].global_position
 	else:
 		for area in gridColliders:
 			if area.has_overlapping_areas(): #if pos not valid and overlaps grid, return to start pos
 				set_global_position(start_pos)
+				break
+	for area in gridColliders:
+		if area.has_overlapping_areas():
+			area.get_overlapping_areas()[0].slotTaken = true
+			print(area.get_overlapping_areas()[0].name)
 	puzzleManager.is_dragging = false
 
 func StartDrag():
