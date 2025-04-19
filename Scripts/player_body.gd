@@ -1,18 +1,20 @@
-# Player.gd
 extends CharacterBody2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+# Movement speed (can be set in the inspector)
+@export var speed = 200.0
 
-func _physics_process(_delta: float) -> void:
-	var direction := Vector2.ZERO
+# Called every physics frame
+func _physics_process(delta: float) -> void:
+	var input_vec = Vector2.ZERO
 
-	direction.x = Input.get_axis("ui_left", "ui_right")
-	direction.y = Input.get_axis("ui_up", "ui_down")
+	# Get movement input from arrow/WASD keys
+	input_vec.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_vec.y = Input.get_action_strength("ui_down")  - Input.get_action_strength("ui_up")
 
-	if direction != Vector2.ZERO:	
-		direction = direction.normalized()
-	
-	velocity = direction * SPEED
+	# If moving, apply direction and speed
+	if input_vec.length() > 0:
+		velocity = input_vec.normalized() * speed
+	else:
+		velocity = Vector2.ZERO
 
 	move_and_slide()

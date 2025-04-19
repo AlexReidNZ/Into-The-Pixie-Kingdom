@@ -18,7 +18,12 @@ config/icon="res://Sprites/icon.svg"
 [autoload]
 
 DialogDatabase="*res://Scripts/dialog_database.gd"
+DialogStateMachineAuto="*res://Scripts/dialog_state_machine.gd"
 
 [dotnet]
 
 project/assembly_name="IntothePixieKingdom"
+
+[global_group]
+
+Player=""

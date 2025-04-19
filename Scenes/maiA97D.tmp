@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://jm2lljojuw27"]
+
+[ext_resource type="PackedScene" uid="uid://boo1u2jyhcow5" path="res://Scenes/dialog_bubble.tscn" id="1_wqxky"]
+[ext_resource type="PackedScene" uid="uid://bwi0bf6srol7t" path="res://Scenes/npc_body.tscn" id="2_ci6wn"]
+[ext_resource type="PackedScene" uid="uid://bwdc63outfprh" path="res://Scenes/player_body.tscn" id="3_bb4ag"]
+[ext_resource type="Script" path="res://Scripts/DialogStateMachine.gd" id="4_kksok"]
+
+[sub_resource type="GDScript" id="GDScript_gsu7n"]
+script/source = "extends CharacterBody2D
+
+@export var state_machine_path: NodePath
+var state_machine: DialogStateMachine
+
+func _ready() -> void:
+	state_machine = get_node(state_machine_path) as DialogStateMachine
+	self.connect(\"body_entered\", Callable(self, \"_on_body_entered\"))
+	self.connect(\"body_exited\",  Callable(self, \"_on_body_exited\"))
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group(\"Player\"):
+		var npc_id = get_parent().name
+		var lines  = DialogDatabase.get_dialog(npc_id)
+		if lines.size() > 0:
+			# Immediately start dialog:
+			state_machine.change_state(\"Dialog\", lines)
+
+func _on_body_exited(body: Node) -> void:
+	if body.is_in_group(\"Player\"):
+		# When you leave, go back to Idle
+		state_machine.change_state(\"Idle\")
+"
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("3_bb4ag")]
+position = Vector2(315, -4)
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="Stan" parent="NPCs" instance=ExtResource("2_ci6wn")]
+script = SubResource("GDScript_gsu7n")
+state_machine_path = NodePath("../../DialogStateMachine")
+
+[node name="DialogBubble" parent="." instance=ExtResource("1_wqxky")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DialogStateMachine" type="Node" parent="."]
+script = ExtResource("4_kksok")
+dialog_bubble_path = NodePath("../DialogBubble")
+player_node_path = NodePath("../Player")

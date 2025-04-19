@@ -1,31 +1,29 @@
 [gd_scene load_steps=2 format=3 uid="uid://boo1u2jyhcow5"]
 
-[ext_resource type="Script" path="res://Scripts/dialog_bubble.gd" id="1_7cttl"]
+[ext_resource type="Texture2D" uid="uid://iowwk3s1uc5m" path="res://Sprites/image (3).png" id="2_54g22"]
 
 [node name="DialogBubble" type="Control"]
 layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -576.0
-offset_right = -536.0
-offset_bottom = 40.0
+anchors_preset = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 100.0
+texture = ExtResource("2_54g22")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.74
 grow_horizontal = 2
-script = ExtResource("1_7cttl")
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Place Holder"
+scroll_active = false
+scroll_following = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05
-
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 98.0
-offset_bottom = 72.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-fit_content = true

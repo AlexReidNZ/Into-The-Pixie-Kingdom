@@ -1,7 +1,13 @@
 {
-  "Stan": [
+"Stan": [
 	{ "speaker": "Stan", "line": "Hey there!" },
 	{ "speaker": "Player", "line": "Uh... hi?" },
-	{ "speaker": "Stan", "line": "Nice weather today." }
-  ]
+	{ "speaker": "Stan", "line": "Nice weather today." },
+	{ "speaker": "Stan", "line": "WOuld you like to go on a quest young lady?"}
+],
+"Peggy": [
+	{ "speaker": "Peggy", "line": "Oh! You startled me." },
+	{ "speaker": "Player","line": "Sorry, Peggy. Didn’t mean to sneak up." },
+	{ "speaker": "Peggy", "line": "It’s fine. Just keep your sword sheathed." }
+]
 }
