@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="IntothePixieKingdom"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="res://Scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Sprites/icon.svg"
 
@@ -19,6 +19,10 @@ config/icon="res://Sprites/icon.svg"
 
 DialogDatabase="*res://Scripts/dialog_database.gd"
 DialogStateMachineAuto="*res://Scripts/dialog_state_machine.gd"
+
+[autoload]
+
+Global="*res://Scripts/Global.gd"
 
 [dotnet]
 
