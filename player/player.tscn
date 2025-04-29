@@ -486,9 +486,10 @@ animations = [{
 script = ExtResource("1_mehl8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 26)
+position = Vector2(-256, -229)
+anchor_mode = 0
 limit_left = 0
-limit_bottom = 144
+limit_bottom = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
