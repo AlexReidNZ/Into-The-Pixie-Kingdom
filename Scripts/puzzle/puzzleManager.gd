@@ -1,6 +1,7 @@
 extends Control
 
 var is_dragging = false
+var current_dragging_piece = null
 
 @onready var gridSlots = get_child(0).get_children()
 

@@ -24,8 +24,7 @@ func _on_area_2d_mouse_entered() -> void:
 
 func _on_area_2d_mouse_exited() -> void:
 	if not puzzleManager.is_dragging:
-		draggable = false
-		scale = Vector2(1,1)
+		cancel_drag()
 
 func DropPiece():
 	print("drag stopped")
@@ -44,8 +43,12 @@ func DropPiece():
 	puzzleManager.is_dragging = false
 
 func StartDrag():
+	if puzzleManager.is_dragging and puzzleManager.current_dragging_piece != null:
+		puzzleManager.current_dragging_piece.cancel_drag()
+	
 	start_pos = global_position
 	puzzleManager.is_dragging = true
+	puzzleManager.current_dragging_piece = self
 	for area in gridColliders:
 		if area.has_overlapping_areas(): #if piece is in the grid
 			area.get_overlapping_areas()[0].slotTaken = false
@@ -57,3 +60,7 @@ func is_valid_position():
 		elif area.get_overlapping_areas()[0].slotTaken: #if the slot it overlaps is already taken
 			return false
 	return true
+
+func cancel_drag():
+		draggable = false
+		scale = Vector2(1,1)
