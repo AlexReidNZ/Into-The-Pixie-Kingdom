@@ -5,16 +5,20 @@ enum MoveState {
 	IDLE,
 	WALKING,
 	RUNNING,
+	JUMP_ANTICIPATING,
 	JUMPING,
 	FALLING,
+	LANDING,
 }
 
 const animations := {
 	MoveState.IDLE: "idle",
 	MoveState.WALKING: "walk",
 	MoveState.RUNNING: "run",
+	MoveState.JUMP_ANTICIPATING: "jump_anticipate",
 	MoveState.JUMPING: "jump",
 	MoveState.FALLING: "fall",
+	MoveState.LANDING: "land",
 }
 
 ## Walking rate in pixels per second
@@ -50,8 +54,31 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	
 	
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("jump") and is_on_floor():
+		move_state = MoveState.JUMP_ANTICIPATING
+	if event.is_action_released("jump"):
+		queue_jump()
+
+	
+	
+func _on_animation_looped() -> void:
+	if move_state == MoveState.IDLE:
+		if randf() <= animate_look_around_chance:
+			animator.play("look_around")
+		else:
+			animator.play("idle")
+
+
+func _on_animation_finished() -> void:
+	if move_state == MoveState.LANDING:
+		move_state = MoveState.IDLE
+	
+	
 func calculate_velocity_x(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
+	if move_state == MoveState.LANDING:
+		direction = 0
 	if direction:
 		var move_speed := speed
 		if Input.get_action_strength("run"):
@@ -65,24 +92,22 @@ func calculate_velocity_x(delta: float) -> void:
 	else:
 		# deceleration by speed
 		velocity.x = move_toward(velocity.x, 0, speed * deceleration)
-		if not velocity.x:
+		if is_on_floor() and move_state != MoveState.LANDING:
 			move_state = MoveState.IDLE
 
 
 func calculate_velocity_y(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-		if velocity.y < 0:
-			move_state = MoveState.JUMPING
-		else:
-			move_state = MoveState.FALLING
-	else:
+	if is_on_floor():
+		if move_state == MoveState.JUMPING or move_state == MoveState.FALLING:
+			move_state = MoveState.LANDING
 		last_on_floor_time_ms = Time.get_ticks_msec()
-			
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("jump"):
-		queue_jump()			
+		return
+	
+	velocity += get_gravity() * delta
+	if velocity.y < 0:
+		move_state = MoveState.JUMPING
+	else:
+		move_state = MoveState.FALLING
 		
 		
 func queue_jump() -> void:
@@ -110,13 +135,12 @@ func set_move_state(value: MoveState) -> void:
 	# only process when move_state changes to a new state
 	if move_state == value:
 		return
+	
+	match move_state:
+		MoveState.JUMP_ANTICIPATING:
+			if value not in [MoveState.JUMPING, MoveState.FALLING]:
+				return
+	
 	move_state = value
 	animator.play(animations[move_state])
-
-
-func _on_animation_looped() -> void:
-	if move_state == MoveState.IDLE:
-		if randf() <= animate_look_around_chance:
-			animator.play("look_around")
-		else:
-			animator.play("idle")
+	print(animations[move_state])
