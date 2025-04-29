@@ -30,7 +30,15 @@ func _on_area_2d_mouse_exited() -> void:
 func DropPiece():
 	print("drag stopped")
 	if is_valid_position():
-		global_position -= gridColliders[0].global_position - gridColliders[0].get_overlapping_areas()[0].global_position
+		var total_offset = Vector2.ZERO
+		var count = 0
+		for area in gridColliders:
+			var overlaps = area.get_overlapping_areas()
+			if overlaps.size() > 0:
+				total_offset += area.global_position - overlaps[0].global_position
+				count += 1
+		if count > 0:
+			global_position -= total_offset / count
 	else:
 		for area in gridColliders:
 			if area.has_overlapping_areas(): #if pos not valid and overlaps grid, return to start pos
@@ -61,7 +69,7 @@ func is_valid_position():
 	for area in gridColliders:
 		if !area.has_overlapping_areas(): #these colliders only detect grid squares, so this checks each spot is over a grid square
 			return false
-		elif area.get_overlapping_areas()[0].slotTaken: #if the slot it overlaps is already taken
+		elif area.get_overlapping_areas()[0].slotTaken and !current_overlaps.has(area.get_overlapping_areas()[0]): #if the slot it overlaps is already taken
 			return false
 	return true
 
