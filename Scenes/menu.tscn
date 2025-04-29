@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3vc3f0qwdu3e"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_jblc2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hw2be"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3g8l7"]
+bg_color = Color(0.808681, 0.586951, 0.696407, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k4h5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pesam"]
+bg_color = Color(0.945098, 0.882353, 0.870588, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jblc2")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -385.0
+offset_top = 45.0
+offset_right = 395.0
+offset_bottom = 153.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Into the Pixie Kingdom"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -26.0
+offset_right = 29.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hw2be")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3g8l7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1k4h5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pesam")
+text = "Start"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hw2be")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3g8l7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1k4h5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pesam")
+text = "Options"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hw2be")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3g8l7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1k4h5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pesam")
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
