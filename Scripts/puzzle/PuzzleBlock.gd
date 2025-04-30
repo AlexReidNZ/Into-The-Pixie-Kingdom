@@ -29,6 +29,7 @@ func _on_area_2d_mouse_exited() -> void:
 func drop_piece():
 	print("drag stopped")
 	if puzzleManager.current_dragging_piece == self:
+		cancel_drag()
 		puzzleManager.current_dragging_piece = null
 	if is_valid_position():
 		var total_offset = Vector2.ZERO
@@ -56,9 +57,6 @@ func drop_piece():
 
 func start_drag():
 	current_overlaps.clear()
-	if puzzleManager.is_dragging and puzzleManager.current_dragging_piece != null:
-		puzzleManager.current_dragging_piece.cancel_drag()
-	
 	start_pos = global_position
 	puzzleManager.is_dragging = true
 	puzzleManager.current_dragging_piece = self
