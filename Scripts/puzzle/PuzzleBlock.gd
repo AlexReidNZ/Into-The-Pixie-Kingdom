@@ -5,18 +5,17 @@ extends Node2D
 @onready var gridColliders = get_child(0).get_children()
 var draggable = false
 var is_droppable = false
-var body_Ref
 var current_overlaps = []
 @onready var start_pos = global_position
 
 func  _process(delta: float) -> void:
 	if draggable:
 		if Input.is_action_just_pressed("click"): #Set slot taken to false for all colliding shapes
-			StartDrag()
+			start_drag()
 		if Input.is_action_pressed("click") and puzzleManager.current_dragging_piece == self:
 			global_position = get_global_mouse_position()
 		elif Input.is_action_just_released("click"):
-			DropPiece()
+			drop_piece()
 
 func _on_area_2d_mouse_entered() -> void:
 	if not puzzleManager.is_dragging:
@@ -27,8 +26,10 @@ func _on_area_2d_mouse_exited() -> void:
 	if not puzzleManager.is_dragging:
 		cancel_drag()
 
-func DropPiece():
+func drop_piece():
 	print("drag stopped")
+	if puzzleManager.current_dragging_piece == self:
+		puzzleManager.current_dragging_piece = null
 	if is_valid_position():
 		var total_offset = Vector2.ZERO
 		var count = 0
@@ -44,7 +45,7 @@ func DropPiece():
 			if area.has_overlapping_areas(): #if pos not valid and overlaps grid, return to start pos
 				global_position = start_pos
 			break
-	await get_tree().create_timer(0.1).timeout #This is a hacky fix, but its the only way I can figure out to get it working
+	await get_tree().create_timer(0.05).timeout #This is a hacky fix, but its the only way I can figure out to get it working
 	for slot in current_overlaps:
 		slot.slotTaken = false
 	for area in gridColliders:
@@ -53,7 +54,7 @@ func DropPiece():
 			print(area.get_overlapping_areas()[0].name)
 	puzzleManager.is_dragging = false
 
-func StartDrag():
+func start_drag():
 	current_overlaps.clear()
 	if puzzleManager.is_dragging and puzzleManager.current_dragging_piece != null:
 		puzzleManager.current_dragging_piece.cancel_drag()
@@ -74,5 +75,5 @@ func is_valid_position():
 	return true
 
 func cancel_drag():
-		draggable = false
-		scale = Vector2(1,1)
+	draggable = false
+	scale = Vector2(1,1)
