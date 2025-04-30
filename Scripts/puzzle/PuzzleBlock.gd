@@ -27,12 +27,10 @@ func _on_area_2d_mouse_exited() -> void:
 		cancel_drag()
 
 func drop_piece():
-	print("drag stopped")
 	if puzzleManager.current_dragging_piece == self:
 		puzzleManager.is_dragging = false
 		cancel_drag()
 		puzzleManager.current_dragging_piece = null
-	print(is_valid_position())
 	if is_valid_position():
 		var total_offset = Vector2.ZERO
 		var count = 0
@@ -46,8 +44,6 @@ func drop_piece():
 	else:
 		for area in gridColliders:
 			if area.has_overlapping_areas(): #if pos not valid and overlaps grid, return to start pos
-				print("overlap")
-				print(area.get_overlapping_areas()[0].name)
 				global_position = start_pos
 				break
 	await get_tree().create_timer(0.05).timeout #This is a hacky fix, but its the only way I can figure out to get it working
@@ -56,7 +52,6 @@ func drop_piece():
 	for area in gridColliders:
 		if area.has_overlapping_areas():
 			area.get_overlapping_areas()[0].slotTaken = true
-			print(area.get_overlapping_areas()[0].name)
 
 func start_drag():
 	current_overlaps.clear()
