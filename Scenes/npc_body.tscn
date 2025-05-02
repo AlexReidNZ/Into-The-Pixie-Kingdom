@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwi0bf6srol7t"]
+[gd_scene load_steps=6 format=3 uid="uid://cdsd4l7hvxuqn"]
 
 [ext_resource type="Script" path="res://Scripts/npc.gd" id="1_3ivoq"]
 [ext_resource type="Script" path="res://Scripts/chat_detection.gd" id="1_dc6p1"]

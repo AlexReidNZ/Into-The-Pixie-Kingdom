@@ -19,9 +19,6 @@ config/icon="res://Sprites/icon.svg"
 
 DialogDatabase="*res://Scripts/dialog_database.gd"
 DialogStateMachineAuto="*res://Scripts/dialog_state_machine.gd"
-
-[autoload]
-
 Global="*res://Scripts/Global.gd"
 
 [dotnet]
