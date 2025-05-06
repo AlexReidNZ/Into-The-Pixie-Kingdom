@@ -148,30 +148,30 @@ mouse_filter = 2
 texture = ExtResource("1_ldf3w")
 
 [node name="PuzzlePieceL" parent="." instance=ExtResource("4_nn40a")]
-position = Vector2(820, 325)
+position = Vector2(818, 384)
 
 [node name="PuzzlePieceL2" parent="." instance=ExtResource("4_nn40a")]
-position = Vector2(908, 329)
+position = Vector2(245, 288)
 rotation = 3.14159
 
 [node name="PuzzlePieceLLong" parent="." instance=ExtResource("5_eydqa")]
-position = Vector2(256, 307)
+position = Vector2(330, 351)
 
 [node name="PuzzlePieceSquare" parent="." instance=ExtResource("6_lw41j")]
-position = Vector2(322, 222)
+position = Vector2(350, 264)
 
 [node name="PuzzlePieceSquare2" parent="." instance=ExtResource("6_lw41j")]
-position = Vector2(305, 421)
+position = Vector2(948, 389)
 
 [node name="PuzzlePieceSquare3" parent="." instance=ExtResource("6_lw41j")]
-position = Vector2(159, 391)
+position = Vector2(231, 377)
 
 [node name="PuzzlePieceSquare4" parent="." instance=ExtResource("6_lw41j")]
-position = Vector2(176, 228)
+position = Vector2(817, 302)
 
 [node name="PuzzlePieceStraightL" parent="." instance=ExtResource("7_66gki")]
-position = Vector2(837, 187)
+position = Vector2(885, 275)
 rotation = 1.5708
 
 [node name="PuzzlePieceStraightM" parent="." instance=ExtResource("8_nma7n")]
-position = Vector2(944, 170)
+position = Vector2(961, 294)
