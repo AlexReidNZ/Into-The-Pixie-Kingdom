@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdsd4l7hvxuqn"]
+
+[ext_resource type="Script" path="res://Scripts/npc.gd" id="1_3ivoq"]
+[ext_resource type="Script" path="res://Scripts/chat_detection.gd" id="1_dc6p1"]
+[ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="1_k487h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b06dh"]
+radius = 61.69
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhmoq"]
+radius = 91.11
+
+[node name="NpcBody" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_3ivoq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 1)
+rotation = 3.14159
+scale = Vector2(1.14809, 1.14809)
+shape = SubResource("CircleShape2D_b06dh")
+disabled = true
+
+[node name="ChatDetection" type="Area2D" parent="."]
+position = Vector2(1.19209e-07, 0)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_dc6p1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChatDetection"]
+shape = SubResource("CircleShape2D_bhmoq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k487h")

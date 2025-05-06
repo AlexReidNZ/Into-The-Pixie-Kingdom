@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://b82y3i228npi0"]
+
+[ext_resource type="PackedScene" uid="uid://cdsd4l7hvxuqn" path="res://Scenes/npc_body.tscn" id="2_ci6wn"]
+[ext_resource type="PackedScene" uid="uid://bk8w1540ehcd" path="res://Scenes/player_body.tscn" id="3_bb4ag"]
+[ext_resource type="PackedScene" uid="uid://ci21eymrgp4hr" path="res://Scenes/dialog_bubble.tscn" id="3_gwq6l"]
+
+[sub_resource type="GDScript" id="GDScript_gsu7n"]
+script/source = "extends Node
+
+const DIALOG_BUBBLE_NAME = \"DialogBubble\"
+const PLAYER_BODY_NAME   = \"Player\"
+
+@export var text_speed: float = 0.05
+
+var dialog_bubble: Control
+var dialog_label: RichTextLabel
+var player_node: Node2D
+var main_node: Node
+
+var idle_state
+var dialog_state
+var current_state
+var states = {}
+
+func _ready() -> void:
+	var root = get_tree().get_current_scene()
+	main_node = root
+
+	if root.has_node(DIALOG_BUBBLE_NAME):
+		dialog_bubble = root.get_node(DIALOG_BUBBLE_NAME) as Control
+		dialog_label = dialog_bubble.get_node_or_null(\"NinePatchRect/RichTextLabel\")
+		if dialog_label == null:
+			dialog_label = dialog_bubble.get_node_or_null(\"RichTextLabel\")
+		dialog_bubble.visible = false
+		if dialog_label:
+			dialog_label.visible = false
+	else:
+		push_error(\"Cannot find DialogBubble node!\")
+
+	if root.has_node(PLAYER_BODY_NAME):
+		player_node = root.get_node(PLAYER_BODY_NAME) as Node2D
+	else:
+		push_error(\"Cannot find PlayerBody node!\")
+
+	idle_state   = preload(\"res://Scripts/states/idle_state.gd\").new()
+	dialog_state = preload(\"res://Scripts/states/dialog_state.gd\").new()
+	for s in [idle_state, dialog_state]:
+		s.state_machine = self
+	states[\"Idle\"]   = idle_state
+	states[\"Dialog\"] = dialog_state
+
+	current_state = idle_state
+	current_state.enter()
+
+func change_state(name: String, data = null) -> void:
+	if not states.has(name):
+		push_error(\"Unknown state: %s\" % name)
+		return
+	current_state.exit()
+	current_state = states[name]
+	current_state.enter(data)
+
+func offer_dialog(lines: Array) -> void:
+	current_state.offer_dialog(lines)
+
+func cancel_dialog() -> void:
+	current_state.cancel_dialog()
+
+func get_speaker_node(name: String) -> Node2D:
+	if player_node and player_node.name == name:
+		return player_node
+	if main_node.has_node(name):
+		var n = main_node.get_node(name)
+		if n is Node2D:
+			return n
+	return null
+
+func _process(delta: float) -> void:
+	current_state.update(delta)
+
+func _unhandled_input(event: InputEvent) -> void:
+	current_state.handle_input(event)
+"
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("3_bb4ag")]
+position = Vector2(315, -4)
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="Stan" parent="NPCs" instance=ExtResource("2_ci6wn")]
+script = SubResource("GDScript_gsu7n")
+text_speed = 0.05
+
+[node name="Peggy" parent="NPCs" instance=ExtResource("2_ci6wn")]
+position = Vector2(716, 5)
+script = SubResource("GDScript_gsu7n")
+text_speed = 0.05
+
+[node name="DialogBubble" parent="." instance=ExtResource("3_gwq6l")]
