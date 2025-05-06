@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://jm2lljojuw27"]
+[gd_scene load_steps=5 format=3 uid="uid://jm2lljojuw27"]
 
+[ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_nyhm4"]
 [ext_resource type="PackedScene" uid="uid://bwi0bf6srol7t" path="res://Scenes/npc_body.tscn" id="2_ci6wn"]
 [ext_resource type="PackedScene" uid="uid://bwdc63outfprh" path="res://Scenes/player_body.tscn" id="3_bb4ag"]
 
@@ -82,6 +83,15 @@ func _unhandled_input(event: InputEvent) -> void:
 "
 
 [node name="Main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_nyhm4")]
+process_mode = 3
+offset_left = -4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 4.0
 
 [node name="Player" parent="." instance=ExtResource("3_bb4ag")]
 position = Vector2(315, -4)
