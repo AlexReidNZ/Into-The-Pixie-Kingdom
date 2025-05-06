@@ -2,11 +2,18 @@ extends Node2D
 
 @onready var puzzleManager = $".."
 @onready var collider = $Area2D
+@onready var sprite = $Sprite2D
 @onready var gridColliders = get_child(0).get_children()
 var draggable = false
 var is_droppable = false
 var current_overlaps = []
 @onready var start_pos = global_position
+
+func _ready() -> void:
+	var shader_material = load("res://Shaders/dropShadow.gdshader")
+	sprite.material = ShaderMaterial.new()
+	sprite.material.set("shader", shader_material)
+	sprite.material.set("shader_parameter/radius", 0)
 
 func  _process(delta: float) -> void:
 	if draggable:
@@ -41,6 +48,7 @@ func drop_piece():
 				count += 1
 		if count > 0:
 			global_position -= total_offset / count
+		sprite.material.set("shader_parameter/radius", 1)
 	else:
 		for area in gridColliders:
 			if area.has_overlapping_areas(): #if pos not valid and overlaps grid, return to start pos
@@ -55,6 +63,7 @@ func drop_piece():
 
 func start_drag():
 	current_overlaps.clear()
+	sprite.material.set("shader_parameter/radius", 0)
 	start_pos = global_position
 	puzzleManager.is_dragging = true
 	puzzleManager.current_dragging_piece = self
