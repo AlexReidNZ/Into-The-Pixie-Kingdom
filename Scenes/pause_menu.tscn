@@ -22,16 +22,38 @@ offset_bottom = 278.0
 texture = ExtResource("1_cdlkh")
 expand_mode = 1
 
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 33.0
+offset_right = 292.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0.561513, 0.00267256, 0.285645, 1)
+theme_override_font_sizes/font_size = 32
+text = "Paused"
+
 [node name="Resume" type="Button" parent="."]
 layout_mode = 0
-offset_left = 309.0
-offset_top = 156.0
-offset_right = 413.0
-offset_bottom = 198.0
+offset_left = 105.0
+offset_top = 125.0
+offset_right = 209.0
+offset_bottom = 167.0
 theme_override_colors/font_color = Color(0.195007, 0.501681, 0.418972, 1)
 theme_override_font_sizes/font_size = 24
 text = "Resume"
 flat = true
 
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 125.0
+offset_right = 383.0
+offset_bottom = 167.0
+theme_override_colors/font_color = Color(0.196078, 0.501961, 0.419608, 1)
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+flat = true
+
 [connection signal="pressed" from="Resume" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

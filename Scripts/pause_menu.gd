@@ -17,8 +17,9 @@ func _input(event : InputEvent):
 		pause()
 	elif event.is_action_pressed("pause") and get_tree().paused:
 		resume()
-		
 
 func _on_resume_pressed() -> void:
 	resume()
-	
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
