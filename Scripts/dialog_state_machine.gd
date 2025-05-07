@@ -69,7 +69,7 @@ func cancel_dialog() -> void:
 func get_speaker_node(target_name: String) -> Node2D:
 	if player_node and player_node.name == target_name:
 		return player_node
-
+	print(main_node, target_name)
 	var node = _find_node_recursive(main_node, target_name)
 	if node and node is Node2D:
 		return node

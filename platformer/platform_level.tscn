@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfrj4t5rn0lay"]
+[gd_scene load_steps=9 format=3 uid="uid://cfrj4t5rn0lay"]
 
 [ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="1_bxnp0"]
+[ext_resource type="Script" path="res://platformer/platform_level.gd" id="1_opbub"]
 [ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="1_woxqj"]
 [ext_resource type="Texture2D" uid="uid://boy25fpexvose" path="res://platformer/Ivy Path Background.png" id="3_k08ho"]
+[ext_resource type="PackedScene" uid="uid://bwi0bf6srol7t" path="res://Scenes/npc_body.tscn" id="4_3exax"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mr6wc"]
 
@@ -14,6 +16,7 @@ size = Vector2(66, 6)
 
 [node name="PlatformLevel" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_opbub")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.5, 0)
@@ -25,7 +28,7 @@ scale = Vector2(0.188125, 0.188125)
 texture = ExtResource("3_k08ho")
 centered = false
 
-[node name="Player" parent="." instance=ExtResource("1_bxnp0")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_bxnp0")]
 z_index = 10
 position = Vector2(44, -46)
 speed = 69
@@ -162,3 +165,11 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform9"]
 position = Vector2(33, 3)
 shape = SubResource("RectangleShape2D_hmkuf")
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="Lamina" parent="NPCs" instance=ExtResource("4_3exax")]
+position = Vector2(260, -132)
+
+[node name="Hedera" parent="NPCs" instance=ExtResource("4_3exax")]
+position = Vector2(385, -112)

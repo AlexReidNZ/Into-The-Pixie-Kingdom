@@ -1,9 +1,9 @@
 {
-"Stan": [
-	{ "speaker": "Stan", "line": "Hey there!" },
+"Lamina": [
+	{ "speaker": "Lamina", "line": "Hey there!" },
 	{ "speaker": "Player", "line": "Uh... hi?" },
-	{ "speaker": "Stan", "line": "Nice weather today." },
-	{ "speaker": "Stan", "line": "WOuld you like to go on a quest young lady?"}
+	{ "speaker": "Hedera", "line": "Nice weather today." },
+	{ "speaker": "Player", "line": "WOuld you like to go on a quest young lady?"}
 ],
 "Peggy": [
 	{ "speaker": "Peggy", "line": "Oh! You startled me." },
