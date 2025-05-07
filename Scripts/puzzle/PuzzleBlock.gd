@@ -9,12 +9,6 @@ var is_droppable = false
 var current_overlaps = []
 @onready var start_pos = global_position
 
-func _ready() -> void:
-	var shader_material = load("res://Shaders/dropShadow.gdshader")
-	sprite.material = ShaderMaterial.new()
-	sprite.material.set("shader", shader_material)
-	sprite.material.set("shader_parameter/radius", 0)
-
 func  _process(delta: float) -> void:
 	if draggable:
 		if Input.is_action_just_pressed("click"): #Set slot taken to false for all colliding shapes
@@ -48,7 +42,6 @@ func drop_piece():
 				count += 1
 		if count > 0:
 			global_position -= total_offset / count
-		sprite.material.set("shader_parameter/radius", 1)
 	else:
 		for area in gridColliders:
 			if area.has_overlapping_areas(): #if pos not valid and overlaps grid, return to start pos
@@ -63,7 +56,6 @@ func drop_piece():
 
 func start_drag():
 	current_overlaps.clear()
-	sprite.material.set("shader_parameter/radius", 0)
 	start_pos = global_position
 	puzzleManager.is_dragging = true
 	puzzleManager.current_dragging_piece = self
