@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c4crobg2ixorf" path="res://Sprites/Lamina.png" id="3_ams4t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b06dh"]
-radius = 15.036
+radius = 13.0652
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhmoq"]
 radius = 40.3113
@@ -16,7 +16,7 @@ collision_mask = 3
 script = ExtResource("1_3ivoq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 1)
+position = Vector2(0, 2)
 rotation = 3.14159
 scale = Vector2(1.14809, 1.14809)
 shape = SubResource("CircleShape2D_b06dh")
@@ -29,9 +29,10 @@ collision_mask = 3
 script = ExtResource("1_dc6p1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChatDetection"]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_bhmoq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.999998, 0.999994)
+position = Vector2(5.96046e-08, 1)
 scale = Vector2(0.585938, 0.570313)
 texture = ExtResource("3_ams4t")

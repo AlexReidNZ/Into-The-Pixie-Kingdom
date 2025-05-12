@@ -34,6 +34,10 @@ window/stretch/aspect="keep_height"
 
 project/assembly_name="IntothePixieKingdom"
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
 [input]
 
 move_left={
