@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfrj4t5rn0lay"]
+[gd_scene load_steps=11 format=3 uid="uid://cfrj4t5rn0lay"]
 
 [ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="1_bxnp0"]
 [ext_resource type="Script" path="res://platformer/platform_level.gd" id="1_opbub"]
 [ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="1_woxqj"]
 [ext_resource type="Texture2D" uid="uid://boy25fpexvose" path="res://platformer/Ivy Path Background.png" id="3_k08ho"]
 [ext_resource type="PackedScene" uid="uid://bwi0bf6srol7t" path="res://Scenes/npc_body.tscn" id="4_3exax"]
+[ext_resource type="Texture2D" uid="uid://c4crobg2ixorf" path="res://Sprites/Lamina.png" id="6_gdejl"]
+[ext_resource type="Texture2D" uid="uid://ctu5riag25ib1" path="res://Sprites/Hedera.png" id="7_5m2l5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mr6wc"]
 
@@ -58,32 +60,8 @@ shape = SubResource("WorldBoundaryShape2D_w4v88")
 [node name="Platforms" type="Node2D" parent="."]
 position = Vector2(22, -116)
 
-[node name="Platform" type="StaticBody2D" parent="Platforms"]
-position = Vector2(117, 82)
-
-[node name="Icon" type="Sprite2D" parent="Platforms/Platform"]
-scale = Vector2(0.515625, 0.046875)
-texture = ExtResource("1_woxqj")
-centered = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform"]
-position = Vector2(33, 3)
-shape = SubResource("RectangleShape2D_hmkuf")
-
-[node name="Platform2" type="StaticBody2D" parent="Platforms"]
-position = Vector2(217, 70)
-
-[node name="Icon" type="Sprite2D" parent="Platforms/Platform2"]
-scale = Vector2(0.515625, 0.046875)
-texture = ExtResource("1_woxqj")
-centered = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2"]
-position = Vector2(33, 3)
-shape = SubResource("RectangleShape2D_hmkuf")
-
 [node name="Platform3" type="StaticBody2D" parent="Platforms"]
-position = Vector2(319, 82)
+position = Vector2(181, 94)
 
 [node name="Icon" type="Sprite2D" parent="Platforms/Platform3"]
 scale = Vector2(0.515625, 0.046875)
@@ -95,7 +73,7 @@ position = Vector2(33, 3)
 shape = SubResource("RectangleShape2D_hmkuf")
 
 [node name="Platform4" type="StaticBody2D" parent="Platforms"]
-position = Vector2(419, 41)
+position = Vector2(679, 84)
 
 [node name="Icon" type="Sprite2D" parent="Platforms/Platform4"]
 scale = Vector2(0.515625, 0.046875)
@@ -107,7 +85,7 @@ position = Vector2(33, 3)
 shape = SubResource("RectangleShape2D_hmkuf")
 
 [node name="Platform5" type="StaticBody2D" parent="Platforms"]
-position = Vector2(519, 29)
+position = Vector2(826, 85)
 
 [node name="Icon" type="Sprite2D" parent="Platforms/Platform5"]
 scale = Vector2(0.515625, 0.046875)
@@ -119,7 +97,7 @@ position = Vector2(33, 3)
 shape = SubResource("RectangleShape2D_hmkuf")
 
 [node name="Platform6" type="StaticBody2D" parent="Platforms"]
-position = Vector2(621, 41)
+position = Vector2(254, 84)
 
 [node name="Icon" type="Sprite2D" parent="Platforms/Platform6"]
 scale = Vector2(0.515625, 0.046875)
@@ -131,7 +109,7 @@ position = Vector2(33, 3)
 shape = SubResource("RectangleShape2D_hmkuf")
 
 [node name="Platform7" type="StaticBody2D" parent="Platforms"]
-position = Vector2(752, 39)
+position = Vector2(757, 8)
 
 [node name="Icon" type="Sprite2D" parent="Platforms/Platform7"]
 scale = Vector2(0.515625, 0.046875)
@@ -143,7 +121,7 @@ position = Vector2(33, 3)
 shape = SubResource("RectangleShape2D_hmkuf")
 
 [node name="Platform8" type="StaticBody2D" parent="Platforms"]
-position = Vector2(852, 27)
+position = Vector2(911, 24)
 
 [node name="Icon" type="Sprite2D" parent="Platforms/Platform8"]
 scale = Vector2(0.515625, 0.046875)
@@ -155,7 +133,7 @@ position = Vector2(33, 3)
 shape = SubResource("RectangleShape2D_hmkuf")
 
 [node name="Platform9" type="StaticBody2D" parent="Platforms"]
-position = Vector2(954, 39)
+position = Vector2(1032, 40)
 
 [node name="Icon" type="Sprite2D" parent="Platforms/Platform9"]
 scale = Vector2(0.515625, 0.046875)
@@ -169,7 +147,9 @@ shape = SubResource("RectangleShape2D_hmkuf")
 [node name="NPCs" type="Node2D" parent="."]
 
 [node name="Lamina" parent="NPCs" instance=ExtResource("4_3exax")]
-position = Vector2(260, -132)
+position = Vector2(229, -36)
+sprite = ExtResource("6_gdejl")
 
 [node name="Hedera" parent="NPCs" instance=ExtResource("4_3exax")]
-position = Vector2(385, -112)
+position = Vector2(285, -46)
+sprite = ExtResource("7_5m2l5")
