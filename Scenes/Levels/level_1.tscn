@@ -1,8 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://ceia108gqkgrh"]
+[gd_scene load_steps=27 format=3 uid="uid://ceia108gqkgrh"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
+[ext_resource type="Texture2D" uid="uid://cdgla0hey6w7j" path="res://Sprites/Ivy Path Backgrounds/Big Background.png" id="2_vcn0e"]
+[ext_resource type="Texture2D" uid="uid://goqyy270xnow" path="res://Sprites/Ivy Path Backgrounds/Darker Background Bushe.png" id="3_oeex8"]
 [ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="3_u8vf5"]
+[ext_resource type="Texture2D" uid="uid://d31wyh5vw7yni" path="res://Sprites/Ivy Path Backgrounds/Begining puzzle.png" id="4_gsk8w"]
+[ext_resource type="Texture2D" uid="uid://cigdtgrrtaqcm" path="res://Sprites/Ivy Path Backgrounds/Background Trees.png" id="4_o3ydh"]
 [ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="4_srh1p"]
+[ext_resource type="Texture2D" uid="uid://dhel1fwtul4ed" path="res://Sprites/Ivy Path Backgrounds/Behind bushes.png" id="5_jmwli"]
+[ext_resource type="Texture2D" uid="uid://bwse02umnhtnq" path="res://Sprites/Ivy Path Backgrounds/bottom grass.png" id="6_t3esx"]
+[ext_resource type="Texture2D" uid="uid://b7qq72s6xmdc" path="res://Sprites/Ivy Path Backgrounds/Broken Bridge.png" id="7_li74c"]
+[ext_resource type="Texture2D" uid="uid://c0iwpo2lv0yr0" path="res://Sprites/Ivy Path Backgrounds/Broken Tree.png" id="8_puare"]
+[ext_resource type="Texture2D" uid="uid://bu8vfs5e820pt" path="res://Sprites/Ivy Path Backgrounds/Fixed Bridge.png" id="10_4r683"]
+[ext_resource type="Texture2D" uid="uid://do2n6mjlpun73" path="res://Sprites/Ivy Path Backgrounds/Fixed Tree.png" id="11_cpcod"]
+[ext_resource type="Texture2D" uid="uid://dyt32tpe7m8ki" path="res://Sprites/Ivy Path Backgrounds/Front Bushes.png" id="12_tlmn2"]
+[ext_resource type="Texture2D" uid="uid://baepy37if5qxm" path="res://Sprites/Ivy Path Backgrounds/Front Trees.png" id="13_8gyaa"]
+[ext_resource type="Texture2D" uid="uid://dkf7vjlel44iy" path="res://Sprites/Ivy Path Backgrounds/God rays 2.png" id="14_s0mdk"]
+[ext_resource type="Texture2D" uid="uid://cbq82umx3qbmj" path="res://Sprites/Ivy Path Backgrounds/God rays .png" id="15_ta0iq"]
+[ext_resource type="Texture2D" uid="uid://cbsyu126084t0" path="res://Sprites/Ivy Path Backgrounds/Gorse.png" id="16_1uyig"]
+[ext_resource type="Texture2D" uid="uid://cb5wc130065e3" path="res://Sprites/Ivy Path Backgrounds/Grass.png" id="17_uosf4"]
+[ext_resource type="Texture2D" uid="uid://co2jrkkkbl6is" path="res://Sprites/Ivy Path Backgrounds/Lighter Background bush.png" id="18_560nk"]
+[ext_resource type="Texture2D" uid="uid://gq0pjsnt3pyc" path="res://Sprites/Ivy Path Backgrounds/Platform Rocks.png" id="19_ng0ym"]
+[ext_resource type="Texture2D" uid="uid://c6w263vjbeufo" path="res://Sprites/Ivy Path Backgrounds/Rnadom Rocks.png" id="20_wwanl"]
+[ext_resource type="Texture2D" uid="uid://ce57a3s51a6av" path="res://Sprites/Ivy Path Backgrounds/Tree puzzle to fiz.png" id="21_u0pcx"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mr6wc"]
 
@@ -20,6 +40,110 @@ texture_filter = 1
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_tt3mb")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Layer0" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+
+[node name="BigBackground" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("2_vcn0e")
+centered = false
+
+[node name="DarkerBackgroundBushe" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("3_oeex8")
+centered = false
+
+[node name="LighterBackgroundBush" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("18_560nk")
+centered = false
+
+[node name="BackgroundTrees" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("4_o3ydh")
+centered = false
+
+[node name="BehindBushes" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("5_jmwli")
+centered = false
+
+[node name="Gorse" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("16_1uyig")
+centered = false
+
+[node name="BottomGrass" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("6_t3esx")
+centered = false
+
+[node name="FrontTrees" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("13_8gyaa")
+centered = false
+
+[node name="FrontBushes" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("12_tlmn2")
+centered = false
+
+[node name="BrokenTree" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("8_puare")
+centered = false
+
+[node name="FixedTree" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("11_cpcod")
+centered = false
+
+[node name="BeginingPuzzle" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("4_gsk8w")
+centered = false
+
+[node name="BrokenBridge" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("7_li74c")
+centered = false
+
+[node name="FixedBridge" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("10_4r683")
+centered = false
+
+[node name="GodRays2" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("14_s0mdk")
+centered = false
+
+[node name="GodRays" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("15_ta0iq")
+centered = false
+
+[node name="Grass" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("17_uosf4")
+centered = false
+
+[node name="PlatformRocks" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("19_ng0ym")
+centered = false
+
+[node name="RnadomRocks" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("20_wwanl")
+centered = false
+
+[node name="TreePuzzleToFiz" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("21_u0pcx")
+centered = false
 
 [node name="Player" parent="." instance=ExtResource("3_u8vf5")]
 z_index = 10
