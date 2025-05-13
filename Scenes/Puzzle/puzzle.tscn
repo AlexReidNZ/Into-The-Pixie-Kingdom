@@ -156,33 +156,33 @@ position = Vector2(310, 198)
 [node name="PuzzlePieces" type="Node2D" parent="GridBorderSprite"]
 
 [node name="PuzzlePieceL" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("4_nn40a")]
-position = Vector2(329, 135.5)
+position = Vector2(291, 131.5)
 
 [node name="PuzzlePieceL2" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("4_nn40a")]
-position = Vector2(-51, 78.5)
+position = Vector2(19, 60.5)
 rotation = 3.14159
 
 [node name="PuzzlePieceLLong" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("5_eydqa")]
-position = Vector2(34, 141.5)
+position = Vector2(33, 135.5)
 
 [node name="PuzzlePieceSquare" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("6_lw41j")]
-position = Vector2(52, 99.5)
+position = Vector2(62, 51.5)
 
 [node name="PuzzlePieceSquare2" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("6_lw41j")]
-position = Vector2(370, 194.5)
+position = Vector2(291, 71.5)
 
 [node name="PuzzlePieceSquare3" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("6_lw41j")]
-position = Vector2(-42, 151.5)
+position = Vector2(263, 113.5)
 
 [node name="PuzzlePieceSquare4" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("6_lw41j")]
-position = Vector2(328, 53.5)
+position = Vector2(297, 26.5)
 
 [node name="PuzzlePieceStraightL" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("7_66gki")]
-position = Vector2(396, 26.5)
+position = Vector2(254, 43.5)
 rotation = 1.5708
 
 [node name="PuzzlePieceStraightM" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("8_nma7n")]
-position = Vector2(11, 203.5)
+position = Vector2(52, 94.5)
 
 [node name="BackButton" type="Area2D" parent="GridBorderSprite"]
 position = Vector2(27, 16.5)

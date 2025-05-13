@@ -30,3 +30,9 @@ func toggle_puzzle():
 			puzzle_instance.show()
 		else:
 			puzzle_instance.hide()
+			
+func _on_puzzle_won():
+	print("puzzle has been won")
+	toggle_puzzle()
+	#change sprite of puzzle object to fixed sprite
+	self.hide()
