@@ -26,7 +26,8 @@ repeat_size = Vector2(602, 0)
 
 [node name="IvyPathBackground" type="Sprite2D" parent="Parallax2D"]
 z_index = -999
-scale = Vector2(0.188125, 0.188125)
+position = Vector2(-1, -1)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_k08ho")
 centered = false
 
