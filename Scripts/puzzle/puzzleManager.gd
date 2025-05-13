@@ -3,7 +3,10 @@ extends Control
 var is_dragging = false
 var puzzle_won = false
 var current_dragging_piece = null
-@onready var gridSlots = get_child(0).get_children()
+@onready var gridSlots = get_child(0).get_child(0).get_children()
+
+func _ready() -> void:
+	print("puzzle created")
 
 func _process(delta: float) -> void:
 	if is_dragging and Input.is_action_just_pressed("rotate puzzle piece"):

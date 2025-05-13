@@ -1,0 +1,32 @@
+extends Area2D
+
+@export var puzzle_scene : PackedScene
+var clickable = false
+var puzzle_active = false
+var puzzle_instance
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	puzzle_instance = puzzle_scene.instantiate()
+	add_child(puzzle_instance)
+	puzzle_instance.hide()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if clickable and !puzzle_active and Input.is_action_just_pressed("click"):
+		toggle_puzzle()
+
+func _on_mouse_entered() -> void:
+	clickable = true
+
+func _on_mouse_exited() -> void:
+	clickable = false
+
+func toggle_puzzle():
+	puzzle_active = !puzzle_active
+	
+	if puzzle_instance: #make sure puzzle instantiated correctly
+		if puzzle_active:
+			puzzle_instance.show()
+		else:
+			puzzle_instance.hide()

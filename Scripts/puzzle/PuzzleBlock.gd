@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var puzzleManager = $".."
+@onready var puzzleManager = $"../../.."
 @onready var collider = $Area2D
 @onready var sprite = $Sprite2D
 @onready var gridColliders = get_child(0).get_children()

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjh0ek7l4pjl8"]
+
+[ext_resource type="Script" path="res://Scripts/puzzle/puzzle_indicator.gd" id="1_m3ox0"]
+[ext_resource type="Texture2D" uid="uid://l1j2r8ua1qjo" path="res://Sprites/Puzzle/PuzzleIndicator_Resized.png" id="2_sdjtt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01r35"]
+size = Vector2(40, 40)
+
+[node name="PuzzleIndicator" type="Area2D"]
+position = Vector2(106, -71)
+script = ExtResource("1_m3ox0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sdjtt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_01r35")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

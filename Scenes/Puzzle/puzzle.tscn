@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhs05ayfbjvxk"]
+[gd_scene load_steps=12 format=3 uid="uid://bhs05ayfbjvxk"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle/puzzleManager.gd" id="1_5hm6r"]
 [ext_resource type="Texture2D" uid="uid://b3wxwjhe2nv4k" path="res://Sprites/Puzzle/ivypath frame02.png" id="1_ldf3w"]
@@ -8,6 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://c1vruqq0sq1c5" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_square.tscn" id="6_lw41j"]
 [ext_resource type="PackedScene" uid="uid://b7sjuewe0grbs" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_straight_l.tscn" id="7_66gki"]
 [ext_resource type="PackedScene" uid="uid://bifq4bdf61s8b" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_straight_m.tscn" id="8_nma7n"]
+[ext_resource type="Script" path="res://Scenes/Puzzle/back_button.gd" id="9_lnbmd"]
+[ext_resource type="Texture2D" uid="uid://jvq16braaowp" path="res://Sprites/Puzzle/backButton.png" id="10_fskvw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywf2"]
+size = Vector2(20, 13)
 
 [node name="Puzzle" type="Control"]
 layout_mode = 3
@@ -20,116 +25,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("1_5hm6r")
-
-[node name="GridSlots" type="Node" parent="."]
-
-[node name="PuzzleSlot1" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(520.5, 268.5)
-
-[node name="PuzzleSlot2" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(542.5, 268.5)
-
-[node name="PuzzleSlot3" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(564.5, 268.5)
-
-[node name="PuzzleSlot4" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(586.5, 268.5)
-
-[node name="PuzzleSlot5" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(608.5, 268.5)
-
-[node name="PuzzleSlot6" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(630.5, 268.5)
-
-[node name="PuzzleSlot7" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(520.5, 290.5)
-
-[node name="PuzzleSlot8" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(542.5, 290.5)
-
-[node name="PuzzleSlot9" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(564.5, 290.5)
-
-[node name="PuzzleSlot10" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(586.5, 290.5)
-
-[node name="PuzzleSlot11" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(608.5, 290.5)
-
-[node name="PuzzleSlot12" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(630.5, 290.5)
-
-[node name="PuzzleSlot13" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(520.5, 312.5)
-
-[node name="PuzzleSlot14" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(542.5, 312.5)
-
-[node name="PuzzleSlot15" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(564.5, 312.5)
-
-[node name="PuzzleSlot16" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(586.5, 312.5)
-
-[node name="PuzzleSlot17" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(608.5, 312.5)
-
-[node name="PuzzleSlot18" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(630.5, 312.5)
-
-[node name="PuzzleSlot19" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(520.5, 334.5)
-
-[node name="PuzzleSlot20" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(542.5, 334.5)
-
-[node name="PuzzleSlot21" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(564.5, 334.5)
-
-[node name="PuzzleSlot22" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(586.5, 334.5)
-
-[node name="PuzzleSlot23" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(608.5, 334.5)
-
-[node name="PuzzleSlot24" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(630.5, 334.5)
-
-[node name="PuzzleSlot25" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(520.5, 356.5)
-
-[node name="PuzzleSlot26" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(542.5, 356.5)
-
-[node name="PuzzleSlot27" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(564.5, 356.5)
-
-[node name="PuzzleSlot28" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(586.5, 356.5)
-
-[node name="PuzzleSlot29" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(608.5, 356.5)
-
-[node name="PuzzleSlot30" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(630.5, 356.5)
-
-[node name="PuzzleSlot31" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(520.5, 378.5)
-
-[node name="PuzzleSlot32" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(542.5, 378.5)
-
-[node name="PuzzleSlot33" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(564.5, 378.5)
-
-[node name="PuzzleSlot34" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(586.5, 378.5)
-
-[node name="PuzzleSlot35" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(608.5, 378.5)
-
-[node name="PuzzleSlot36" parent="GridSlots" instance=ExtResource("5_q23f7")]
-position = Vector2(630.5, 378.5)
 
 [node name="GridBorderSprite" type="TextureRect" parent="."]
 layout_mode = 1
@@ -147,31 +42,158 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("1_ldf3w")
 
-[node name="PuzzlePieceL" parent="." instance=ExtResource("4_nn40a")]
-position = Vector2(818, 384)
+[node name="GridSlots" type="Node2D" parent="GridBorderSprite"]
+position = Vector2(-96, -59.5)
 
-[node name="PuzzlePieceL2" parent="." instance=ExtResource("4_nn40a")]
-position = Vector2(245, 288)
+[node name="PuzzleSlot1" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(200, 88)
+
+[node name="PuzzleSlot2" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(222, 88)
+
+[node name="PuzzleSlot3" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(244, 88)
+
+[node name="PuzzleSlot4" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(266, 88)
+
+[node name="PuzzleSlot5" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(288, 88)
+
+[node name="PuzzleSlot6" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(310, 88)
+
+[node name="PuzzleSlot7" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(200, 110)
+
+[node name="PuzzleSlot8" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(222, 110)
+
+[node name="PuzzleSlot9" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(244, 110)
+
+[node name="PuzzleSlot10" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(266, 110)
+
+[node name="PuzzleSlot11" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(288, 110)
+
+[node name="PuzzleSlot12" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(310, 110)
+
+[node name="PuzzleSlot13" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(200, 132)
+
+[node name="PuzzleSlot14" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(222, 132)
+
+[node name="PuzzleSlot15" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(244, 132)
+
+[node name="PuzzleSlot16" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(266, 132)
+
+[node name="PuzzleSlot17" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(288, 132)
+
+[node name="PuzzleSlot18" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(310, 132)
+
+[node name="PuzzleSlot19" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(200, 154)
+
+[node name="PuzzleSlot20" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(222, 154)
+
+[node name="PuzzleSlot21" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(244, 154)
+
+[node name="PuzzleSlot22" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(266, 154)
+
+[node name="PuzzleSlot23" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(288, 154)
+
+[node name="PuzzleSlot24" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(310, 154)
+
+[node name="PuzzleSlot25" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(200, 176)
+
+[node name="PuzzleSlot26" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(222, 176)
+
+[node name="PuzzleSlot27" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(244, 176)
+
+[node name="PuzzleSlot28" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(266, 176)
+
+[node name="PuzzleSlot29" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(288, 176)
+
+[node name="PuzzleSlot30" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(310, 176)
+
+[node name="PuzzleSlot31" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(200, 198)
+
+[node name="PuzzleSlot32" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(222, 198)
+
+[node name="PuzzleSlot33" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(244, 198)
+
+[node name="PuzzleSlot34" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(266, 198)
+
+[node name="PuzzleSlot35" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(288, 198)
+
+[node name="PuzzleSlot36" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]
+position = Vector2(310, 198)
+
+[node name="PuzzlePieces" type="Node2D" parent="GridBorderSprite"]
+
+[node name="PuzzlePieceL" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("4_nn40a")]
+position = Vector2(329, 135.5)
+
+[node name="PuzzlePieceL2" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("4_nn40a")]
+position = Vector2(-51, 78.5)
 rotation = 3.14159
 
-[node name="PuzzlePieceLLong" parent="." instance=ExtResource("5_eydqa")]
-position = Vector2(330, 351)
+[node name="PuzzlePieceLLong" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("5_eydqa")]
+position = Vector2(34, 141.5)
 
-[node name="PuzzlePieceSquare" parent="." instance=ExtResource("6_lw41j")]
-position = Vector2(350, 264)
+[node name="PuzzlePieceSquare" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("6_lw41j")]
+position = Vector2(52, 99.5)
 
-[node name="PuzzlePieceSquare2" parent="." instance=ExtResource("6_lw41j")]
-position = Vector2(948, 389)
+[node name="PuzzlePieceSquare2" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("6_lw41j")]
+position = Vector2(370, 194.5)
 
-[node name="PuzzlePieceSquare3" parent="." instance=ExtResource("6_lw41j")]
-position = Vector2(231, 377)
+[node name="PuzzlePieceSquare3" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("6_lw41j")]
+position = Vector2(-42, 151.5)
 
-[node name="PuzzlePieceSquare4" parent="." instance=ExtResource("6_lw41j")]
-position = Vector2(817, 302)
+[node name="PuzzlePieceSquare4" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("6_lw41j")]
+position = Vector2(328, 53.5)
 
-[node name="PuzzlePieceStraightL" parent="." instance=ExtResource("7_66gki")]
-position = Vector2(885, 275)
+[node name="PuzzlePieceStraightL" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("7_66gki")]
+position = Vector2(396, 26.5)
 rotation = 1.5708
 
-[node name="PuzzlePieceStraightM" parent="." instance=ExtResource("8_nma7n")]
-position = Vector2(961, 294)
+[node name="PuzzlePieceStraightM" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("8_nma7n")]
+position = Vector2(11, 203.5)
+
+[node name="BackButton" type="Area2D" parent="GridBorderSprite"]
+position = Vector2(27, 16.5)
+script = ExtResource("9_lnbmd")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridBorderSprite/BackButton"]
+shape = SubResource("RectangleShape2D_iywf2")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridBorderSprite/BackButton"]
+texture = ExtResource("10_fskvw")
+
+[connection signal="mouse_entered" from="GridBorderSprite/BackButton" to="GridBorderSprite/BackButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GridBorderSprite/BackButton" to="GridBorderSprite/BackButton" method="_on_mouse_exited"]
