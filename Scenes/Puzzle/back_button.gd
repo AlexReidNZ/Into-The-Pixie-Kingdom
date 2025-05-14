@@ -1,7 +1,7 @@
 extends Area2D
 
 var clickable = false
-@onready var puzzle_indicator = $"../../.."
+@onready var puzzle_indicator = $"../../../.."
 
 func _process(delta: float) -> void:
 	if clickable and Input.is_action_just_pressed("click"):

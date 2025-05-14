@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var puzzle_scene : PackedScene
+@onready var canvas = $CanvasLayer
 var clickable = false
 var puzzle_active = false
 var puzzle_instance
@@ -8,7 +9,7 @@ var puzzle_instance
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	puzzle_instance = puzzle_scene.instantiate()
-	add_child(puzzle_instance)
+	canvas.add_child(puzzle_instance)
 	puzzle_instance.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -5,7 +5,7 @@ var puzzle_won = false
 signal sig_win_puzzle
 var current_dragging_piece = null
 @onready var gridSlots = get_child(0).get_child(0).get_children()
-@onready var puzzle_indicator = $".."
+@onready var puzzle_indicator = $"../.."
 
 func _ready() -> void:
 	print("puzzle created")
