@@ -42,7 +42,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("1_ldf3w")
 
-[node name="GridSlots" type="Node2D" parent="GridBorderSprite"]
+[node name="GridSlots" type="Node2D" parent="GridBorderSprite" groups=["Puzzle1Colliders"]]
 position = Vector2(-96, -59.5)
 
 [node name="PuzzleSlot1" parent="GridBorderSprite/GridSlots" instance=ExtResource("5_q23f7")]

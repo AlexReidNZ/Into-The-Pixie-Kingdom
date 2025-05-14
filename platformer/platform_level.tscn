@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfrj4t5rn0lay"]
+[gd_scene load_steps=13 format=3 uid="uid://cfrj4t5rn0lay"]
 
 [ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="1_bxnp0"]
 [ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="1_woxqj"]
 [ext_resource type="Texture2D" uid="uid://boy25fpexvose" path="res://platformer/Ivy Path Background.png" id="3_k08ho"]
 [ext_resource type="PackedScene" uid="uid://cjh0ek7l4pjl8" path="res://Scenes/Puzzle/puzzle_indicator.tscn" id="4_31p03"]
 [ext_resource type="PackedScene" uid="uid://bhs05ayfbjvxk" path="res://Scenes/Puzzle/puzzle.tscn" id="5_qa8o1"]
+[ext_resource type="Texture2D" uid="uid://bcedy17mltjap" path="res://Sprites/Puzzle/worldSprites/Begining puzzle.png" id="6_ikes7"]
+[ext_resource type="PackedScene" uid="uid://d0q7ekijn3xcg" path="res://Scenes/Puzzle/puzzle02.tscn" id="7_is1mo"]
+[ext_resource type="Texture2D" uid="uid://cfogq20d8e7kt" path="res://Sprites/Puzzle/worldSprites/Broken Bridge.png" id="7_m2hj8"]
+[ext_resource type="Texture2D" uid="uid://uicaseo12kg1" path="res://Sprites/Puzzle/worldSprites/Broken Tree.png" id="8_sfko2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mr6wc"]
 
@@ -165,6 +169,28 @@ centered = false
 position = Vector2(33, 3)
 shape = SubResource("RectangleShape2D_hmkuf")
 
-[node name="PuzzleIndicator" parent="." instance=ExtResource("4_31p03")]
-position = Vector2(572, -143)
+[node name="PuzzleIndicator" parent="." node_paths=PackedStringArray("sprite_object") instance=ExtResource("4_31p03")]
+position = Vector2(110, -51)
 puzzle_scene = ExtResource("5_qa8o1")
+puzzle_group = "Puzzle1Colliders"
+fixed_sprite = ExtResource("6_ikes7")
+sprite_object = NodePath("BeginingPuzzle")
+
+[node name="BeginingPuzzle" type="Sprite2D" parent="PuzzleIndicator"]
+position = Vector2(0, 40)
+texture = ExtResource("6_ikes7")
+
+[node name="PuzzleIndicator2" parent="." node_paths=PackedStringArray("sprite_object") instance=ExtResource("4_31p03")]
+position = Vector2(571, -58)
+puzzle_scene = ExtResource("7_is1mo")
+puzzle_group = "Puzzle2Colliders"
+fixed_sprite = ExtResource("7_m2hj8")
+sprite_object = NodePath("BrokenBridge")
+
+[node name="BrokenBridge" type="Sprite2D" parent="PuzzleIndicator2"]
+position = Vector2(0, 30)
+texture = ExtResource("7_m2hj8")
+
+[node name="BrokenTree" type="Sprite2D" parent="."]
+position = Vector2(1132, -81)
+texture = ExtResource("8_sfko2")

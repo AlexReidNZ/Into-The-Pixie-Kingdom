@@ -37,6 +37,8 @@ project/assembly_name="IntothePixieKingdom"
 [global_group]
 
 Player=""
+Puzzle1Colliders=""
+Puzzle2Colliders=""
 
 [input]
 
