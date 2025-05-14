@@ -244,7 +244,7 @@ position = Vector2(1141, -44)
 [node name="Sprites" type="Node2D" parent="PuzzleObjects"]
 
 [node name="BeginingPuzzle" type="Sprite2D" parent="PuzzleObjects/Sprites"]
-position = Vector2(-388.5, 32)
+position = Vector2(-388.5, 34)
 texture = ExtResource("28_q2xun")
 
 [node name="BrokenBridge" type="Sprite2D" parent="PuzzleObjects/Sprites"]
@@ -258,7 +258,7 @@ texture = ExtResource("30_577wq")
 [node name="Indicators" type="Node2D" parent="PuzzleObjects"]
 
 [node name="PuzzleIndicator" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("28_m5tlm")]
-position = Vector2(-388.5, -8)
+position = Vector2(-388.5, -6)
 puzzle_scene = ExtResource("32_58wvc")
 puzzle_group = "Puzzle1Colliders"
 fixed_sprite = ExtResource("28_q2xun")
