@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm65n77dur5bu"]
+
+[ext_resource type="Texture2D" uid="uid://cpxlmr7xemoy6" path="res://Sprites/Platform Rocks.png" id="1_cmkvu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ffojs"]
+radius = 24.9996
+height = 68.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xpm30"]
+radius = 12.9982
+height = 57.6503
+
+[node name="Rock" type="Sprite2D"]
+texture = ExtResource("1_cmkvu")
+
+[node name="Collider" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2(19, 2)
+rotation = 1.57039
+shape = SubResource("CapsuleShape2D_ffojs")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collider"]
+position = Vector2(-34, 16)
+rotation = 1.37616
+shape = SubResource("CapsuleShape2D_xpm30")
