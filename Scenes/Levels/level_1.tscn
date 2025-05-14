@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ceia108gqkgrh"]
+[gd_scene load_steps=31 format=3 uid="uid://ceia108gqkgrh"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
 [ext_resource type="Texture2D" uid="uid://cdgla0hey6w7j" path="res://Sprites/Ivy Path Backgrounds/Big Background.png" id="2_vcn0e"]
@@ -24,6 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://c6w263vjbeufo" path="res://Sprites/Ivy Path Backgrounds/Rnadom Rocks.png" id="20_wwanl"]
 [ext_resource type="Texture2D" uid="uid://ce57a3s51a6av" path="res://Sprites/Ivy Path Backgrounds/Tree puzzle to fiz.png" id="21_u0pcx"]
 [ext_resource type="PackedScene" uid="uid://dm65n77dur5bu" path="res://Scenes/rock.tscn" id="22_q8kxe"]
+[ext_resource type="PackedScene" uid="uid://cdsd4l7hvxuqn" path="res://Scenes/npc_body.tscn" id="23_yprgw"]
+[ext_resource type="Texture2D" uid="uid://c4crobg2ixorf" path="res://Sprites/Lamina.png" id="24_x36lw"]
+[ext_resource type="Texture2D" uid="uid://ctu5riag25ib1" path="res://Sprites/Hedera.png" id="25_jp23x"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mr6wc"]
 
@@ -79,6 +82,7 @@ texture = ExtResource("16_1uyig")
 centered = false
 
 [node name="BottomGrass" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+position = Vector2(0, -2)
 scale = Vector2(1.71, 1.71)
 texture = ExtResource("6_t3esx")
 centered = false
@@ -157,6 +161,14 @@ deceleration = 0.14
 jump_velocity = 360
 coyote_time_ms = 75
 animate_look_around_chance = 0.15
+
+[node name="Lamina" parent="." instance=ExtResource("23_yprgw")]
+position = Vector2(462, -41)
+sprite = ExtResource("24_x36lw")
+
+[node name="Hedera" parent="." instance=ExtResource("23_yprgw")]
+position = Vector2(518, -72)
+sprite = ExtResource("25_jp23x")
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(-50, -6)
