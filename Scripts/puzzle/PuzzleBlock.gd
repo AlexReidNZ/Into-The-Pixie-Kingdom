@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var puzzleManager = $".."
+@onready var puzzleManager = $"../../.."
 @onready var collider = $Area2D
 @onready var sprite = $Sprite2D
 @onready var gridColliders = get_child(0).get_children()
@@ -8,6 +8,10 @@ var draggable = false
 var is_droppable = false
 var current_overlaps = []
 @onready var start_pos = global_position
+var initial_scale
+
+func _ready() -> void:
+	initial_scale = transform.get_scale()
 
 func  _process(delta: float) -> void:
 	if draggable:
@@ -21,7 +25,7 @@ func  _process(delta: float) -> void:
 func _on_area_2d_mouse_entered() -> void:
 	if not puzzleManager.is_dragging:
 		draggable = true
-		scale = Vector2(1.05,1.05)
+		scale = Vector2(1.05,1.05) * initial_scale
 
 func _on_area_2d_mouse_exited() -> void:
 	if not puzzleManager.is_dragging:
@@ -73,4 +77,4 @@ func is_valid_position():
 
 func cancel_drag():
 	draggable = false
-	scale = Vector2(1,1)
+	scale = Vector2(1,1) * initial_scale
