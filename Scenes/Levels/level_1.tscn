@@ -176,13 +176,13 @@ centered = false
 shape = SubResource("WorldBoundaryShape2D_w4v88")
 
 [node name="Rock" parent="." instance=ExtResource("22_q8kxe")]
-position = Vector2(492, -34)
+position = Vector2(501, -33)
 
 [node name="Platforms" type="Node2D" parent="."]
 position = Vector2(22, -116)
 
 [node name="Platform" type="StaticBody2D" parent="Platforms"]
-position = Vector2(117, 82)
+position = Vector2(746, 73)
 
 [node name="Icon" type="Sprite2D" parent="Platforms/Platform"]
 scale = Vector2(0.515625, 0.046875)
@@ -194,7 +194,7 @@ position = Vector2(33, 3)
 shape = SubResource("RectangleShape2D_hmkuf")
 
 [node name="Platform2" type="StaticBody2D" parent="Platforms"]
-position = Vector2(217, 70)
+position = Vector2(628, 87)
 
 [node name="Icon" type="Sprite2D" parent="Platforms/Platform2"]
 scale = Vector2(0.515625, 0.046875)
@@ -206,7 +206,7 @@ position = Vector2(33, 3)
 shape = SubResource("RectangleShape2D_hmkuf")
 
 [node name="Platform3" type="StaticBody2D" parent="Platforms"]
-position = Vector2(319, 82)
+position = Vector2(876, 85)
 
 [node name="Icon" type="Sprite2D" parent="Platforms/Platform3"]
 scale = Vector2(0.515625, 0.046875)
