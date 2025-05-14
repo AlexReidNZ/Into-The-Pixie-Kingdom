@@ -84,6 +84,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 [node name="Main" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_nyhm4")]
+process_mode = 3
+offset_left = -4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 4.0
+
 [node name="Player" parent="." instance=ExtResource("3_bb4ag")]
 position = Vector2(315, -4)
 
