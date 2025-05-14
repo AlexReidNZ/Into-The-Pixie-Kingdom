@@ -39,6 +39,7 @@ project/assembly_name="IntothePixieKingdom"
 Player=""
 Puzzle1Colliders=""
 Puzzle2Colliders=""
+Puzzle3Colliders=""
 
 [input]
 
