@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	hide()
+	pause()
 
 func resume():
 	get_tree().paused = false
