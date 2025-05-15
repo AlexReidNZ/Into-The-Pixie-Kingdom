@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3vc3f0qwdu3e"]
+[gd_scene load_steps=6 format=3 uid="uid://mby47b74eu2d"]
 
 [ext_resource type="Script" path="res://Scripts/menu.gd" id="1_jblc2"]
 
@@ -34,36 +34,35 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -385.0
-offset_top = 45.0
-offset_right = 395.0
-offset_bottom = 153.0
+offset_left = -237.0
+offset_top = 5.0
+offset_right = 241.0
+offset_bottom = 107.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "Into the Pixie Kingdom"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -85.0
-offset_top = -26.0
-offset_right = 29.0
-offset_bottom = 140.0
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -146.0
+offset_right = 70.0
+offset_bottom = -20.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
+grow_vertical = 0
+theme_override_constants/separation = 10
 
 [node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hw2be")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3g8l7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1k4h5")
@@ -72,9 +71,8 @@ text = "Start"
 
 [node name="Options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hw2be")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3g8l7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1k4h5")
@@ -83,9 +81,8 @@ text = "Options"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hw2be")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3g8l7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1k4h5")
