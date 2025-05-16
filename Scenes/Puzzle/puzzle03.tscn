@@ -192,7 +192,7 @@ position = Vector2(261, 133.5)
 scale = Vector2(-1, 1)
 
 [node name="BackButton" type="Area2D" parent="GridBorderSprite"]
-position = Vector2(27, 16.5)
+position = Vector2(13, 12.5)
 script = ExtResource("9_vybjj")
 metadata/_edit_group_ = true
 
@@ -202,5 +202,14 @@ shape = SubResource("RectangleShape2D_iywf2")
 [node name="Sprite2D" type="Sprite2D" parent="GridBorderSprite/BackButton"]
 texture = ExtResource("10_mcvb8")
 
+[node name="Button" type="Button" parent="GridBorderSprite"]
+offset_left = 28.0
+offset_top = 1.5
+offset_right = 65.0
+offset_bottom = 23.5
+theme_override_font_sizes/font_size = 10
+text = "RESET"
+
 [connection signal="mouse_entered" from="GridBorderSprite/BackButton" to="GridBorderSprite/BackButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="GridBorderSprite/BackButton" to="GridBorderSprite/BackButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="GridBorderSprite/Button" to="." method="reset_puzzle"]
