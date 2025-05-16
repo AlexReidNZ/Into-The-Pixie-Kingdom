@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ceia108gqkgrh"]
+[gd_scene load_steps=29 format=3 uid="uid://ceia108gqkgrh"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
 [ext_resource type="Texture2D" uid="uid://cmpfh3mh4vjiq" path="res://Sprites/Ivy Path Backgrounds/Background.png" id="2_ji2qm"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="4_srh1p"]
 [ext_resource type="Texture2D" uid="uid://y5fjlsakfeth" path="res://Sprites/ground1.png" id="7_g0htd"]
 [ext_resource type="Texture2D" uid="uid://cybrbwhlsnekx" path="res://Sprites/ground2.png" id="8_l1qk3"]
+[ext_resource type="Texture2D" uid="uid://c7nr7kx1bk2hc" path="res://Sprites/Bushes.png" id="10_t4k28"]
+[ext_resource type="Texture2D" uid="uid://brsjqcylvbq04" path="res://Sprites/SideBushes2.png" id="11_ytc3w"]
+[ext_resource type="Texture2D" uid="uid://cxisagdugws2h" path="res://Sprites/SideBushes.png" id="13_svo3r"]
 [ext_resource type="Texture2D" uid="uid://b5ionch14vyu8" path="res://Sprites/Gorse.png" id="14_tej4t"]
 [ext_resource type="PackedScene" uid="uid://dm65n77dur5bu" path="res://Scenes/rock.tscn" id="22_q8kxe"]
 [ext_resource type="PackedScene" uid="uid://cdsd4l7hvxuqn" path="res://Scenes/npc_body.tscn" id="23_yprgw"]
@@ -20,6 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://dh5ntwaktn4la" path="res://Sprites/Puzzle/worldSprites/Fixed Bridge.png" id="34_ynee1"]
 [ext_resource type="PackedScene" uid="uid://doot1xvshlh6h" path="res://Scenes/Puzzle/puzzle03.tscn" id="35_50h6p"]
 [ext_resource type="Texture2D" uid="uid://cs2vvvlyoxyvs" path="res://Sprites/Puzzle/worldSprites/Fixed Tree.png" id="36_tnrut"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x48l1"]
+radius = 42.6175
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mr6wc"]
 
@@ -37,8 +43,9 @@ texture_filter = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_tt3mb")]
+[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_end_trigger") instance=ExtResource("1_tt3mb")]
 visible = false
+game_end_trigger = NodePath("../../GameEndTrigger")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -52,6 +59,14 @@ motion_mirroring = Vector2(1518.91, 0)
 scale = Vector2(1.71, 1.71)
 texture = ExtResource("2_ji2qm")
 centered = false
+
+[node name="GameEndTrigger" type="Area2D" parent="."]
+z_index = 10
+position = Vector2(1906.5, -42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameEndTrigger"]
+position = Vector2(3.5, 7)
+shape = SubResource("CircleShape2D_x48l1")
 
 [node name="Player" parent="." instance=ExtResource("3_u8vf5")]
 z_index = 10
@@ -117,8 +132,29 @@ z_index = 11
 position = Vector2(566, -41)
 texture = ExtResource("14_tej4t")
 
+[node name="Bushes" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(1103, -23)
+texture = ExtResource("10_t4k28")
+
+[node name="SideBushes2" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(1906.5, -42)
+texture = ExtResource("11_ytc3w")
+
+[node name="SideBushes3" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(2052, -43)
+texture = ExtResource("11_ytc3w")
+flip_h = true
+
 [node name="Rock" parent="Objects" instance=ExtResource("22_q8kxe")]
 position = Vector2(370, -21)
+
+[node name="SideBushes" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(75, -19)
+texture = ExtResource("13_svo3r")
 
 [node name="Platforms" type="Node2D" parent="."]
 position = Vector2(22, -116)
@@ -205,3 +241,5 @@ puzzle_scene = ExtResource("35_50h6p")
 puzzle_group = "Puzzle3Colliders"
 fixed_sprite = ExtResource("36_tnrut")
 sprite_object = NodePath("../../Sprites/BrokenTree")
+
+[connection signal="area_entered" from="GameEndTrigger" to="CanvasLayer/PauseMenu" method="_on_game_end_trigger_area_entered"]

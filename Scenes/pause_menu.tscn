@@ -25,7 +25,7 @@ grow_vertical = 2
 texture = ExtResource("1_cdlkh")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="TextureRect"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 235.0
 offset_top = 99.0
@@ -36,12 +36,24 @@ theme_override_fonts/font = ExtResource("3_j5y5q")
 theme_override_font_sizes/font_size = 60
 text = "Into the Pixie Kingdom"
 
+[node name="GameEnd" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 345.0
+offset_top = 196.0
+offset_right = 800.0
+offset_bottom = 256.0
+theme_override_colors/font_color = Color(0.146252, 0.59749, 0.406256, 1)
+theme_override_fonts/font = ExtResource("3_j5y5q")
+theme_override_font_sizes/font_size = 45
+text = "Thanks for playing!"
+
 [node name="Resume" type="Button" parent="."]
 layout_mode = 0
-offset_left = 224.0
-offset_top = 294.0
-offset_right = 406.0
-offset_bottom = 365.0
+offset_left = 235.0
+offset_top = 348.0
+offset_right = 417.0
+offset_bottom = 419.0
 theme_override_colors/font_color = Color(0.195007, 0.501681, 0.418972, 1)
 theme_override_fonts/font = ExtResource("4_6l4d8")
 theme_override_font_sizes/font_size = 70
@@ -50,10 +62,10 @@ flat = true
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 706.0
-offset_top = 296.0
-offset_right = 903.0
-offset_bottom = 367.0
+offset_left = 717.0
+offset_top = 350.0
+offset_right = 914.0
+offset_bottom = 421.0
 theme_override_colors/font_color = Color(0.196078, 0.501961, 0.419608, 1)
 theme_override_fonts/font = ExtResource("4_6l4d8")
 theme_override_font_sizes/font_size = 70

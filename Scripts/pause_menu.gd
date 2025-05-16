@@ -1,7 +1,12 @@
 extends Control
 
+@export var game_end_trigger: Area2D
+@onready var game_end_text: Label = $GameEnd
+@onready var play_button: Button = $Resume
+
 func _ready():
 	pause()
+	game_end_trigger.body_entered.connect(_on_game_end_trigger_area_entered)
 
 func resume():
 	get_tree().paused = false
@@ -23,3 +28,10 @@ func _on_resume_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+func _on_game_end_trigger_area_entered(body):
+	if body.name == "Player":
+		game_end_text.visible = true
+		play_button.visible = false
+		pause()
+	
