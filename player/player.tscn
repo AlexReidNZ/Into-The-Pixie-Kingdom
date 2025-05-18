@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://boc6l1kkktvup"]
+[gd_scene load_steps=82 format=3 uid="uid://boc6l1kkktvup"]
 
 [ext_resource type="Script" path="res://platformer/player.gd" id="1_mehl8"]
 [ext_resource type="Texture2D" uid="uid://chq8makw0y7iw" path="res://player/animations/standing idle.png" id="2_6cm6y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dh0t1jc6p484g" path="res://player/animations/girl walking right - out.png" id="4_wwj8c"]
 [ext_resource type="Script" path="res://player/player_audio_manager.gd" id="6_lvw6p"]
 [ext_resource type="AudioStream" uid="uid://b7dwbn6o6u7o3" path="res://Audio/Movement/Jumps/Jump3.wav" id="7_12meu"]
+[ext_resource type="AudioStream" uid="uid://bwnx2hy2ux8px" path="res://Audio/Movement/Jumps/Jump2.wav" id="7_tbisi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ckqf"]
 height = 48.0
@@ -612,6 +613,8 @@ autoplay = "idle"
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("6_lvw6p")
+jump_sample_1 = ExtResource("7_tbisi")
+jump_sample_2 = ExtResource("7_12meu")
 
 [node name="Jump" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_12meu")

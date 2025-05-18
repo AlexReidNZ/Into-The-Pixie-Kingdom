@@ -167,7 +167,8 @@ position = Vector2(44, -46)
 speed = 69
 acceleration = 0.2
 deceleration = 0.14
-jump_velocity = 360
+jump_velocity = 300
+jump_anticipation_multiplier = 1.5
 coyote_time_ms = 75
 animate_look_around_chance = 0.15
 

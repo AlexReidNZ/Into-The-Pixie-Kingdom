@@ -30,6 +30,12 @@ const animations := {
 @export_range(0, 1, 0.01) var deceleration := 0.5
 @export_range(100, 500) var jump_velocity := 250
 
+## How long to hold jump button to get max height jump
+@export_range(0, 3, 0.025) var jump_anticipation_max_time_sec := 1.0
+
+## Multiplier of jump height at maximum anticipation time
+@export_range(1, 5, 0.025) var jump_anticipation_multiplier := 2.0
+
 ## Time (in milliseconds) the player can press jump before/after touching the ground.
 ## Named after Wile E. Coyote from Looney Tunes, may he rest in peace. <3
 @export_range(0, 250, 5) var coyote_time_ms := 100
@@ -39,6 +45,7 @@ const animations := {
 
 var last_jump_input_time_ms := -1
 var last_on_floor_time_ms := -1
+var jump_anticipation_time := 0.0
 var jump_queued := false
 var move_state := MoveState.IDLE:
 	set = set_move_state
@@ -50,6 +57,14 @@ var move_state := MoveState.IDLE:
 func _process(delta: float) -> void:
 	calculate_velocity_x(delta)
 	calculate_velocity_y(delta)
+	
+	if move_state == MoveState.JUMP_ANTICIPATING:
+		jump_anticipation_time = clampf(
+				jump_anticipation_time + delta,
+				0, 
+				jump_anticipation_max_time_sec)
+	else:
+		jump_anticipation_time = 0
 
 	if jump_queued:
 		try_jump()
@@ -62,7 +77,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		move_state = MoveState.JUMP_ANTICIPATING
 	if event.is_action_released("jump"):
 		queue_jump()
-
 	
 func _on_animation_looped() -> void:
 	if move_state == MoveState.IDLE:
@@ -105,6 +119,8 @@ func calculate_velocity_y(delta: float) -> void:
 	if is_on_floor() and move_state != MoveState.PAUSED:
 		if move_state == MoveState.JUMPING or move_state == MoveState.FALLING:
 			move_state = MoveState.LANDING
+		if Input.is_action_pressed("jump") and move_state != MoveState.JUMP_ANTICIPATING:
+			move_state = MoveState.JUMP_ANTICIPATING
 		last_on_floor_time_ms = Time.get_ticks_msec()
 		return
 	
@@ -141,8 +157,13 @@ func jump() -> void:
 	jump_queued = false
 	last_on_floor_time_ms = -1
 	# Negative Y direction is upwards in 2D space
-	velocity.y = -jump_velocity
-	audio.play_jump(1)
+	var anticipation_amount := inverse_lerp(
+			0,       
+			jump_anticipation_max_time_sec, 
+			jump_anticipation_time)    
+	var anticipation_multiplier = lerpf(1, jump_anticipation_multiplier, anticipation_amount)
+	velocity.y = -jump_velocity * anticipation_multiplier
+	audio.play_jump(anticipation_amount)
 	
 
 func set_move_state(value: MoveState) -> void:
