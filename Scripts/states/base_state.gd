@@ -2,7 +2,7 @@ extends Node
 class_name BaseState
 
 # Reference to the state machine this state belongs to
-var state_machine: Node
+var state_machine: DialogStateMachine
 
 # Called when the state becomes active
 func enter(data = null) -> void:

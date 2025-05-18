@@ -8,7 +8,7 @@ const PLAYER_BODY_NAME := "Player"
 @export var text_speed: float = 0.05
 
 # Cached references
-var player_node: Node2D = null
+var player_node: Player = null
 var main_node: Node = null
 
 # State instances

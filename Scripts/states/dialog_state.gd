@@ -115,11 +115,9 @@ func exit() -> void:
 # Disables player movement/input
 func _disable_player() -> void:
 	if state_machine.player_node:
-		state_machine.player_node.set_physics_process(false)
-		state_machine.player_node.set_process_input(false)
+		state_machine.player_node.move_state = Player.MoveState.PAUSED
 
 # Enables player movement/input
 func _enable_player() -> void:
 	if state_machine.player_node:
-		state_machine.player_node.set_physics_process(true)
-		state_machine.player_node.set_process_input(true)
+		state_machine.player_node.move_state = Player.MoveState.IDLE
