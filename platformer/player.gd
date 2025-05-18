@@ -44,6 +44,7 @@ var move_state := MoveState.IDLE:
 	set = set_move_state
 
 @onready var animator: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio: PlayerAudio = $Audio
 
 
 func _process(delta: float) -> void:
@@ -132,12 +133,17 @@ func try_jump() -> void:
 	if Time.get_ticks_msec() > last_on_floor_time_ms + coyote_time_ms:
 		# jump can stay queued in this case
 		return
-		
+	
+	jump()
+	
+	
+func jump() -> void:
 	jump_queued = false
 	last_on_floor_time_ms = -1
 	# Negative Y direction is upwards in 2D space
 	velocity.y = -jump_velocity
-				
+	audio.play_jump(1)
+	
 
 func set_move_state(value: MoveState) -> void:
 	# only process when move_state changes to a new state
