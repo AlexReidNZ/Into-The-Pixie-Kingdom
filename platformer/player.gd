@@ -43,10 +43,14 @@ const animations := {
 ## Chance to play "look around" animation when idle
 @export_range(0, 1, 0.05) var animate_look_around_chance := 0.2
 
+## Indexes of walk animation frames where foot touches the ground
+@export var walk_step_frames: Array[int]
+
 var last_jump_input_time_ms := -1
 var last_on_floor_time_ms := -1
 var jump_anticipation_time := 0.0
 var jump_queued := false
+var shush := false
 var move_state := MoveState.IDLE:
 	set = set_move_state
 
@@ -89,6 +93,16 @@ func _on_animation_looped() -> void:
 func _on_animation_finished() -> void:
 	if move_state == MoveState.LANDING:
 		move_state = MoveState.IDLE
+		
+		
+func _on_animation_frame_changed() -> void:
+	if move_state not in [MoveState.WALKING, MoveState.RUNNING]:
+		return
+	if shush:
+		return
+	# play walk sounds when foot touches ground
+	if animator.frame in walk_step_frames:
+		audio.play_walk()
 	
 	
 func calculate_velocity_x(delta: float) -> void:
@@ -170,16 +184,31 @@ func set_move_state(value: MoveState) -> void:
 	# only process when move_state changes to a new state
 	if move_state == value:
 		return
+		
+	# running and walking is the same animation, so try keep same animation going
+	var continue_animation := false
+	var continued_animation_frame = animator.frame
 	
 	# some states can only path to certain other states
 	match move_state:
 		MoveState.JUMP_ANTICIPATING:
 			if value not in [MoveState.JUMPING, MoveState.FALLING]:
 				return
+		MoveState.RUNNING:
+			if value == MoveState.WALKING:
+				continue_animation = true
+		MoveState.WALKING:
+			if value == MoveState.RUNNING:
+				continue_animation = true
 		MoveState.PAUSED:
 			if value != MoveState.IDLE:
 				return
 	
 	move_state = value
+	shush = continue_animation
 	animator.play(animations[move_state])
-	print(animations[move_state])
+	shush = false
+	if continue_animation:
+		animator.frame = continued_animation_frame
+
+	

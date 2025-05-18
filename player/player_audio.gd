@@ -7,6 +7,7 @@ class_name PlayerAudio
 @export_range(0, 1, 0.01) var jump_2_threshold := 0.3
 
 @onready var jump: AudioStreamPlayer = $Jump
+@onready var walk: AudioStreamPlayer = $Walk
 
 
 func play_jump(strength: float) -> void:
@@ -19,3 +20,7 @@ func set_jump_sample(strength: float) -> void:
 		jump.stream = jump_sample_2
 		return
 	jump.stream = jump_sample_1
+
+
+func play_walk() -> void:
+	walk.play()
