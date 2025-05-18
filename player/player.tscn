@@ -625,6 +625,7 @@ bus = &"Player"
 
 [node name="Walk" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("9_7satm")
+bus = &"Player"
 
 [node name="DialogueTailPos" type="Marker2D" parent="."]
 position = Vector2(-34, -36)
