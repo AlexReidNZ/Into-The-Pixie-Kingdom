@@ -7,6 +7,7 @@ var current_dragging_piece = null
 @onready var gridSlots = $GridBorderSprite/GridSlots.get_children()
 @onready var puzzle_blocks = $GridBorderSprite/PuzzlePieces.get_children()
 @onready var puzzle_indicator = $"../.."
+@onready var puzzle_audio: PuzzleAudio = %PuzzleAudio
 
 
 func _ready() -> void:
@@ -22,6 +23,7 @@ func _process(delta: float) -> void:
 func win_puzzle():
 	puzzle_won = true
 	sig_win_puzzle.emit()
+	puzzle_audio.play_win()
 
 func check_puzzle_won():
 	for slot in gridSlots:
