@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bhu5sa64ma721"]
+[gd_scene load_steps=43 format=3 uid="uid://bdo87udrm15aa"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_x7l38"]
 [ext_resource type="Texture2D" uid="uid://cdgla0hey6w7j" path="res://Sprites/Ivy Path Backgrounds/Big Background.png" id="2_nakyq"]
@@ -289,8 +289,6 @@ script = ExtResource("37_2c1bn")
 [node name="Select" type="AudioStreamPlayer" parent="UIAudio"]
 stream = ExtResource("37_6kj34")
 volume_db = -5.971
-bus = &"UI"
 
 [node name="Click" type="AudioStreamPlayer" parent="UIAudio"]
 stream = ExtResource("38_yc1hb")
-bus = &"UI"

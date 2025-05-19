@@ -49,6 +49,7 @@ const animations := {
 var last_jump_input_time_ms := -1
 var last_on_floor_time_ms := -1
 var jump_anticipation_time := 0.0
+var anticipation_amount := 0.0
 var jump_queued := false
 var shush := false
 var move_state := MoveState.IDLE:
@@ -67,8 +68,13 @@ func _process(delta: float) -> void:
 				jump_anticipation_time + delta,
 				0, 
 				jump_anticipation_max_time_sec)
+		anticipation_amount = inverse_lerp(
+				0,       
+				jump_anticipation_max_time_sec, 
+				jump_anticipation_time)  
 	else:
 		jump_anticipation_time = 0
+		anticipation_amount = 0
 
 	if jump_queued:
 		try_jump()
@@ -119,6 +125,7 @@ func calculate_velocity_x(delta: float) -> void:
 			move_speed *= run_speed_multiplier
 		else:
 			move_state = MoveState.WALKING
+		move_speed *= 1 - anticipation_amount
 		velocity.x = move_toward(velocity.x, direction * move_speed, speed * acceleration)
 		# keep sprite facing towards movement direction
 		animator.scale.x = roundi(direction)
@@ -170,11 +177,7 @@ func try_jump() -> void:
 func jump() -> void:
 	jump_queued = false
 	last_on_floor_time_ms = -1
-	# Negative Y direction is upwards in 2D space
-	var anticipation_amount := inverse_lerp(
-			0,       
-			jump_anticipation_max_time_sec, 
-			jump_anticipation_time)    
+	# Negative Y direction is upwards in 2D space  
 	var anticipation_multiplier = lerpf(1, jump_anticipation_multiplier, anticipation_amount)
 	velocity.y = -jump_velocity * anticipation_multiplier
 	audio.play_jump(anticipation_amount)

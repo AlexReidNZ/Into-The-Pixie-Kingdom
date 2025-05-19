@@ -621,11 +621,9 @@ jump_sample_2 = ExtResource("7_12meu")
 [node name="Jump" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_12meu")
 volume_db = -5.971
-bus = &"Player"
 
 [node name="Walk" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("9_7satm")
-bus = &"Player"
 
 [node name="DialogueTailPos" type="Marker2D" parent="."]
 position = Vector2(-34, -36)
