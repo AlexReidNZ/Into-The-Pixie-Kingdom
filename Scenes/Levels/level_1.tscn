@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://gq0pjsnt3pyc" path="res://Sprites/Ivy Path Backgrounds/Platform Rocks.png" id="19_ng0ym"]
 [ext_resource type="Texture2D" uid="uid://c6w263vjbeufo" path="res://Sprites/Ivy Path Backgrounds/Rnadom Rocks.png" id="20_wwanl"]
 [ext_resource type="Texture2D" uid="uid://ce57a3s51a6av" path="res://Sprites/Ivy Path Backgrounds/Tree puzzle to fiz.png" id="21_u0pcx"]
-[ext_resource type="PackedScene" uid="uid://dm65n77dur5bu" path="res://Scenes/rock.tscn" id="22_q8kxe"]
+[ext_resource type="PackedScene" path="res://Scenes/rock.tscn" id="22_q8kxe"]
 [ext_resource type="PackedScene" uid="uid://cdsd4l7hvxuqn" path="res://Scenes/npc_body.tscn" id="23_yprgw"]
 [ext_resource type="Texture2D" uid="uid://c4crobg2ixorf" path="res://Sprites/Lamina.png" id="24_x36lw"]
 [ext_resource type="Texture2D" uid="uid://ctu5riag25ib1" path="res://Sprites/Hedera.png" id="25_jp23x"]

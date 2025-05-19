@@ -1,9 +1,9 @@
 extends BaseState
 class_name DialogState
 
-const BUBBLE_OFFSET        := Vector2(-120, -100)
+const BUBBLE_OFFSET        := Vector2(-50, 0)
 const MAX_BUBBLE_WIDTH     := 300
-const MAX_BUBBLE_HEIGHT    := 80
+const MAX_BUBBLE_HEIGHT    := 999
 const DIALOG_BUBBLE_SCENE  := preload("res://Scenes/dialog_bubble.tscn")
 
 var dialog_lines: Array = []
@@ -55,7 +55,9 @@ func _start_line_async() -> void:
 	typing = true
 	var speaker = state_machine.get_speaker_node(str(dialog_lines[idx].get("speaker", "")))
 	if speaker:
-		bubble_instance.global_position = speaker.global_position + BUBBLE_OFFSET
+		var tail_position := speaker.get_node("DialogueTailPos") as Marker2D
+		var distance := tail_position.global_position - tail_sprite.global_position
+		bubble_instance.global_position += distance
 	timer.start()
 
 func _pre_size_bubble(text: String) -> void:
