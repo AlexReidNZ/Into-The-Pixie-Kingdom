@@ -4,6 +4,7 @@ extends Area2D
 @export var puzzle_group : String
 @export var fixed_sprite : Texture2D
 @export var sprite_object : Sprite2D
+@export var sprite_collision : CollisionShape2D
 @onready var canvas = $CanvasLayer
 @onready var player: Player = %Player
 var clickable = false
@@ -50,4 +51,6 @@ func _on_puzzle_won():
 	print("puzzle has been won")
 	toggle_puzzle()
 	sprite_object.texture = fixed_sprite
+	if sprite_collision:
+		sprite_collision.disabled = true
 	self.hide()

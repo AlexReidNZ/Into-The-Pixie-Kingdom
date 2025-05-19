@@ -4,8 +4,10 @@ var is_dragging = false
 var puzzle_won = false
 signal sig_win_puzzle
 var current_dragging_piece = null
-@onready var gridSlots = get_child(0).get_child(0).get_children()
+@onready var gridSlots = $GridBorderSprite/GridSlots.get_children()
+@onready var puzzle_blocks = $GridBorderSprite/PuzzlePieces.get_children()
 @onready var puzzle_indicator = $"../.."
+
 
 func _ready() -> void:
 	print("puzzle created")
@@ -30,3 +32,9 @@ func check_puzzle_won():
 func rotate_piece():
 	if current_dragging_piece:
 		current_dragging_piece.rotate(deg_to_rad(90))
+
+func reset_puzzle():
+	for block in puzzle_blocks:
+		block.global_position = block.initial_pos
+	for slot in gridSlots:
+		slot.slotTaken = false
