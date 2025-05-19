@@ -36,3 +36,6 @@ shape = SubResource("CircleShape2D_bhmoq")
 position = Vector2(5.96046e-08, 1)
 scale = Vector2(0.585938, 0.570313)
 texture = ExtResource("3_ams4t")
+
+[node name="DialogueTailPos" type="Marker2D" parent="."]
+position = Vector2(-30, -26)
