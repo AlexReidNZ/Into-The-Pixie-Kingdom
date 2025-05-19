@@ -47,9 +47,6 @@ var move_state := MoveState.IDLE:
 
 
 func _process(delta: float) -> void:
-	if move_state == MoveState.PAUSED:
-		return
-		
 	calculate_velocity_x(delta)
 	calculate_velocity_y(delta)
 
@@ -80,6 +77,9 @@ func _on_animation_finished() -> void:
 	
 	
 func calculate_velocity_x(delta: float) -> void:
+	if move_state == MoveState.PAUSED:
+		velocity.x = 0
+		return
 	var direction := Input.get_axis("move_left", "move_right")
 	if move_state == MoveState.LANDING:
 		direction = 0
@@ -101,13 +101,17 @@ func calculate_velocity_x(delta: float) -> void:
 
 
 func calculate_velocity_y(delta: float) -> void:
-	if is_on_floor():
+	if is_on_floor() and move_state != MoveState.PAUSED:
 		if move_state == MoveState.JUMPING or move_state == MoveState.FALLING:
 			move_state = MoveState.LANDING
 		last_on_floor_time_ms = Time.get_ticks_msec()
 		return
 	
 	velocity += get_gravity() * delta
+	
+	if move_state == MoveState.PAUSED:
+		return
+	
 	if velocity.y < 0:
 		move_state = MoveState.JUMPING
 	else:
