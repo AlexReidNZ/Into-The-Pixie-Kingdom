@@ -1,28 +1,15 @@
-[gd_scene load_steps=40 format=3 uid="uid://ceia108gqkgrh"]
+[gd_scene load_steps=29 format=3 uid="uid://ceia108gqkgrh"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
-[ext_resource type="Texture2D" uid="uid://cdgla0hey6w7j" path="res://Sprites/Ivy Path Backgrounds/Big Background.png" id="2_vcn0e"]
-[ext_resource type="Texture2D" uid="uid://goqyy270xnow" path="res://Sprites/Ivy Path Backgrounds/Darker Background Bushe.png" id="3_oeex8"]
+[ext_resource type="Texture2D" uid="uid://cmpfh3mh4vjiq" path="res://Sprites/Ivy Path Backgrounds/Background.png" id="2_ji2qm"]
 [ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="3_u8vf5"]
-[ext_resource type="Texture2D" uid="uid://d31wyh5vw7yni" path="res://Sprites/Ivy Path Backgrounds/Begining puzzle.png" id="4_gsk8w"]
-[ext_resource type="Texture2D" uid="uid://cigdtgrrtaqcm" path="res://Sprites/Ivy Path Backgrounds/Background Trees.png" id="4_o3ydh"]
 [ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="4_srh1p"]
-[ext_resource type="Texture2D" uid="uid://dhel1fwtul4ed" path="res://Sprites/Ivy Path Backgrounds/Behind bushes.png" id="5_jmwli"]
-[ext_resource type="Texture2D" uid="uid://bwse02umnhtnq" path="res://Sprites/Ivy Path Backgrounds/bottom grass.png" id="6_t3esx"]
-[ext_resource type="Texture2D" uid="uid://b7qq72s6xmdc" path="res://Sprites/Ivy Path Backgrounds/Broken Bridge.png" id="7_li74c"]
-[ext_resource type="Texture2D" uid="uid://c0iwpo2lv0yr0" path="res://Sprites/Ivy Path Backgrounds/Broken Tree.png" id="8_puare"]
-[ext_resource type="Texture2D" uid="uid://bu8vfs5e820pt" path="res://Sprites/Ivy Path Backgrounds/Fixed Bridge.png" id="10_4r683"]
-[ext_resource type="Texture2D" uid="uid://do2n6mjlpun73" path="res://Sprites/Ivy Path Backgrounds/Fixed Tree.png" id="11_cpcod"]
-[ext_resource type="Texture2D" uid="uid://dyt32tpe7m8ki" path="res://Sprites/Ivy Path Backgrounds/Front Bushes.png" id="12_tlmn2"]
-[ext_resource type="Texture2D" uid="uid://baepy37if5qxm" path="res://Sprites/Ivy Path Backgrounds/Front Trees.png" id="13_8gyaa"]
-[ext_resource type="Texture2D" uid="uid://dkf7vjlel44iy" path="res://Sprites/Ivy Path Backgrounds/God rays 2.png" id="14_s0mdk"]
-[ext_resource type="Texture2D" uid="uid://cbq82umx3qbmj" path="res://Sprites/Ivy Path Backgrounds/God rays .png" id="15_ta0iq"]
-[ext_resource type="Texture2D" uid="uid://cbsyu126084t0" path="res://Sprites/Ivy Path Backgrounds/Gorse.png" id="16_1uyig"]
-[ext_resource type="Texture2D" uid="uid://cb5wc130065e3" path="res://Sprites/Ivy Path Backgrounds/Grass.png" id="17_uosf4"]
-[ext_resource type="Texture2D" uid="uid://co2jrkkkbl6is" path="res://Sprites/Ivy Path Backgrounds/Lighter Background bush.png" id="18_560nk"]
-[ext_resource type="Texture2D" uid="uid://gq0pjsnt3pyc" path="res://Sprites/Ivy Path Backgrounds/Platform Rocks.png" id="19_ng0ym"]
-[ext_resource type="Texture2D" uid="uid://c6w263vjbeufo" path="res://Sprites/Ivy Path Backgrounds/Rnadom Rocks.png" id="20_wwanl"]
-[ext_resource type="Texture2D" uid="uid://ce57a3s51a6av" path="res://Sprites/Ivy Path Backgrounds/Tree puzzle to fiz.png" id="21_u0pcx"]
+[ext_resource type="Texture2D" uid="uid://y5fjlsakfeth" path="res://Sprites/ground1.png" id="7_g0htd"]
+[ext_resource type="Texture2D" uid="uid://cybrbwhlsnekx" path="res://Sprites/ground2.png" id="8_l1qk3"]
+[ext_resource type="Texture2D" uid="uid://c7nr7kx1bk2hc" path="res://Sprites/Bushes.png" id="10_t4k28"]
+[ext_resource type="Texture2D" uid="uid://brsjqcylvbq04" path="res://Sprites/SideBushes2.png" id="11_ytc3w"]
+[ext_resource type="Texture2D" uid="uid://cxisagdugws2h" path="res://Sprites/SideBushes.png" id="13_svo3r"]
+[ext_resource type="Texture2D" uid="uid://b5ionch14vyu8" path="res://Sprites/Gorse.png" id="14_tej4t"]
 [ext_resource type="PackedScene" uid="uid://dm65n77dur5bu" path="res://Scenes/rock.tscn" id="22_q8kxe"]
 [ext_resource type="PackedScene" uid="uid://cdsd4l7hvxuqn" path="res://Scenes/npc_body.tscn" id="23_yprgw"]
 [ext_resource type="Texture2D" uid="uid://c4crobg2ixorf" path="res://Sprites/Lamina.png" id="24_x36lw"]
@@ -37,6 +24,9 @@
 [ext_resource type="PackedScene" uid="uid://doot1xvshlh6h" path="res://Scenes/Puzzle/puzzle03.tscn" id="35_50h6p"]
 [ext_resource type="Texture2D" uid="uid://cs2vvvlyoxyvs" path="res://Sprites/Puzzle/worldSprites/Fixed Tree.png" id="36_tnrut"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_x48l1"]
+radius = 42.6175
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mr6wc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w4v88"]
@@ -45,12 +35,17 @@ normal = Vector2(1, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmkuf"]
 size = Vector2(66, 6)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs31p"]
+size = Vector2(124, 43)
+
 [node name="PlatformLevel" type="Node2D"]
 texture_filter = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_tt3mb")]
+[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_end_trigger") instance=ExtResource("1_tt3mb")]
+visible = false
+game_end_trigger = NodePath("../../GameEndTrigger")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -62,104 +57,16 @@ motion_mirroring = Vector2(1518.91, 0)
 
 [node name="BigBackground" type="Sprite2D" parent="ParallaxBackground/Layer0"]
 scale = Vector2(1.71, 1.71)
-texture = ExtResource("2_vcn0e")
+texture = ExtResource("2_ji2qm")
 centered = false
 
-[node name="DarkerBackgroundBushe" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("3_oeex8")
-centered = false
+[node name="GameEndTrigger" type="Area2D" parent="."]
+z_index = 10
+position = Vector2(1906.5, -42)
 
-[node name="LighterBackgroundBush" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("18_560nk")
-centered = false
-
-[node name="BackgroundTrees" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("4_o3ydh")
-centered = false
-
-[node name="BehindBushes" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("5_jmwli")
-centered = false
-
-[node name="Gorse" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("16_1uyig")
-centered = false
-
-[node name="BottomGrass" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-position = Vector2(0, -2)
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("6_t3esx")
-centered = false
-
-[node name="FrontTrees" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("13_8gyaa")
-centered = false
-
-[node name="FrontBushes" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("12_tlmn2")
-centered = false
-
-[node name="BrokenTree" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("8_puare")
-centered = false
-
-[node name="FixedTree" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("11_cpcod")
-centered = false
-
-[node name="BeginingPuzzle" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("4_gsk8w")
-centered = false
-
-[node name="BrokenBridge" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("7_li74c")
-centered = false
-
-[node name="FixedBridge" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("10_4r683")
-centered = false
-
-[node name="GodRays2" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("14_s0mdk")
-centered = false
-
-[node name="GodRays" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("15_ta0iq")
-centered = false
-
-[node name="Grass" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("17_uosf4")
-centered = false
-
-[node name="PlatformRocks" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("19_ng0ym")
-centered = false
-
-[node name="RnadomRocks" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("20_wwanl")
-centered = false
-
-[node name="TreePuzzleToFiz" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("21_u0pcx")
-centered = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameEndTrigger"]
+position = Vector2(3.5, 7)
+shape = SubResource("CircleShape2D_x48l1")
 
 [node name="Player" parent="." instance=ExtResource("3_u8vf5")]
 z_index = 10
@@ -172,11 +79,11 @@ coyote_time_ms = 75
 animate_look_around_chance = 0.15
 
 [node name="Lamina" parent="." instance=ExtResource("23_yprgw")]
-position = Vector2(462, -41)
+position = Vector2(331, -29)
 sprite = ExtResource("24_x36lw")
 
 [node name="Hedera" parent="." instance=ExtResource("23_yprgw")]
-position = Vector2(518, -72)
+position = Vector2(387, -60)
 sprite = ExtResource("25_jp23x")
 
 [node name="Ground" type="StaticBody2D" parent="."]
@@ -186,24 +93,74 @@ position = Vector2(-50, -6)
 position = Vector2(0, 1)
 shape = SubResource("WorldBoundaryShape2D_mr6wc")
 
-[node name="Icon2" type="Sprite2D" parent="Ground"]
-scale = Vector2(30.105, 0.055)
-texture = ExtResource("4_srh1p")
-centered = false
+[node name="Ground Sprites" type="Node2D" parent="Ground"]
+
+[node name="Ground1" type="Sprite2D" parent="Ground/Ground Sprites"]
+position = Vector2(247, -15)
+scale = Vector2(1, 0.916887)
+texture = ExtResource("7_g0htd")
+
+[node name="Ground3" type="Sprite2D" parent="Ground/Ground Sprites"]
+position = Vector2(661, -18)
+scale = Vector2(1, 0.916887)
+texture = ExtResource("7_g0htd")
+
+[node name="Ground4" type="Sprite2D" parent="Ground/Ground Sprites"]
+position = Vector2(1545, -18)
+scale = Vector2(1, 0.916887)
+texture = ExtResource("7_g0htd")
+
+[node name="Ground2" type="Sprite2D" parent="Ground/Ground Sprites"]
+position = Vector2(1123, -22)
+scale = Vector2(1, 0.939394)
+texture = ExtResource("8_l1qk3")
+
+[node name="Ground5" type="Sprite2D" parent="Ground/Ground Sprites"]
+position = Vector2(1908, -22)
+scale = Vector2(1, 0.939394)
+texture = ExtResource("8_l1qk3")
 
 [node name="Boundary" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
 shape = SubResource("WorldBoundaryShape2D_w4v88")
 
-[node name="Rock" parent="." instance=ExtResource("22_q8kxe")]
-position = Vector2(501, -33)
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Gorse" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(566, -41)
+texture = ExtResource("14_tej4t")
+
+[node name="Bushes" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(1103, -23)
+texture = ExtResource("10_t4k28")
+
+[node name="SideBushes2" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(1906.5, -42)
+texture = ExtResource("11_ytc3w")
+
+[node name="SideBushes3" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(2052, -43)
+texture = ExtResource("11_ytc3w")
+flip_h = true
+
+[node name="Rock" parent="Objects" instance=ExtResource("22_q8kxe")]
+position = Vector2(370, -21)
+
+[node name="SideBushes" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(75, -19)
+texture = ExtResource("13_svo3r")
 
 [node name="Platforms" type="Node2D" parent="."]
 position = Vector2(22, -116)
 
 [node name="Platform" type="StaticBody2D" parent="Platforms"]
-position = Vector2(992, 57)
+position = Vector2(1011, 57)
 
 [node name="Icon" type="Sprite2D" parent="Platforms/Platform"]
 scale = Vector2(0.515625, 0.046875)
@@ -215,7 +172,7 @@ position = Vector2(33, 3)
 shape = SubResource("RectangleShape2D_hmkuf")
 
 [node name="Platform2" type="StaticBody2D" parent="Platforms"]
-position = Vector2(876, 75)
+position = Vector2(901, 76)
 
 [node name="Icon" type="Sprite2D" parent="Platforms/Platform2"]
 scale = Vector2(0.515625, 0.046875)
@@ -244,36 +201,45 @@ position = Vector2(1141, -44)
 [node name="Sprites" type="Node2D" parent="PuzzleObjects"]
 
 [node name="BeginingPuzzle" type="Sprite2D" parent="PuzzleObjects/Sprites"]
-position = Vector2(-388.5, 34)
+position = Vector2(451.5, 38)
 texture = ExtResource("28_q2xun")
 
 [node name="BrokenBridge" type="Sprite2D" parent="PuzzleObjects/Sprites"]
-position = Vector2(575, 16)
+position = Vector2(-307, 25)
 texture = ExtResource("29_y6ysw")
 
+[node name="BridgeCollision" type="StaticBody2D" parent="PuzzleObjects/Sprites/BrokenBridge"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleObjects/Sprites/BrokenBridge/BridgeCollision"]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_qs31p")
+
 [node name="BrokenTree" type="Sprite2D" parent="PuzzleObjects/Sprites"]
-position = Vector2(133, -36)
+position = Vector2(133, -32.5)
 texture = ExtResource("30_577wq")
 
 [node name="Indicators" type="Node2D" parent="PuzzleObjects"]
 
 [node name="PuzzleIndicator" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("28_m5tlm")]
-position = Vector2(-388.5, -6)
+position = Vector2(451.5, -2)
 puzzle_scene = ExtResource("32_58wvc")
 puzzle_group = "Puzzle1Colliders"
 fixed_sprite = ExtResource("28_q2xun")
 sprite_object = NodePath("../../Sprites/BeginingPuzzle")
 
-[node name="PuzzleIndicator2" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("28_m5tlm")]
-position = Vector2(572, -31)
+[node name="PuzzleIndicator2" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
+position = Vector2(-306, -22)
 puzzle_scene = ExtResource("33_rqe47")
 puzzle_group = "Puzzle2Colliders"
 fixed_sprite = ExtResource("34_ynee1")
 sprite_object = NodePath("../../Sprites/BrokenBridge")
+sprite_collision = NodePath("../../Sprites/BrokenBridge/BridgeCollision/CollisionShape2D")
 
 [node name="PuzzleIndicator3" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("28_m5tlm")]
-position = Vector2(89, -92)
+position = Vector2(89, -88.5)
 puzzle_scene = ExtResource("35_50h6p")
 puzzle_group = "Puzzle3Colliders"
 fixed_sprite = ExtResource("36_tnrut")
 sprite_object = NodePath("../../Sprites/BrokenTree")
+
+[connection signal="area_entered" from="GameEndTrigger" to="CanvasLayer/PauseMenu" method="_on_game_end_trigger_area_entered"]
