@@ -3,7 +3,10 @@ extends Node2D
 @onready var puzzleManager = $"../../.."
 @onready var collider = $Area2D
 @onready var sprite = $Sprite2D
+
 @onready var gridColliders = get_child(0).get_children()
+@onready var initial_pos = global_position
+
 var draggable = false
 var is_droppable = false
 var current_overlaps = []
