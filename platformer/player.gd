@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 
 enum MoveState {
 	IDLE,
@@ -9,6 +9,7 @@ enum MoveState {
 	JUMPING,
 	FALLING,
 	LANDING,
+	PAUSED,
 }
 
 const animations := {
@@ -19,6 +20,7 @@ const animations := {
 	MoveState.JUMPING: "jump",
 	MoveState.FALLING: "fall",
 	MoveState.LANDING: "land",
+	MoveState.PAUSED: "paused",
 }
 
 ## Walking rate in pixels per second
@@ -45,6 +47,9 @@ var move_state := MoveState.IDLE:
 
 
 func _process(delta: float) -> void:
+	if move_state == MoveState.PAUSED:
+		return
+		
 	calculate_velocity_x(delta)
 	calculate_velocity_y(delta)
 
@@ -60,7 +65,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("jump"):
 		queue_jump()
 
-	
 	
 func _on_animation_looped() -> void:
 	if move_state == MoveState.IDLE:
@@ -136,9 +140,13 @@ func set_move_state(value: MoveState) -> void:
 	if move_state == value:
 		return
 	
+	# some states can only path to certain other states
 	match move_state:
 		MoveState.JUMP_ANTICIPATING:
 			if value not in [MoveState.JUMPING, MoveState.FALLING]:
+				return
+		MoveState.PAUSED:
+			if value != MoveState.IDLE:
 				return
 	
 	move_state = value

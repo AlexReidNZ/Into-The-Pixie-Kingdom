@@ -6,6 +6,7 @@ extends Area2D
 @export var sprite_object : Sprite2D
 @export var sprite_collision : CollisionShape2D
 @onready var canvas = $CanvasLayer
+@onready var player: Player = %Player
 var clickable = false
 var puzzle_active = false
 var puzzle_instance
@@ -39,10 +40,12 @@ func toggle_puzzle():
 			puzzle_instance.show()
 			for i in puzzle_slots:
 				i.get_child(0).disabled = false
+			player.move_state = Player.MoveState.PAUSED
 		else:
 			puzzle_instance.hide()
 			for i in puzzle_slots:
 				i.get_child(0).disabled = true
+			player.move_state = Player.MoveState.IDLE
 			
 func _on_puzzle_won():
 	print("puzzle has been won")
