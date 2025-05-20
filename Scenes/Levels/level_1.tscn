@@ -1,10 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://ceia108gqkgrh"]
+[gd_scene load_steps=31 format=3 uid="uid://ceia108gqkgrh"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
 [ext_resource type="Texture2D" uid="uid://cmpfh3mh4vjiq" path="res://Sprites/Ivy Path Backgrounds/Background.png" id="2_ji2qm"]
 [ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="3_u8vf5"]
 [ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="4_srh1p"]
-
 [ext_resource type="Texture2D" uid="uid://y5fjlsakfeth" path="res://Sprites/ground1.png" id="7_g0htd"]
 [ext_resource type="Texture2D" uid="uid://cybrbwhlsnekx" path="res://Sprites/ground2.png" id="8_l1qk3"]
 [ext_resource type="Texture2D" uid="uid://c7nr7kx1bk2hc" path="res://Sprites/Bushes.png" id="10_t4k28"]
@@ -36,8 +35,14 @@ normal = Vector2(1, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmkuf"]
 size = Vector2(66, 6)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rgj4"]
+size = Vector2(20, 156)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qs31p"]
 size = Vector2(124, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtdxp"]
+size = Vector2(30, 153)
 
 [node name="PlatformLevel" type="Node2D"]
 texture_filter = 1
@@ -70,6 +75,7 @@ position = Vector2(3.5, 7)
 shape = SubResource("CircleShape2D_x48l1")
 
 [node name="Player" parent="." instance=ExtResource("3_u8vf5")]
+unique_name_in_owner = true
 z_index = 10
 position = Vector2(44, -46)
 speed = 69
@@ -205,6 +211,12 @@ position = Vector2(1141, -44)
 position = Vector2(451.5, 38)
 texture = ExtResource("28_q2xun")
 
+[node name="InvisibleWall" type="StaticBody2D" parent="PuzzleObjects/Sprites/BeginingPuzzle"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleObjects/Sprites/BeginingPuzzle/InvisibleWall"]
+position = Vector2(45.5, -70)
+shape = SubResource("RectangleShape2D_1rgj4")
+
 [node name="BrokenBridge" type="Sprite2D" parent="PuzzleObjects/Sprites"]
 position = Vector2(-307, 25)
 texture = ExtResource("29_y6ysw")
@@ -219,14 +231,21 @@ shape = SubResource("RectangleShape2D_qs31p")
 position = Vector2(133, -32.5)
 texture = ExtResource("30_577wq")
 
+[node name="TreeCollision" type="StaticBody2D" parent="PuzzleObjects/Sprites/BrokenTree"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleObjects/Sprites/BrokenTree/TreeCollision"]
+position = Vector2(5, -1)
+shape = SubResource("RectangleShape2D_mtdxp")
+
 [node name="Indicators" type="Node2D" parent="PuzzleObjects"]
 
-[node name="PuzzleIndicator" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("28_m5tlm")]
+[node name="PuzzleIndicator" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
 position = Vector2(451.5, -2)
 puzzle_scene = ExtResource("32_58wvc")
 puzzle_group = "Puzzle1Colliders"
 fixed_sprite = ExtResource("28_q2xun")
 sprite_object = NodePath("../../Sprites/BeginingPuzzle")
+sprite_collision = NodePath("../../Sprites/BeginingPuzzle/InvisibleWall/CollisionShape2D")
 
 [node name="PuzzleIndicator2" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
 position = Vector2(-306, -22)
@@ -236,11 +255,12 @@ fixed_sprite = ExtResource("34_ynee1")
 sprite_object = NodePath("../../Sprites/BrokenBridge")
 sprite_collision = NodePath("../../Sprites/BrokenBridge/BridgeCollision/CollisionShape2D")
 
-[node name="PuzzleIndicator3" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("28_m5tlm")]
+[node name="PuzzleIndicator3" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
 position = Vector2(89, -88.5)
 puzzle_scene = ExtResource("35_50h6p")
 puzzle_group = "Puzzle3Colliders"
 fixed_sprite = ExtResource("36_tnrut")
 sprite_object = NodePath("../../Sprites/BrokenTree")
+sprite_collision = NodePath("../../Sprites/BrokenTree/TreeCollision/CollisionShape2D")
 
 [connection signal="area_entered" from="GameEndTrigger" to="CanvasLayer/PauseMenu" method="_on_game_end_trigger_area_entered"]
