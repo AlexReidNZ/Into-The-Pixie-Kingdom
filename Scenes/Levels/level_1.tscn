@@ -1,9 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://ceia108gqkgrh"]
+[gd_scene load_steps=29 format=3 uid="uid://ceia108gqkgrh"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
 [ext_resource type="Texture2D" uid="uid://cmpfh3mh4vjiq" path="res://Sprites/Ivy Path Backgrounds/Background.png" id="2_ji2qm"]
 [ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="3_u8vf5"]
-[ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="4_srh1p"]
 [ext_resource type="Texture2D" uid="uid://y5fjlsakfeth" path="res://Sprites/ground1.png" id="7_g0htd"]
 [ext_resource type="Texture2D" uid="uid://cybrbwhlsnekx" path="res://Sprites/ground2.png" id="8_l1qk3"]
 [ext_resource type="Texture2D" uid="uid://c7nr7kx1bk2hc" path="res://Sprites/Bushes.png" id="10_t4k28"]
@@ -31,9 +30,6 @@ radius = 42.6175
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w4v88"]
 normal = Vector2(1, 0)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmkuf"]
-size = Vector2(66, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1rgj4"]
 size = Vector2(20, 156)
@@ -166,41 +162,8 @@ texture = ExtResource("13_svo3r")
 [node name="Platforms" type="Node2D" parent="."]
 position = Vector2(22, -116)
 
-[node name="Platform" type="StaticBody2D" parent="Platforms"]
-position = Vector2(1011, 57)
-
-[node name="Icon" type="Sprite2D" parent="Platforms/Platform"]
-scale = Vector2(0.515625, 0.046875)
-texture = ExtResource("4_srh1p")
-centered = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform"]
-position = Vector2(33, 3)
-shape = SubResource("RectangleShape2D_hmkuf")
-
-[node name="Platform2" type="StaticBody2D" parent="Platforms"]
-position = Vector2(901, 76)
-
-[node name="Icon" type="Sprite2D" parent="Platforms/Platform2"]
-scale = Vector2(0.515625, 0.046875)
-texture = ExtResource("4_srh1p")
-centered = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2"]
-position = Vector2(33, 3)
-shape = SubResource("RectangleShape2D_hmkuf")
-
-[node name="Platform3" type="StaticBody2D" parent="Platforms"]
-position = Vector2(1112, 39)
-
-[node name="Icon" type="Sprite2D" parent="Platforms/Platform3"]
-scale = Vector2(0.515625, 0.046875)
-texture = ExtResource("4_srh1p")
-centered = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3"]
-position = Vector2(33, 3)
-shape = SubResource("RectangleShape2D_hmkuf")
+[node name="Rock" parent="Platforms" instance=ExtResource("22_q8kxe")]
+position = Vector2(1092, 82)
 
 [node name="PuzzleObjects" type="Node2D" parent="."]
 position = Vector2(1141, -44)
