@@ -12,6 +12,7 @@ var full_text: String = ""
 var char_i: int = 0
 var typing: bool = false
 var accum: float = 0.0
+var dialogue_audio: AudioStreamPlayer
 
 var bubble_instance: Control = null
 var dialog_label: RichTextLabel = null
@@ -55,9 +56,12 @@ func _start_line_async() -> void:
 	typing = true
 	var speaker = state_machine.get_speaker_node(str(dialog_lines[idx].get("speaker", "")))
 	if speaker:
+		# set position of entire bubble based on tail pos marker on speaker
 		var tail_position := speaker.get_node("DialogueTailPos") as Marker2D
 		var distance := tail_position.global_position - tail_sprite.global_position
 		bubble_instance.global_position += distance
+		dialogue_audio = speaker.get_node("Audio/Dialogue") as AudioStreamPlayer
+		dialogue_audio.play()
 	timer.start()
 
 func _pre_size_bubble(text: String) -> void:
@@ -79,6 +83,7 @@ func _on_Timer_timeout() -> void:
 	else:
 		typing = false
 		timer.stop()
+		dialogue_audio.stop()
 
 func update(delta: float) -> void:
 	if typing:
@@ -95,6 +100,7 @@ func handle_input(event: InputEvent) -> void:
 		char_i = full_text.length()
 		typing = false
 		timer.stop()
+		dialogue_audio.stop()
 	else:
 		idx += 1
 		if idx < dialog_lines.size():

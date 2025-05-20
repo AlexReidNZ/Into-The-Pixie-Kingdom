@@ -1,5 +1,7 @@
 extends Control
 
+@onready var ui_audio: UIAudio = %UIAudio
+
 @export var game_end_trigger: Area2D
 @onready var game_end_text: Label = $GameEnd
 @onready var play_button: TextureButton = $Resume
@@ -26,10 +28,14 @@ func _input(event : InputEvent):
 		resume()
 
 func _on_resume_pressed() -> void:
+	ui_audio.play_button_click()
 	resume()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+	
+func _on_button_hover() -> void:
+	ui_audio.play_button_hover()
 
 func _on_game_end_trigger_area_entered(body):
 	if body.name == "Player":

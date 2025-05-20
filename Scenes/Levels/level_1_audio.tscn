@@ -1,0 +1,294 @@
+[gd_scene load_steps=43 format=3 uid="uid://c5srdh53gop4t"]
+
+[ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_x7l38"]
+[ext_resource type="Texture2D" uid="uid://cdgla0hey6w7j" path="res://Sprites/Ivy Path Backgrounds/Big Background.png" id="2_nakyq"]
+[ext_resource type="Texture2D" uid="uid://goqyy270xnow" path="res://Sprites/Ivy Path Backgrounds/Darker Background Bushe.png" id="3_bcgb7"]
+[ext_resource type="Texture2D" uid="uid://co2jrkkkbl6is" path="res://Sprites/Ivy Path Backgrounds/Lighter Background bush.png" id="4_1x6se"]
+[ext_resource type="Texture2D" uid="uid://cigdtgrrtaqcm" path="res://Sprites/Ivy Path Backgrounds/Background Trees.png" id="5_xeokj"]
+[ext_resource type="Texture2D" uid="uid://dhel1fwtul4ed" path="res://Sprites/Ivy Path Backgrounds/Behind bushes.png" id="6_avwg0"]
+[ext_resource type="Texture2D" uid="uid://cbsyu126084t0" path="res://Sprites/Ivy Path Backgrounds/Gorse.png" id="7_swx1s"]
+[ext_resource type="Texture2D" uid="uid://bwse02umnhtnq" path="res://Sprites/Ivy Path Backgrounds/bottom grass.png" id="8_6wqak"]
+[ext_resource type="Texture2D" uid="uid://baepy37if5qxm" path="res://Sprites/Ivy Path Backgrounds/Front Trees.png" id="9_jkuw2"]
+[ext_resource type="Texture2D" uid="uid://dyt32tpe7m8ki" path="res://Sprites/Ivy Path Backgrounds/Front Bushes.png" id="10_dniue"]
+[ext_resource type="Texture2D" uid="uid://c0iwpo2lv0yr0" path="res://Sprites/Ivy Path Backgrounds/Broken Tree.png" id="11_evbkl"]
+[ext_resource type="Texture2D" uid="uid://do2n6mjlpun73" path="res://Sprites/Ivy Path Backgrounds/Fixed Tree.png" id="12_rbujb"]
+[ext_resource type="Texture2D" uid="uid://d31wyh5vw7yni" path="res://Sprites/Ivy Path Backgrounds/Begining puzzle.png" id="13_pftlm"]
+[ext_resource type="Texture2D" uid="uid://b7qq72s6xmdc" path="res://Sprites/Ivy Path Backgrounds/Broken Bridge.png" id="14_kgufk"]
+[ext_resource type="Texture2D" uid="uid://bu8vfs5e820pt" path="res://Sprites/Ivy Path Backgrounds/Fixed Bridge.png" id="15_05sj5"]
+[ext_resource type="Texture2D" uid="uid://dkf7vjlel44iy" path="res://Sprites/Ivy Path Backgrounds/God rays 2.png" id="16_dgyi2"]
+[ext_resource type="Texture2D" uid="uid://cbq82umx3qbmj" path="res://Sprites/Ivy Path Backgrounds/God rays .png" id="17_bygmh"]
+[ext_resource type="Texture2D" uid="uid://cb5wc130065e3" path="res://Sprites/Ivy Path Backgrounds/Grass.png" id="18_caj1j"]
+[ext_resource type="Texture2D" uid="uid://gq0pjsnt3pyc" path="res://Sprites/Ivy Path Backgrounds/Platform Rocks.png" id="19_wiwe1"]
+[ext_resource type="Texture2D" uid="uid://c6w263vjbeufo" path="res://Sprites/Ivy Path Backgrounds/Rnadom Rocks.png" id="20_n8jxl"]
+[ext_resource type="Texture2D" uid="uid://ce57a3s51a6av" path="res://Sprites/Ivy Path Backgrounds/Tree puzzle to fiz.png" id="21_4ktbf"]
+[ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="22_awqvc"]
+[ext_resource type="PackedScene" uid="uid://cdsd4l7hvxuqn" path="res://Scenes/npc_body.tscn" id="23_n0tvp"]
+[ext_resource type="Texture2D" uid="uid://c4crobg2ixorf" path="res://Sprites/Lamina.png" id="24_lxv2v"]
+[ext_resource type="Texture2D" uid="uid://ctu5riag25ib1" path="res://Sprites/Hedera.png" id="25_h2vku"]
+[ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="26_8lclu"]
+[ext_resource type="PackedScene" path="res://Scenes/rock.tscn" id="27_555kp"]
+[ext_resource type="Texture2D" uid="uid://bcedy17mltjap" path="res://Sprites/Puzzle/worldSprites/Begining puzzle.png" id="28_lpso7"]
+[ext_resource type="Texture2D" uid="uid://cfogq20d8e7kt" path="res://Sprites/Puzzle/worldSprites/Broken Bridge.png" id="29_2dutd"]
+[ext_resource type="Texture2D" uid="uid://uicaseo12kg1" path="res://Sprites/Puzzle/worldSprites/Broken Tree.png" id="30_f5ijm"]
+[ext_resource type="PackedScene" uid="uid://cjh0ek7l4pjl8" path="res://Scenes/Puzzle/puzzle_indicator.tscn" id="31_wfgo4"]
+[ext_resource type="PackedScene" uid="uid://bhs05ayfbjvxk" path="res://Scenes/Puzzle/puzzle.tscn" id="32_wwkc3"]
+[ext_resource type="PackedScene" uid="uid://d0q7ekijn3xcg" path="res://Scenes/Puzzle/puzzle02.tscn" id="33_fo815"]
+[ext_resource type="Texture2D" uid="uid://dh5ntwaktn4la" path="res://Sprites/Puzzle/worldSprites/Fixed Bridge.png" id="34_2v6il"]
+[ext_resource type="PackedScene" uid="uid://doot1xvshlh6h" path="res://Scenes/Puzzle/puzzle03.tscn" id="35_qjxiw"]
+[ext_resource type="Texture2D" uid="uid://cs2vvvlyoxyvs" path="res://Sprites/Puzzle/worldSprites/Fixed Tree.png" id="36_5ir4u"]
+[ext_resource type="Script" path="res://Scripts/ui_audio.gd" id="37_2c1bn"]
+[ext_resource type="AudioStream" uid="uid://b07nrylqn4bxp" path="res://Audio/ButtonClick/Select.wav" id="37_6kj34"]
+[ext_resource type="AudioStream" uid="uid://d0fqc3n46wjxl" path="res://Audio/ButtonClick/Click.wav" id="38_yc1hb"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mr6wc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w4v88"]
+normal = Vector2(1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmkuf"]
+size = Vector2(66, 6)
+
+[node name="PlatformLevel2" type="Node2D"]
+texture_filter = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_x7l38")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Layer0" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(1518.91, 0)
+
+[node name="BigBackground" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("2_nakyq")
+centered = false
+
+[node name="DarkerBackgroundBushe" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("3_bcgb7")
+centered = false
+
+[node name="LighterBackgroundBush" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("4_1x6se")
+centered = false
+
+[node name="BackgroundTrees" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("5_xeokj")
+centered = false
+
+[node name="BehindBushes" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("6_avwg0")
+centered = false
+
+[node name="Gorse" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("7_swx1s")
+centered = false
+
+[node name="BottomGrass" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+position = Vector2(0, -2)
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("8_6wqak")
+centered = false
+
+[node name="FrontTrees" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("9_jkuw2")
+centered = false
+
+[node name="FrontBushes" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("10_dniue")
+centered = false
+
+[node name="BrokenTree" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("11_evbkl")
+centered = false
+
+[node name="FixedTree" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("12_rbujb")
+centered = false
+
+[node name="BeginingPuzzle" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("13_pftlm")
+centered = false
+
+[node name="BrokenBridge" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("14_kgufk")
+centered = false
+
+[node name="FixedBridge" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("15_05sj5")
+centered = false
+
+[node name="GodRays2" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("16_dgyi2")
+centered = false
+
+[node name="GodRays" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("17_bygmh")
+centered = false
+
+[node name="Grass" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("18_caj1j")
+centered = false
+
+[node name="PlatformRocks" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("19_wiwe1")
+centered = false
+
+[node name="RnadomRocks" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("20_n8jxl")
+centered = false
+
+[node name="TreePuzzleToFiz" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("21_4ktbf")
+centered = false
+
+[node name="Player" parent="." instance=ExtResource("22_awqvc")]
+z_index = 10
+position = Vector2(44, -46)
+speed = 69
+acceleration = 0.2
+deceleration = 0.14
+jump_velocity = 300
+jump_anticipation_multiplier = 1.5
+coyote_time_ms = 75
+animate_look_around_chance = 0.15
+
+[node name="Lamina" parent="." instance=ExtResource("23_n0tvp")]
+position = Vector2(462, -41)
+sprite = ExtResource("24_lxv2v")
+
+[node name="Hedera" parent="." instance=ExtResource("23_n0tvp")]
+position = Vector2(518, -72)
+sprite = ExtResource("25_h2vku")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(-50, -6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0, 1)
+shape = SubResource("WorldBoundaryShape2D_mr6wc")
+
+[node name="Icon2" type="Sprite2D" parent="Ground"]
+scale = Vector2(30.105, 0.055)
+texture = ExtResource("26_8lclu")
+centered = false
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+shape = SubResource("WorldBoundaryShape2D_w4v88")
+
+[node name="Rock" parent="." instance=ExtResource("27_555kp")]
+position = Vector2(501, -33)
+
+[node name="Platforms" type="Node2D" parent="."]
+position = Vector2(22, -116)
+
+[node name="Platform" type="StaticBody2D" parent="Platforms"]
+position = Vector2(992, 57)
+
+[node name="Icon" type="Sprite2D" parent="Platforms/Platform"]
+scale = Vector2(0.515625, 0.046875)
+texture = ExtResource("26_8lclu")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform"]
+position = Vector2(33, 3)
+shape = SubResource("RectangleShape2D_hmkuf")
+
+[node name="Platform2" type="StaticBody2D" parent="Platforms"]
+position = Vector2(876, 75)
+
+[node name="Icon" type="Sprite2D" parent="Platforms/Platform2"]
+scale = Vector2(0.515625, 0.046875)
+texture = ExtResource("26_8lclu")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2"]
+position = Vector2(33, 3)
+shape = SubResource("RectangleShape2D_hmkuf")
+
+[node name="Platform3" type="StaticBody2D" parent="Platforms"]
+position = Vector2(1112, 39)
+
+[node name="Icon" type="Sprite2D" parent="Platforms/Platform3"]
+scale = Vector2(0.515625, 0.046875)
+texture = ExtResource("26_8lclu")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3"]
+position = Vector2(33, 3)
+shape = SubResource("RectangleShape2D_hmkuf")
+
+[node name="PuzzleObjects" type="Node2D" parent="."]
+position = Vector2(1141, -44)
+
+[node name="Sprites" type="Node2D" parent="PuzzleObjects"]
+
+[node name="BeginingPuzzle" type="Sprite2D" parent="PuzzleObjects/Sprites"]
+position = Vector2(-388.5, 34)
+texture = ExtResource("28_lpso7")
+
+[node name="BrokenBridge" type="Sprite2D" parent="PuzzleObjects/Sprites"]
+position = Vector2(575, 16)
+texture = ExtResource("29_2dutd")
+
+[node name="BrokenTree" type="Sprite2D" parent="PuzzleObjects/Sprites"]
+position = Vector2(133, -36)
+texture = ExtResource("30_f5ijm")
+
+[node name="Indicators" type="Node2D" parent="PuzzleObjects"]
+
+[node name="PuzzleIndicator" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("31_wfgo4")]
+position = Vector2(-388.5, -6)
+puzzle_scene = ExtResource("32_wwkc3")
+puzzle_group = "Puzzle1Colliders"
+fixed_sprite = ExtResource("28_lpso7")
+sprite_object = NodePath("../../Sprites/BeginingPuzzle")
+
+[node name="PuzzleIndicator2" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("31_wfgo4")]
+position = Vector2(572, -31)
+puzzle_scene = ExtResource("33_fo815")
+puzzle_group = "Puzzle2Colliders"
+fixed_sprite = ExtResource("34_2v6il")
+sprite_object = NodePath("../../Sprites/BrokenBridge")
+
+[node name="PuzzleIndicator3" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("31_wfgo4")]
+position = Vector2(89, -92)
+puzzle_scene = ExtResource("35_qjxiw")
+puzzle_group = "Puzzle3Colliders"
+fixed_sprite = ExtResource("36_5ir4u")
+sprite_object = NodePath("../../Sprites/BrokenTree")
+
+[node name="UIAudio" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("37_2c1bn")
+
+[node name="Select" type="AudioStreamPlayer" parent="UIAudio"]
+stream = ExtResource("37_6kj34")
+volume_db = -5.971
+
+[node name="Click" type="AudioStreamPlayer" parent="UIAudio"]
+stream = ExtResource("38_yc1hb")

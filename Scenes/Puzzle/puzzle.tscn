@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhs05ayfbjvxk"]
+[gd_scene load_steps=16 format=3 uid="uid://bhs05ayfbjvxk"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle/puzzleManager.gd" id="1_5hm6r"]
 [ext_resource type="Texture2D" uid="uid://b3wxwjhe2nv4k" path="res://Sprites/Puzzle/ivypath frame02.png" id="1_ldf3w"]
+[ext_resource type="AudioStream" uid="uid://g6030o43ovhf" path="res://Audio/PuzzleFinish/PuzzleFinishShort.mp3" id="2_c4vpv"]
 [ext_resource type="PackedScene" uid="uid://cyhmn6hjhlm2f" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_l.tscn" id="4_nn40a"]
 [ext_resource type="PackedScene" uid="uid://bro3kv71gwr07" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_l_long.tscn" id="5_eydqa"]
 [ext_resource type="PackedScene" uid="uid://dpbk473o0mgwi" path="res://Scenes/Puzzle/PuzzleSlot.tscn" id="5_q23f7"]
@@ -10,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bifq4bdf61s8b" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_straight_m.tscn" id="8_nma7n"]
 [ext_resource type="Script" path="res://Scenes/Puzzle/back_button.gd" id="9_lnbmd"]
 [ext_resource type="Texture2D" uid="uid://jvq16braaowp" path="res://Sprites/Puzzle/backButton.png" id="10_fskvw"]
+[ext_resource type="Script" path="res://Scripts/puzzle/puzzle_audio.gd" id="11_k7gin"]
+[ext_resource type="AudioStream" uid="uid://cc1jijth885hb" path="res://Audio/Pickup/PlacePuzzle.wav" id="12_q5cty"]
+[ext_resource type="AudioStream" uid="uid://dfh2sxrhjk4we" path="res://Audio/Pickup/PickupPuzzle.wav" id="13_kygcb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywf2"]
 size = Vector2(20, 13)
@@ -27,18 +31,20 @@ mouse_filter = 2
 script = ExtResource("1_5hm6r")
 
 [node name="GridBorderSprite" type="TextureRect" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -84.5
-offset_right = 160.0
-offset_bottom = 84.5
+offset_left = -318.0
+offset_top = -166.0
+offset_right = 2.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 mouse_filter = 2
 texture = ExtResource("1_ldf3w")
 
@@ -203,6 +209,21 @@ offset_right = 65.0
 offset_bottom = 23.5
 theme_override_font_sizes/font_size = 10
 text = "RESET"
+
+[node name="PuzzleAudio" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("11_k7gin")
+
+[node name="PlaceBlock" type="AudioStreamPlayer" parent="PuzzleAudio"]
+stream = ExtResource("12_q5cty")
+volume_db = -14.928
+
+[node name="PickupBlock" type="AudioStreamPlayer" parent="PuzzleAudio"]
+stream = ExtResource("13_kygcb")
+volume_db = -14.928
+
+[node name="Win" type="AudioStreamPlayer" parent="PuzzleAudio"]
+stream = ExtResource("2_c4vpv")
 
 [connection signal="mouse_entered" from="GridBorderSprite/BackButton" to="GridBorderSprite/BackButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="GridBorderSprite/BackButton" to="GridBorderSprite/BackButton" method="_on_mouse_exited"]
