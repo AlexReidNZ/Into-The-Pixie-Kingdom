@@ -1,11 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6srab5ljjrdi"]
+[gd_scene load_steps=15 format=3 uid="uid://b6srab5ljjrdi"]
 
 [ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_w2gt3"]
 [ext_resource type="Texture2D" uid="uid://u1bipax4sfvp" path="res://Sprites/ITPK - Main Menu Sprites/Background.png" id="2_ydd3w"]
-[ext_resource type="FontFile" uid="uid://bly8c35dy2f6n" path="res://Fonts/8bitoperator/8bitoperator.ttf" id="3_caerr"]
 [ext_resource type="FontFile" uid="uid://o1a72htj8co0" path="res://Fonts/test fonts/Darling Coffee.ttf" id="3_j5y5q"]
+[ext_resource type="Texture2D" uid="uid://btpvho2iumflv" path="res://Scenes/book background.png" id="3_w45y3"]
 [ext_resource type="Texture2D" uid="uid://d0f3xic5am4vl" path="res://Sprites/ITPK - Main Menu Sprites/Start Button.png" id="5_sunfm"]
 [ext_resource type="Texture2D" uid="uid://d12w0jdug16u1" path="res://Sprites/ITPK - Main Menu Sprites/Quit Button.png" id="6_lpdh2"]
+[ext_resource type="Texture2D" uid="uid://diepo5m77sa6j" path="res://Sprites/ITPK - Main Menu Sprites/Options Button.png" id="7_h1cqq"]
+[ext_resource type="Texture2D" uid="uid://uewce76ltq6s" path="res://Sprites/Controls_UI/LeftArrow.png" id="9_bpbwx"]
+[ext_resource type="Texture2D" uid="uid://cjy6yn2cs0nkb" path="res://Sprites/Controls_UI/D_Key.png" id="10_mr6dl"]
+[ext_resource type="Texture2D" uid="uid://pd8ji7gct33w" path="res://Sprites/Controls_UI/A_Key.png" id="11_o3887"]
+[ext_resource type="Texture2D" uid="uid://cq2okuqnvc08w" path="res://Sprites/Controls_UI/Mouse_LeftClick.png" id="12_c0562"]
+[ext_resource type="Texture2D" uid="uid://xq7xtsyajmw1" path="res://Sprites/Controls_UI/SpaceBar.png" id="13_nwuv8"]
+[ext_resource type="Texture2D" uid="uid://dwu47x783upn" path="res://Sprites/Controls_UI/R_Key.png" id="14_ql24i"]
+[ext_resource type="Texture2D" uid="uid://cune8ifphwwfj" path="res://Sprites/Controls_UI/RightArrow.png" id="15_qbmtv"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -27,24 +35,125 @@ grow_vertical = 2
 texture = ExtResource("2_ydd3w")
 expand_mode = 1
 
+[node name="ControlsBackground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 496.0
+offset_top = 200.0
+offset_right = -8.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_w45y3")
+expand_mode = 1
+
+[node name="ControlsLabel" type="Label" parent="ControlsBackground"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 48.0
+offset_right = 285.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.502734, 0.194395, 0.352023, 1)
+theme_override_fonts/font = ExtResource("3_j5y5q")
+theme_override_font_sizes/font_size = 40
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="MovementLabel" type="Label" parent="ControlsBackground"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 108.0
+offset_right = 258.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(0.677513, 0.289343, 0.485155, 1)
+theme_override_fonts/font = ExtResource("3_j5y5q")
+theme_override_font_sizes/font_size = 18
+text = "Movement"
+horizontal_alignment = 1
+
+[node name="PuzzleLabel" type="Label" parent="ControlsBackground"]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 106.0
+offset_right = 537.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(0.677513, 0.289343, 0.485155, 1)
+theme_override_fonts/font = ExtResource("3_j5y5q")
+theme_override_font_sizes/font_size = 18
+text = "Puzzle Controls"
+horizontal_alignment = 1
+
+[node name="InteractLabel" type="Label" parent="ControlsBackground"]
+layout_mode = 0
+offset_left = 426.0
+offset_top = 168.0
+offset_right = 574.0
+offset_bottom = 192.0
+theme_override_colors/font_color = Color(0.677513, 0.289343, 0.485155, 1)
+theme_override_fonts/font = ExtResource("3_j5y5q")
+theme_override_font_sizes/font_size = 18
+text = "Interact"
+horizontal_alignment = 1
+
+[node name="RotateLabel" type="Label" parent="ControlsBackground"]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 270.0
+offset_right = 559.0
+offset_bottom = 294.0
+theme_override_colors/font_color = Color(0.677513, 0.289343, 0.485155, 1)
+theme_override_fonts/font = ExtResource("3_j5y5q")
+theme_override_font_sizes/font_size = 18
+text = "Rotate"
+horizontal_alignment = 1
+
+[node name="JumpLabel" type="Label" parent="ControlsBackground"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 276.0
+offset_right = 233.0
+offset_bottom = 300.0
+theme_override_colors/font_color = Color(0.677513, 0.289343, 0.485155, 1)
+theme_override_fonts/font = ExtResource("3_j5y5q")
+theme_override_font_sizes/font_size = 18
+text = "Jump"
+horizontal_alignment = 1
+
+[node name="OrLabel" type="Label" parent="ControlsBackground"]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 182.0
+offset_right = 214.0
+offset_bottom = 201.0
+theme_override_colors/font_color = Color(0.677513, 0.289343, 0.485155, 1)
+theme_override_fonts/font = ExtResource("3_j5y5q")
+theme_override_font_sizes/font_size = 18
+text = "Or"
+horizontal_alignment = 1
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 171.0
-offset_top = 62.0
-offset_right = 994.0
-offset_bottom = 160.0
+offset_left = 120.0
+offset_top = 40.0
+offset_right = 1061.0
+offset_bottom = 138.0
 theme_override_colors/font_color = Color(0.999864, 0.932216, 0.949107, 1)
-theme_override_fonts/font = ExtResource("3_caerr")
+theme_override_colors/font_shadow_color = Color(0.428608, 0.624973, 0.520049, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 5
+theme_override_fonts/font = ExtResource("3_j5y5q")
 theme_override_font_sizes/font_size = 80
 text = "Into the Pixie Kingdom"
 
 [node name="GameEnd" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 366.0
-offset_top = 201.0
-offset_right = 821.0
-offset_bottom = 261.0
+offset_left = 352.0
+offset_top = 136.0
+offset_right = 807.0
+offset_bottom = 196.0
 theme_override_colors/font_color = Color(0.300382, 0.980229, 0.684031, 1)
 theme_override_fonts/font = ExtResource("3_j5y5q")
 theme_override_font_sizes/font_size = 45
@@ -52,46 +161,105 @@ text = "Thanks for playing!"
 horizontal_alignment = 1
 
 [node name="Resume" type="TextureButton" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = 238.0
-offset_top = 371.0
-offset_right = 471.0
-offset_bottom = 441.0
+offset_left = 136.0
+offset_top = 272.0
+offset_right = 376.0
+offset_bottom = 352.0
 texture_normal = ExtResource("5_sunfm")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Resume"]
 layout_mode = 0
-offset_left = 33.0
-offset_top = 14.0
-offset_right = 200.0
-offset_bottom = 48.0
-theme_override_colors/font_color = Color(0.0214346, 0.0214346, 0.0214346, 1)
-theme_override_fonts/font = ExtResource("3_caerr")
-theme_override_font_sizes/font_size = 32
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 209.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0.478431, 0, 0.113725, 1)
+theme_override_fonts/font = ExtResource("3_j5y5q")
+theme_override_font_sizes/font_size = 28
 text = "Play"
 horizontal_alignment = 1
 
 [node name="Quit" type="TextureButton" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = 699.0
-offset_top = 359.0
-offset_right = 933.0
-offset_bottom = 452.0
+offset_left = 136.0
+offset_top = 480.0
+offset_right = 376.0
+offset_bottom = 560.0
 texture_normal = ExtResource("6_lpdh2")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Quit"]
+[node name="Label2" type="Label" parent="Quit"]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 25.0
-offset_right = 204.0
-offset_bottom = 60.0
-theme_override_colors/font_color = Color(0.0295066, 0.0295066, 0.0295066, 1)
-theme_override_fonts/font = ExtResource("3_caerr")
-theme_override_font_sizes/font_size = 32
+offset_left = 31.0
+offset_top = 20.0
+offset_right = 210.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0.478431, 0, 0.113725, 1)
+theme_override_fonts/font = ExtResource("3_j5y5q")
+theme_override_font_sizes/font_size = 28
 text = "Quit"
 horizontal_alignment = 1
+
+[node name="Options" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 136.0
+offset_top = 376.0
+offset_right = 376.0
+offset_bottom = 456.0
+texture_normal = ExtResource("7_h1cqq")
+stretch_mode = 5
+
+[node name="Label3" type="Label" parent="Options"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 23.0
+offset_right = 212.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.478431, 0, 0.113725, 1)
+theme_override_fonts/font = ExtResource("3_j5y5q")
+theme_override_font_sizes/font_size = 28
+text = "Options"
+horizontal_alignment = 1
+
+[node name="LeftArrow" type="Sprite2D" parent="."]
+position = Vector2(653, 422.8)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_bpbwx")
+
+[node name="DKey" type="Sprite2D" parent="."]
+position = Vector2(717, 355.8)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("10_mr6dl")
+
+[node name="AKey" type="Sprite2D" parent="."]
+position = Vector2(653, 355.8)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_o3887")
+
+[node name="MouseLeftClick" type="Sprite2D" parent="."]
+position = Vector2(908, 381)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("12_c0562")
+
+[node name="SpaceBar" type="Sprite2D" parent="."]
+position = Vector2(685, 520)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("13_nwuv8")
+
+[node name="RKey" type="Sprite2D" parent="."]
+position = Vector2(910, 478)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("14_ql24i")
+
+[node name="RightArrow" type="Sprite2D" parent="."]
+position = Vector2(717, 422.8)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("15_qbmtv")
 
 [connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Resume" to="." method="_on_close_pressed"]
