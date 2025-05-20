@@ -1,0 +1,239 @@
+[gd_scene load_steps=19 format=3 uid="uid://d0q7ekijn3xcg"]
+
+[ext_resource type="Script" path="res://Scripts/puzzle/puzzleManager.gd" id="1_kx7l1"]
+[ext_resource type="AudioStream" uid="uid://dhx6gty2h3g04" path="res://Audio/PuzzleFinish/PuzzleFinishLong.wav" id="2_7hohf"]
+[ext_resource type="Texture2D" uid="uid://b3wxwjhe2nv4k" path="res://Sprites/Puzzle/ivypath frame02.png" id="2_y03if"]
+[ext_resource type="PackedScene" uid="uid://dpbk473o0mgwi" path="res://Scenes/Puzzle/PuzzleSlot.tscn" id="3_l4llq"]
+[ext_resource type="PackedScene" uid="uid://cyhmn6hjhlm2f" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_l.tscn" id="4_qw1qi"]
+[ext_resource type="PackedScene" uid="uid://c1vruqq0sq1c5" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_square.tscn" id="6_g4ofa"]
+[ext_resource type="PackedScene" uid="uid://b7sjuewe0grbs" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_straight_l.tscn" id="7_bsjqu"]
+[ext_resource type="PackedScene" uid="uid://cytyrkcontwse" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_s.tscn" id="7_d2h45"]
+[ext_resource type="PackedScene" uid="uid://flj1uy4s5840" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_straight_s.tscn" id="8_l0dao"]
+[ext_resource type="PackedScene" uid="uid://bqci0lybmp3w8" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_f.tscn" id="9_lqd41"]
+[ext_resource type="Script" path="res://Scenes/Puzzle/back_button.gd" id="9_xmcks"]
+[ext_resource type="Texture2D" uid="uid://jvq16braaowp" path="res://Sprites/Puzzle/backButton.png" id="10_djevq"]
+[ext_resource type="PackedScene" uid="uid://dh8lwaixxleby" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_t.tscn" id="10_ec3wr"]
+[ext_resource type="PackedScene" uid="uid://ohifdccu0ptl" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_d.tscn" id="11_0jvmu"]
+[ext_resource type="Script" path="res://Scripts/puzzle/puzzle_audio.gd" id="14_ykfsa"]
+[ext_resource type="AudioStream" uid="uid://cc1jijth885hb" path="res://Audio/Pickup/PlacePuzzle.wav" id="15_vsvo0"]
+[ext_resource type="AudioStream" uid="uid://dfh2sxrhjk4we" path="res://Audio/Pickup/PickupPuzzle.wav" id="16_d3gfu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywf2"]
+size = Vector2(20, 13)
+
+[node name="Puzzle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("1_kx7l1")
+
+[node name="GridBorderSprite" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -318.0
+offset_top = -166.0
+offset_right = 2.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+mouse_filter = 2
+texture = ExtResource("2_y03if")
+
+[node name="GridSlots" type="Node2D" parent="GridBorderSprite" groups=["Puzzle2Colliders"]]
+position = Vector2(-96, -59.5)
+
+[node name="PuzzleSlot1" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(200, 88)
+
+[node name="PuzzleSlot2" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(222, 88)
+
+[node name="PuzzleSlot3" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(244, 88)
+
+[node name="PuzzleSlot4" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(266, 88)
+
+[node name="PuzzleSlot5" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(288, 88)
+
+[node name="PuzzleSlot6" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(310, 88)
+
+[node name="PuzzleSlot7" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(200, 110)
+
+[node name="PuzzleSlot8" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(222, 110)
+
+[node name="PuzzleSlot9" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(244, 110)
+
+[node name="PuzzleSlot10" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(266, 110)
+
+[node name="PuzzleSlot11" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(288, 110)
+
+[node name="PuzzleSlot12" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(310, 110)
+
+[node name="PuzzleSlot13" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(200, 132)
+
+[node name="PuzzleSlot14" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(222, 132)
+
+[node name="PuzzleSlot15" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(244, 132)
+
+[node name="PuzzleSlot16" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(266, 132)
+
+[node name="PuzzleSlot17" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(288, 132)
+
+[node name="PuzzleSlot18" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(310, 132)
+
+[node name="PuzzleSlot19" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(200, 154)
+
+[node name="PuzzleSlot20" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(222, 154)
+
+[node name="PuzzleSlot21" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(244, 154)
+
+[node name="PuzzleSlot22" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(266, 154)
+
+[node name="PuzzleSlot23" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(288, 154)
+
+[node name="PuzzleSlot24" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(310, 154)
+
+[node name="PuzzleSlot25" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(200, 176)
+
+[node name="PuzzleSlot26" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(222, 176)
+
+[node name="PuzzleSlot27" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(244, 176)
+
+[node name="PuzzleSlot28" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(266, 176)
+
+[node name="PuzzleSlot29" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(288, 176)
+
+[node name="PuzzleSlot30" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(310, 176)
+
+[node name="PuzzleSlot31" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(200, 198)
+
+[node name="PuzzleSlot32" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(222, 198)
+
+[node name="PuzzleSlot33" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(244, 198)
+
+[node name="PuzzleSlot34" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(266, 198)
+
+[node name="PuzzleSlot35" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(288, 198)
+
+[node name="PuzzleSlot36" parent="GridBorderSprite/GridSlots" instance=ExtResource("3_l4llq")]
+position = Vector2(310, 198)
+
+[node name="PuzzlePieces" type="Node2D" parent="GridBorderSprite"]
+
+[node name="PuzzlePieceL" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("4_qw1qi")]
+position = Vector2(287, 142.5)
+rotation = 4.71239
+scale = Vector2(-1, 1)
+
+[node name="PuzzlePieceSquare" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("6_g4ofa")]
+position = Vector2(297, 23.5)
+
+[node name="PuzzlePieceStraightL" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("7_bsjqu")]
+position = Vector2(41, 149.5)
+
+[node name="PuzzlePieceS" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("7_d2h45")]
+position = Vector2(295, 87.5)
+rotation = 1.5708
+
+[node name="PuzzlePieceS2" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("7_d2h45")]
+position = Vector2(40, 47.5)
+scale = Vector2(-1, 1)
+
+[node name="PuzzlePieceStraightS" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("8_l0dao")]
+position = Vector2(260, 114.5)
+rotation = 1.5708
+
+[node name="PuzzlePieceF" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("9_lqd41")]
+position = Vector2(55, 105.5)
+rotation = 1.5708
+
+[node name="PuzzlePieceT" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("10_ec3wr")]
+position = Vector2(256, 44.5)
+rotation = 1.5708
+
+[node name="PuzzlePieceD" parent="GridBorderSprite/PuzzlePieces" instance=ExtResource("11_0jvmu")]
+position = Vector2(22, 104.5)
+rotation = 1.5708
+
+[node name="BackButton" type="Area2D" parent="GridBorderSprite"]
+position = Vector2(13, 12.5)
+script = ExtResource("9_xmcks")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridBorderSprite/BackButton"]
+shape = SubResource("RectangleShape2D_iywf2")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridBorderSprite/BackButton"]
+texture = ExtResource("10_djevq")
+
+[node name="Button" type="Button" parent="GridBorderSprite"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 1.5
+offset_right = 65.0
+offset_bottom = 23.5
+theme_override_font_sizes/font_size = 10
+text = "RESET"
+
+[node name="PuzzleAudio" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("14_ykfsa")
+
+[node name="PlaceBlock" type="AudioStreamPlayer" parent="PuzzleAudio"]
+stream = ExtResource("15_vsvo0")
+volume_db = -14.928
+
+[node name="PickupBlock" type="AudioStreamPlayer" parent="PuzzleAudio"]
+stream = ExtResource("16_d3gfu")
+volume_db = -14.928
+
+[node name="Win" type="AudioStreamPlayer" parent="PuzzleAudio"]
+stream = ExtResource("2_7hohf")
+
+[connection signal="mouse_entered" from="GridBorderSprite/BackButton" to="GridBorderSprite/BackButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GridBorderSprite/BackButton" to="GridBorderSprite/BackButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="GridBorderSprite/Button" to="." method="reset_puzzle"]

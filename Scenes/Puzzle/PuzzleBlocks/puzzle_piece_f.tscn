@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqci0lybmp3w8"]
+
+[ext_resource type="Script" path="res://Scripts/puzzle/PuzzleBlock.gd" id="1_4h38x"]
+[ext_resource type="Texture2D" uid="uid://8jbxh24qob3" path="res://Sprites/Puzzle/tiles/Twig4.png" id="2_tgx2l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5k6i8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0poyr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v3l4"]
+
+[node name="PuzzlePieceF" type="Node2D"]
+position = Vector2(308, 359)
+script = ExtResource("1_4h38x")
+
+[node name="GridColliders" type="Node2D" parent="."]
+
+[node name="Collider1" type="Area2D" parent="GridColliders"]
+position = Vector2(1, -20)
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridColliders/Collider1"]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_5k6i8")
+debug_color = Color(0.981629, 0, 0.369384, 0.42)
+
+[node name="Collider2" type="Area2D" parent="GridColliders"]
+position = Vector2(-20, 0)
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridColliders/Collider2"]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_5k6i8")
+debug_color = Color(0.981629, 0, 0.369384, 0.42)
+
+[node name="Collider3" type="Area2D" parent="GridColliders"]
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridColliders/Collider3"]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_5k6i8")
+debug_color = Color(0.981629, 0, 0.369384, 0.42)
+
+[node name="Collider4" type="Area2D" parent="GridColliders"]
+position = Vector2(20, 0)
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridColliders/Collider4"]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_5k6i8")
+debug_color = Color(0.981629, 0, 0.369384, 0.42)
+
+[node name="Collider5" type="Area2D" parent="GridColliders"]
+position = Vector2(20, 20)
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridColliders/Collider5"]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_5k6i8")
+debug_color = Color(0.981629, 0, 0.369384, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_tgx2l")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_0poyr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -20)
+shape = SubResource("RectangleShape2D_4v3l4")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_4v3l4")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

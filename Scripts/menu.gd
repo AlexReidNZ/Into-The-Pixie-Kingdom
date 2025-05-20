@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://platformer/platform_level.tscn")
+	get_tree().change_scene_to_file.call_deferred("res://Scenes/Levels/level_1.tscn")
 
 func _on_options_pressed() -> void:
 	pass # Replace with function body.

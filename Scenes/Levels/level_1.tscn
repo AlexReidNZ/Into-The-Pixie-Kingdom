@@ -1,0 +1,249 @@
+[gd_scene load_steps=34 format=3 uid="uid://ceia108gqkgrh"]
+
+[ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
+[ext_resource type="Texture2D" uid="uid://cmpfh3mh4vjiq" path="res://Sprites/Ivy Path Backgrounds/Background.png" id="2_ji2qm"]
+[ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="3_u8vf5"]
+[ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="4_srh1p"]
+[ext_resource type="AudioStream" uid="uid://c3ibrpwhmts2e" path="res://Audio/TextScroll/TextScroll.wav" id="6_ilghy"]
+[ext_resource type="Texture2D" uid="uid://y5fjlsakfeth" path="res://Sprites/ground1.png" id="7_g0htd"]
+[ext_resource type="AudioStream" uid="uid://bnxrci2plytfh" path="res://Audio/TextScroll/TextScroll3.wav" id="8_aqnd5"]
+[ext_resource type="Texture2D" uid="uid://cybrbwhlsnekx" path="res://Sprites/ground2.png" id="8_l1qk3"]
+[ext_resource type="Texture2D" uid="uid://c7nr7kx1bk2hc" path="res://Sprites/Bushes.png" id="10_t4k28"]
+[ext_resource type="Texture2D" uid="uid://brsjqcylvbq04" path="res://Sprites/SideBushes2.png" id="11_ytc3w"]
+[ext_resource type="Texture2D" uid="uid://cxisagdugws2h" path="res://Sprites/SideBushes.png" id="13_svo3r"]
+[ext_resource type="Texture2D" uid="uid://b5ionch14vyu8" path="res://Sprites/Gorse.png" id="14_tej4t"]
+[ext_resource type="PackedScene" uid="uid://dm65n77dur5bu" path="res://Scenes/rock.tscn" id="22_q8kxe"]
+[ext_resource type="PackedScene" uid="uid://cdsd4l7hvxuqn" path="res://Scenes/npc_body.tscn" id="23_yprgw"]
+[ext_resource type="Script" path="res://Scripts/ui_audio.gd" id="24_fpwxx"]
+[ext_resource type="Texture2D" uid="uid://c4crobg2ixorf" path="res://Sprites/Lamina.png" id="24_x36lw"]
+[ext_resource type="Texture2D" uid="uid://ctu5riag25ib1" path="res://Sprites/Hedera.png" id="25_jp23x"]
+[ext_resource type="AudioStream" uid="uid://b07nrylqn4bxp" path="res://Audio/ButtonClick/Select.wav" id="25_lv02p"]
+[ext_resource type="AudioStream" uid="uid://d0fqc3n46wjxl" path="res://Audio/ButtonClick/Click.wav" id="26_6qdgh"]
+[ext_resource type="PackedScene" uid="uid://cjh0ek7l4pjl8" path="res://Scenes/Puzzle/puzzle_indicator.tscn" id="28_m5tlm"]
+[ext_resource type="Texture2D" uid="uid://bcedy17mltjap" path="res://Sprites/Puzzle/worldSprites/Begining puzzle.png" id="28_q2xun"]
+[ext_resource type="Texture2D" uid="uid://cfogq20d8e7kt" path="res://Sprites/Puzzle/worldSprites/Broken Bridge.png" id="29_y6ysw"]
+[ext_resource type="Texture2D" uid="uid://uicaseo12kg1" path="res://Sprites/Puzzle/worldSprites/Broken Tree.png" id="30_577wq"]
+[ext_resource type="PackedScene" uid="uid://bhs05ayfbjvxk" path="res://Scenes/Puzzle/puzzle.tscn" id="32_58wvc"]
+[ext_resource type="PackedScene" uid="uid://d0q7ekijn3xcg" path="res://Scenes/Puzzle/puzzle02.tscn" id="33_rqe47"]
+[ext_resource type="Texture2D" uid="uid://dh5ntwaktn4la" path="res://Sprites/Puzzle/worldSprites/Fixed Bridge.png" id="34_ynee1"]
+[ext_resource type="PackedScene" uid="uid://doot1xvshlh6h" path="res://Scenes/Puzzle/puzzle03.tscn" id="35_50h6p"]
+[ext_resource type="Texture2D" uid="uid://cs2vvvlyoxyvs" path="res://Sprites/Puzzle/worldSprites/Fixed Tree.png" id="36_tnrut"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x48l1"]
+radius = 42.6175
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mr6wc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w4v88"]
+normal = Vector2(1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rgj4"]
+size = Vector2(20, 156)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs31p"]
+size = Vector2(124, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtdxp"]
+size = Vector2(30, 153)
+
+[node name="PlatformLevel" type="Node2D"]
+texture_filter = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_end_trigger") instance=ExtResource("1_tt3mb")]
+visible = false
+game_end_trigger = NodePath("../../GameEndTrigger")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Layer0" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(1518.91, 0)
+
+[node name="BigBackground" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("2_ji2qm")
+centered = false
+
+[node name="GameEndTrigger" type="Area2D" parent="."]
+z_index = 10
+position = Vector2(1906.5, -42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameEndTrigger"]
+position = Vector2(3.5, 7)
+shape = SubResource("CircleShape2D_x48l1")
+
+[node name="Player" parent="." instance=ExtResource("3_u8vf5")]
+unique_name_in_owner = true
+z_index = 10
+position = Vector2(44, -46)
+speed = 69
+acceleration = 0.2
+deceleration = 0.14
+jump_velocity = 300
+jump_anticipation_multiplier = 1.5
+coyote_time_ms = 75
+animate_look_around_chance = 0.15
+
+[node name="Lamina" parent="." instance=ExtResource("23_yprgw")]
+position = Vector2(331, -29)
+sprite = ExtResource("24_x36lw")
+dialogue_audio = ExtResource("6_ilghy")
+
+[node name="Hedera" parent="." instance=ExtResource("23_yprgw")]
+position = Vector2(387, -60)
+sprite = ExtResource("25_jp23x")
+dialogue_audio = ExtResource("8_aqnd5")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(-50, -6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0, 1)
+shape = SubResource("WorldBoundaryShape2D_mr6wc")
+
+[node name="Ground Sprites" type="Node2D" parent="Ground"]
+
+[node name="Ground1" type="Sprite2D" parent="Ground/Ground Sprites"]
+position = Vector2(247, -15)
+scale = Vector2(1, 0.916887)
+texture = ExtResource("7_g0htd")
+
+[node name="Ground3" type="Sprite2D" parent="Ground/Ground Sprites"]
+position = Vector2(661, -18)
+scale = Vector2(1, 0.916887)
+texture = ExtResource("7_g0htd")
+
+[node name="Ground4" type="Sprite2D" parent="Ground/Ground Sprites"]
+position = Vector2(1545, -18)
+scale = Vector2(1, 0.916887)
+texture = ExtResource("7_g0htd")
+
+[node name="Ground2" type="Sprite2D" parent="Ground/Ground Sprites"]
+position = Vector2(1123, -22)
+scale = Vector2(1, 0.939394)
+texture = ExtResource("8_l1qk3")
+
+[node name="Ground5" type="Sprite2D" parent="Ground/Ground Sprites"]
+position = Vector2(1908, -22)
+scale = Vector2(1, 0.939394)
+texture = ExtResource("8_l1qk3")
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+shape = SubResource("WorldBoundaryShape2D_w4v88")
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Gorse" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(566, -41)
+texture = ExtResource("14_tej4t")
+
+[node name="Bushes" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(1103, -23)
+texture = ExtResource("10_t4k28")
+
+[node name="SideBushes2" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(1906.5, -42)
+texture = ExtResource("11_ytc3w")
+
+[node name="SideBushes3" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(2052, -43)
+texture = ExtResource("11_ytc3w")
+flip_h = true
+
+[node name="Rock" parent="Objects" instance=ExtResource("22_q8kxe")]
+position = Vector2(370, -21)
+
+[node name="SideBushes" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(75, -19)
+texture = ExtResource("13_svo3r")
+
+[node name="Platforms" type="Node2D" parent="."]
+position = Vector2(22, -116)
+
+[node name="Rock" parent="Platforms" instance=ExtResource("22_q8kxe")]
+position = Vector2(1092, 82)
+
+[node name="PuzzleObjects" type="Node2D" parent="."]
+position = Vector2(1141, -44)
+
+[node name="Sprites" type="Node2D" parent="PuzzleObjects"]
+
+[node name="BeginingPuzzle" type="Sprite2D" parent="PuzzleObjects/Sprites"]
+position = Vector2(451.5, 38)
+texture = ExtResource("28_q2xun")
+
+[node name="InvisibleWall" type="StaticBody2D" parent="PuzzleObjects/Sprites/BeginingPuzzle"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleObjects/Sprites/BeginingPuzzle/InvisibleWall"]
+position = Vector2(45.5, -70)
+shape = SubResource("RectangleShape2D_1rgj4")
+
+[node name="BrokenBridge" type="Sprite2D" parent="PuzzleObjects/Sprites"]
+position = Vector2(-307, 25)
+texture = ExtResource("29_y6ysw")
+
+[node name="BridgeCollision" type="StaticBody2D" parent="PuzzleObjects/Sprites/BrokenBridge"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleObjects/Sprites/BrokenBridge/BridgeCollision"]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_qs31p")
+
+[node name="BrokenTree" type="Sprite2D" parent="PuzzleObjects/Sprites"]
+position = Vector2(133, -32.5)
+texture = ExtResource("30_577wq")
+
+[node name="TreeCollision" type="StaticBody2D" parent="PuzzleObjects/Sprites/BrokenTree"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleObjects/Sprites/BrokenTree/TreeCollision"]
+position = Vector2(5, -1)
+shape = SubResource("RectangleShape2D_mtdxp")
+
+[node name="Indicators" type="Node2D" parent="PuzzleObjects"]
+
+[node name="PuzzleIndicator" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
+position = Vector2(451.5, -2)
+puzzle_scene = ExtResource("32_58wvc")
+puzzle_group = "Puzzle1Colliders"
+fixed_sprite = ExtResource("28_q2xun")
+sprite_object = NodePath("../../Sprites/BeginingPuzzle")
+sprite_collision = NodePath("../../Sprites/BeginingPuzzle/InvisibleWall/CollisionShape2D")
+
+[node name="PuzzleIndicator2" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
+position = Vector2(-306, -22)
+puzzle_scene = ExtResource("33_rqe47")
+puzzle_group = "Puzzle2Colliders"
+fixed_sprite = ExtResource("34_ynee1")
+sprite_object = NodePath("../../Sprites/BrokenBridge")
+sprite_collision = NodePath("../../Sprites/BrokenBridge/BridgeCollision/CollisionShape2D")
+
+[node name="PuzzleIndicator3" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
+position = Vector2(89, -88.5)
+puzzle_scene = ExtResource("35_50h6p")
+puzzle_group = "Puzzle3Colliders"
+fixed_sprite = ExtResource("36_tnrut")
+sprite_object = NodePath("../../Sprites/BrokenTree")
+sprite_collision = NodePath("../../Sprites/BrokenTree/TreeCollision/CollisionShape2D")
+
+[node name="UIAudio" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("24_fpwxx")
+
+[node name="Select" type="AudioStreamPlayer" parent="UIAudio"]
+stream = ExtResource("25_lv02p")
+volume_db = -5.971
+
+[node name="Click" type="AudioStreamPlayer" parent="UIAudio"]
+stream = ExtResource("26_6qdgh")
+
+[connection signal="area_entered" from="GameEndTrigger" to="CanvasLayer/PauseMenu" method="_on_game_end_trigger_area_entered"]

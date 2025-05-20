@@ -1,8 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfrj4t5rn0lay"]
+[gd_scene load_steps=17 format=3 uid="uid://cfrj4t5rn0lay"]
 
 [ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="1_bxnp0"]
+[ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_h6i81"]
 [ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="1_woxqj"]
 [ext_resource type="Texture2D" uid="uid://boy25fpexvose" path="res://platformer/Ivy Path Background.png" id="3_k08ho"]
+[ext_resource type="PackedScene" uid="uid://cjh0ek7l4pjl8" path="res://Scenes/Puzzle/puzzle_indicator.tscn" id="4_31p03"]
+[ext_resource type="PackedScene" uid="uid://bhs05ayfbjvxk" path="res://Scenes/Puzzle/puzzle.tscn" id="5_qa8o1"]
+[ext_resource type="Texture2D" uid="uid://bcedy17mltjap" path="res://Sprites/Puzzle/worldSprites/Begining puzzle.png" id="6_ikes7"]
+[ext_resource type="Texture2D" uid="uid://dh5ntwaktn4la" path="res://Sprites/Puzzle/worldSprites/Fixed Bridge.png" id="6_luw35"]
+[ext_resource type="PackedScene" uid="uid://d0q7ekijn3xcg" path="res://Scenes/Puzzle/puzzle02.tscn" id="7_is1mo"]
+[ext_resource type="Texture2D" uid="uid://cfogq20d8e7kt" path="res://Sprites/Puzzle/worldSprites/Broken Bridge.png" id="7_m2hj8"]
+[ext_resource type="Texture2D" uid="uid://uicaseo12kg1" path="res://Sprites/Puzzle/worldSprites/Broken Tree.png" id="8_sfko2"]
+[ext_resource type="PackedScene" uid="uid://doot1xvshlh6h" path="res://Scenes/Puzzle/puzzle03.tscn" id="9_tsi81"]
+[ext_resource type="Texture2D" uid="uid://cs2vvvlyoxyvs" path="res://Sprites/Puzzle/worldSprites/Fixed Tree.png" id="10_ybuqc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mr6wc"]
 
@@ -14,6 +24,10 @@ size = Vector2(66, 6)
 
 [node name="PlatformLevel" type="Node2D"]
 texture_filter = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_h6i81")]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.5, 0)
@@ -162,3 +176,43 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform9"]
 position = Vector2(33, 3)
 shape = SubResource("RectangleShape2D_hmkuf")
+
+[node name="PuzzleObjects" type="Node2D" parent="."]
+position = Vector2(1141, -44)
+
+[node name="Sprites" type="Node2D" parent="PuzzleObjects"]
+
+[node name="BeginingPuzzle" type="Sprite2D" parent="PuzzleObjects/Sprites"]
+position = Vector2(-1031, 33)
+texture = ExtResource("6_ikes7")
+
+[node name="BrokenBridge" type="Sprite2D" parent="PuzzleObjects/Sprites"]
+position = Vector2(-570, 16)
+texture = ExtResource("7_m2hj8")
+
+[node name="BrokenTree" type="Sprite2D" parent="PuzzleObjects/Sprites"]
+position = Vector2(10, -37)
+texture = ExtResource("8_sfko2")
+
+[node name="Indicators" type="Node2D" parent="PuzzleObjects"]
+
+[node name="PuzzleIndicator" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("4_31p03")]
+position = Vector2(-1031, -7)
+puzzle_scene = ExtResource("5_qa8o1")
+puzzle_group = "Puzzle1Colliders"
+fixed_sprite = ExtResource("6_ikes7")
+sprite_object = NodePath("../../Sprites/BeginingPuzzle")
+
+[node name="PuzzleIndicator2" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("4_31p03")]
+position = Vector2(-570, -14)
+puzzle_scene = ExtResource("7_is1mo")
+puzzle_group = "Puzzle2Colliders"
+fixed_sprite = ExtResource("6_luw35")
+sprite_object = NodePath("../../Sprites/BrokenBridge")
+
+[node name="PuzzleIndicator3" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("4_31p03")]
+position = Vector2(0, 0)
+puzzle_scene = ExtResource("9_tsi81")
+puzzle_group = "Puzzle3Colliders"
+fixed_sprite = ExtResource("10_ybuqc")
+sprite_object = NodePath("../../Sprites/BrokenTree")
