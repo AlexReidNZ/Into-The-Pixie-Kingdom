@@ -12,6 +12,7 @@ var is_droppable = false
 var current_overlaps = []
 @onready var start_pos = global_position
 var initial_scale
+@onready var puzzle_audio: PuzzleAudio = %PuzzleAudio
 
 func _ready() -> void:
 	initial_scale = transform.get_scale()
@@ -60,8 +61,10 @@ func drop_piece():
 	for area in gridColliders:
 		if area.has_overlapping_areas():
 			area.get_overlapping_areas()[0].slotTaken = true
+	puzzle_audio.play_place_block()
 
 func start_drag():
+	puzzle_audio.play_pickup_block()
 	current_overlaps.clear()
 	start_pos = global_position
 	puzzleManager.is_dragging = true

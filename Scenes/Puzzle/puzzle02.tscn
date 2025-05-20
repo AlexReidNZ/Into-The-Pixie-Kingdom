@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0q7ekijn3xcg"]
+[gd_scene load_steps=19 format=3 uid="uid://d0q7ekijn3xcg"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle/puzzleManager.gd" id="1_kx7l1"]
+[ext_resource type="AudioStream" uid="uid://dhx6gty2h3g04" path="res://Audio/PuzzleFinish/PuzzleFinishLong.wav" id="2_7hohf"]
 [ext_resource type="Texture2D" uid="uid://b3wxwjhe2nv4k" path="res://Sprites/Puzzle/ivypath frame02.png" id="2_y03if"]
 [ext_resource type="PackedScene" uid="uid://dpbk473o0mgwi" path="res://Scenes/Puzzle/PuzzleSlot.tscn" id="3_l4llq"]
 [ext_resource type="PackedScene" uid="uid://cyhmn6hjhlm2f" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_l.tscn" id="4_qw1qi"]
@@ -13,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://jvq16braaowp" path="res://Sprites/Puzzle/backButton.png" id="10_djevq"]
 [ext_resource type="PackedScene" uid="uid://dh8lwaixxleby" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_t.tscn" id="10_ec3wr"]
 [ext_resource type="PackedScene" uid="uid://ohifdccu0ptl" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_d.tscn" id="11_0jvmu"]
+[ext_resource type="Script" path="res://Scripts/puzzle/puzzle_audio.gd" id="14_ykfsa"]
+[ext_resource type="AudioStream" uid="uid://cc1jijth885hb" path="res://Audio/Pickup/PlacePuzzle.wav" id="15_vsvo0"]
+[ext_resource type="AudioStream" uid="uid://dfh2sxrhjk4we" path="res://Audio/Pickup/PickupPuzzle.wav" id="16_d3gfu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywf2"]
 size = Vector2(20, 13)
@@ -28,6 +32,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("1_kx7l1")
+win_sound = ExtResource("2_7hohf")
 
 [node name="GridBorderSprite" type="TextureRect" parent="."]
 layout_mode = 1
@@ -203,6 +208,23 @@ shape = SubResource("RectangleShape2D_iywf2")
 
 [node name="Sprite2D" type="Sprite2D" parent="GridBorderSprite/BackButton"]
 texture = ExtResource("10_djevq")
+
+[node name="PuzzleAudio" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("14_ykfsa")
+
+[node name="PlaceBlock" type="AudioStreamPlayer" parent="PuzzleAudio"]
+stream = ExtResource("15_vsvo0")
+volume_db = -14.928
+bus = &"UI"
+
+[node name="PickupBlock" type="AudioStreamPlayer" parent="PuzzleAudio"]
+stream = ExtResource("16_d3gfu")
+volume_db = -14.928
+bus = &"UI"
+
+[node name="Win" type="AudioStreamPlayer" parent="PuzzleAudio"]
+stream = ExtResource("2_7hohf")
 
 [node name="Button" type="Button" parent="GridBorderSprite"]
 offset_left = 28.0

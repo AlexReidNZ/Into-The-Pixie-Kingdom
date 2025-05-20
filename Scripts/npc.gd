@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var sprite: Texture
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@export var dialogue_audio: AudioStream
 
 # Holds this NPC's dialog lines
 var dialog_lines: Array = []
@@ -13,6 +14,7 @@ func _ready() -> void:
 	var npc_name = name
 	sprite_2d.texture = sprite
 	dialog_lines = DialogDatabase.get_dialog(npc_name)
+	(get_node("Audio/Dialogue") as AudioStreamPlayer).stream = dialogue_audio
 
 func _on_interact():
 	if has_spoken:

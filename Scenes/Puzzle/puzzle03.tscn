@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://doot1xvshlh6h"]
+[gd_scene load_steps=18 format=3 uid="uid://doot1xvshlh6h"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle/puzzleManager.gd" id="1_rdvuq"]
+[ext_resource type="AudioStream" uid="uid://88su0xho3tw1" path="res://Audio/RebuildHouse/Powerup.wav" id="2_mrogd"]
 [ext_resource type="Texture2D" uid="uid://b3wxwjhe2nv4k" path="res://Sprites/Puzzle/ivypath frame02.png" id="2_yjw5c"]
 [ext_resource type="PackedScene" uid="uid://dpbk473o0mgwi" path="res://Scenes/Puzzle/PuzzleSlot.tscn" id="3_lxdr1"]
 [ext_resource type="PackedScene" uid="uid://cyhmn6hjhlm2f" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_l.tscn" id="4_htb1p"]
@@ -12,6 +13,9 @@
 [ext_resource type="Script" path="res://Scenes/Puzzle/back_button.gd" id="9_vybjj"]
 [ext_resource type="Texture2D" uid="uid://jvq16braaowp" path="res://Sprites/Puzzle/backButton.png" id="10_mcvb8"]
 [ext_resource type="PackedScene" uid="uid://cytyrkcontwse" path="res://Scenes/Puzzle/PuzzleBlocks/puzzle_piece_s.tscn" id="10_wb0x8"]
+[ext_resource type="Script" path="res://Scripts/puzzle/puzzle_audio.gd" id="13_gtg57"]
+[ext_resource type="AudioStream" uid="uid://cc1jijth885hb" path="res://Audio/Pickup/PlacePuzzle.wav" id="14_ah8hy"]
+[ext_resource type="AudioStream" uid="uid://dfh2sxrhjk4we" path="res://Audio/Pickup/PickupPuzzle.wav" id="15_4mbhs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywf2"]
 size = Vector2(20, 13)
@@ -27,6 +31,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("1_rdvuq")
+win_sound = ExtResource("2_mrogd")
 
 [node name="GridBorderSprite" type="TextureRect" parent="."]
 layout_mode = 1
@@ -201,6 +206,24 @@ shape = SubResource("RectangleShape2D_iywf2")
 
 [node name="Sprite2D" type="Sprite2D" parent="GridBorderSprite/BackButton"]
 texture = ExtResource("10_mcvb8")
+
+[node name="PuzzleAudio" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("13_gtg57")
+
+[node name="PlaceBlock" type="AudioStreamPlayer" parent="PuzzleAudio"]
+stream = ExtResource("14_ah8hy")
+volume_db = -14.928
+bus = &"UI"
+
+[node name="PickupBlock" type="AudioStreamPlayer" parent="PuzzleAudio"]
+stream = ExtResource("15_4mbhs")
+volume_db = -14.928
+bus = &"UI"
+
+[node name="Win" type="AudioStreamPlayer" parent="PuzzleAudio"]
+stream = ExtResource("2_mrogd")
+volume_db = 2.986
 
 [node name="Button" type="Button" parent="GridBorderSprite"]
 offset_left = 28.0

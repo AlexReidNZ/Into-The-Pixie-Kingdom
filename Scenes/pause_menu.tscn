@@ -72,6 +72,10 @@ theme_override_font_sizes/font_size = 70
 text = "Quit"
 flat = true
 
+[connection signal="mouse_entered" from="Resume" to="." method="_on_button_hover"]
+[connection signal="mouse_exited" from="Resume" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Resume" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="Quit" to="." method="_on_button_hover"]
+[connection signal="mouse_exited" from="Quit" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
