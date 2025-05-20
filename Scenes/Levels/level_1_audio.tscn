@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bdo87udrm15aa"]
+[gd_scene load_steps=43 format=3 uid="uid://c5srdh53gop4t"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_x7l38"]
 [ext_resource type="Texture2D" uid="uid://cdgla0hey6w7j" path="res://Sprites/Ivy Path Backgrounds/Big Background.png" id="2_nakyq"]
@@ -48,7 +48,7 @@ normal = Vector2(1, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmkuf"]
 size = Vector2(66, 6)
 
-[node name="PlatformLevel" type="Node2D"]
+[node name="PlatformLevel2" type="Node2D"]
 texture_filter = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

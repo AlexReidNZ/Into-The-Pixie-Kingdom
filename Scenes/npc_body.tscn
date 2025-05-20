@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdsd4l7hvxuqn"]
+[gd_scene load_steps=7 format=3 uid="uid://cdsd4l7hvxuqn"]
 
 [ext_resource type="Script" path="res://Scripts/npc.gd" id="1_3ivoq"]
 [ext_resource type="Script" path="res://Scripts/chat_detection.gd" id="1_dc6p1"]
 [ext_resource type="Texture2D" uid="uid://c4crobg2ixorf" path="res://Sprites/Lamina.png" id="3_ams4t"]
+[ext_resource type="AudioStream" uid="uid://ylsqb2eukwxp" path="res://Audio/TextScroll/TextScroll2.wav" id="4_p0rwx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b06dh"]
 radius = 13.0652
@@ -39,3 +40,8 @@ texture = ExtResource("3_ams4t")
 
 [node name="DialogueTailPos" type="Marker2D" parent="."]
 position = Vector2(-30, -26)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Dialogue" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_p0rwx")
