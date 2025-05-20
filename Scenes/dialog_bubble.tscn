@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ci21eymrgp4hr"]
+[gd_scene load_steps=4 format=3 uid="uid://boo1u2jyhcow5"]
 
 [ext_resource type="Texture2D" uid="uid://dms4q2niten7e" path="res://Sprites/dialogue box.png" id="1_nm44d"]
 [ext_resource type="FontFile" uid="uid://dmkrwvt5qjsq1" path="res://Fonts/test fonts/VCR_OSD_MONO_1.001.ttf" id="2_aisol"]

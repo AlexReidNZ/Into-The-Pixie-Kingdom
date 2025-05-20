@@ -1,0 +1,120 @@
+[gd_scene load_steps=11 format=3 uid="uid://dm2ay48ktrdhw"]
+
+[ext_resource type="Texture2D" uid="uid://bk8ubmiv0u4cn" path="res://Sprites/book background.png" id="1_ieutf"]
+[ext_resource type="Script" path="res://controls.gd" id="1_iwqfk"]
+[ext_resource type="FontFile" uid="uid://o1a72htj8co0" path="res://Fonts/test fonts/Darling Coffee.ttf" id="2_21jfs"]
+[ext_resource type="Texture2D" uid="uid://bc6qbu6au68w2" path="res://Scenes/Controls_UI/A_Key.png" id="4_bwmgp"]
+[ext_resource type="Texture2D" uid="uid://d2w80m2c52mqx" path="res://Scenes/Controls_UI/D_Key.png" id="5_ie0ni"]
+[ext_resource type="Texture2D" uid="uid://djjui431cvao2" path="res://Scenes/Controls_UI/LeftArrow.png" id="6_rdqsv"]
+[ext_resource type="Texture2D" uid="uid://b74uxh51ot18y" path="res://Scenes/Controls_UI/RightArrow.png" id="7_tsgbf"]
+[ext_resource type="Texture2D" uid="uid://cv3isrkqm7vyy" path="res://Scenes/Controls_UI/SpaceBar.png" id="8_s1uk8"]
+[ext_resource type="Texture2D" uid="uid://66k4n4vsd1eu" path="res://Scenes/Controls_UI/Mouse_LeftClick.png" id="9_lh27g"]
+[ext_resource type="FontFile" uid="uid://bldy0gwiyc0yt" path="res://Fonts/test fonts/Vividly-Regular.ttf" id="10_i03r5"]
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_iwqfk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1112.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ieutf")
+expand_mode = 1
+
+[node name="Movement" type="Label" parent="."]
+offset_left = 216.0
+offset_top = 178.0
+offset_right = 1039.0
+offset_bottom = 276.0
+theme_override_colors/font_color = Color(0.561513, 0.00267256, 0.285645, 1)
+theme_override_fonts/font = ExtResource("2_21jfs")
+theme_override_font_sizes/font_size = 40
+text = "Movement:"
+
+[node name="Or" type="Label" parent="."]
+offset_left = 296.0
+offset_top = 298.0
+offset_right = 1119.0
+offset_bottom = 396.0
+theme_override_colors/font_color = Color(0.561513, 0.00267256, 0.285645, 1)
+theme_override_fonts/font = ExtResource("2_21jfs")
+theme_override_font_sizes/font_size = 40
+text = "Or"
+
+[node name="Jump" type="Label" parent="."]
+offset_left = 180.0
+offset_top = 419.0
+offset_right = 1003.0
+offset_bottom = 517.0
+theme_override_colors/font_color = Color(0.561513, 0.00267256, 0.285645, 1)
+theme_override_fonts/font = ExtResource("2_21jfs")
+theme_override_font_sizes/font_size = 40
+text = "Jump"
+
+[node name="Puzzle" type="Label" parent="."]
+offset_left = 376.0
+offset_top = 423.0
+offset_right = 1199.0
+offset_bottom = 521.0
+theme_override_colors/font_color = Color(0.561513, 0.00267256, 0.285645, 1)
+theme_override_fonts/font = ExtResource("2_21jfs")
+theme_override_font_sizes/font_size = 40
+text = "Puzzle"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 99.0
+offset_right = 1021.0
+offset_bottom = 197.0
+theme_override_colors/font_color = Color(0.561513, 0.00267256, 0.285645, 1)
+theme_override_fonts/font = ExtResource("2_21jfs")
+theme_override_font_sizes/font_size = 60
+text = "Controls"
+
+[node name="AKey" type="Sprite2D" parent="."]
+position = Vector2(249, 260)
+texture = ExtResource("4_bwmgp")
+
+[node name="DKey" type="Sprite2D" parent="."]
+position = Vector2(399, 260)
+texture = ExtResource("5_ie0ni")
+
+[node name="LeftArrow" type="Sprite2D" parent="."]
+position = Vector2(249, 375)
+texture = ExtResource("6_rdqsv")
+
+[node name="RightArrow" type="Sprite2D" parent="."]
+position = Vector2(399, 375)
+texture = ExtResource("7_tsgbf")
+
+[node name="SpaceBar" type="Sprite2D" parent="."]
+position = Vector2(233, 504)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_s1uk8")
+
+[node name="MouseLeftClick" type="Sprite2D" parent="."]
+position = Vector2(441, 514)
+texture = ExtResource("9_lh27g")
+
+[node name="Resume" type="Button" parent="."]
+offset_left = 707.0
+offset_top = 293.0
+offset_right = 889.0
+offset_bottom = 364.0
+theme_override_colors/font_color = Color(0.195007, 0.501681, 0.418972, 1)
+theme_override_fonts/font = ExtResource("10_i03r5")
+theme_override_font_sizes/font_size = 70
+text = "Play"
+flat = true
+
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
