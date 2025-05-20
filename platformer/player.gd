@@ -195,7 +195,7 @@ func set_move_state(value: MoveState) -> void:
 	# some states can only path to certain other states
 	match move_state:
 		MoveState.JUMP_ANTICIPATING:
-			if value not in [MoveState.JUMPING, MoveState.FALLING]:
+			if value not in [MoveState.JUMPING, MoveState.FALLING, MoveState.PAUSED]:
 				return
 		MoveState.RUNNING:
 			if value == MoveState.WALKING:
