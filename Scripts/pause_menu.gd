@@ -4,7 +4,7 @@ extends Control
 
 @export var game_end_trigger: Area2D
 @onready var game_end_text: Label = $GameEnd
-@onready var play_button: Button = $Resume
+@onready var play_button: TextureButton = $Resume
 
 func _ready():
 	pause()
@@ -20,6 +20,8 @@ func pause():
 
 func _input(event : InputEvent):
 	if event.is_action_pressed("pause") and !get_tree().paused:
+		game_end_text.text = "Paused"
+		game_end_text.visible = true
 		print("esc pressed")
 		pause()
 	elif event.is_action_pressed("pause") and get_tree().paused:

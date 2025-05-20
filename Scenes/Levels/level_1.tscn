@@ -37,11 +37,14 @@ radius = 42.6175
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w4v88"]
 normal = Vector2(1, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmkuf"]
-size = Vector2(66, 6)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rgj4"]
+size = Vector2(20, 156)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qs31p"]
 size = Vector2(124, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtdxp"]
+size = Vector2(30, 153)
 
 [node name="PlatformLevel" type="Node2D"]
 texture_filter = 1
@@ -168,41 +171,8 @@ texture = ExtResource("13_svo3r")
 [node name="Platforms" type="Node2D" parent="."]
 position = Vector2(22, -116)
 
-[node name="Platform" type="StaticBody2D" parent="Platforms"]
-position = Vector2(1011, 57)
-
-[node name="Icon" type="Sprite2D" parent="Platforms/Platform"]
-scale = Vector2(0.515625, 0.046875)
-texture = ExtResource("4_srh1p")
-centered = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform"]
-position = Vector2(33, 3)
-shape = SubResource("RectangleShape2D_hmkuf")
-
-[node name="Platform2" type="StaticBody2D" parent="Platforms"]
-position = Vector2(901, 76)
-
-[node name="Icon" type="Sprite2D" parent="Platforms/Platform2"]
-scale = Vector2(0.515625, 0.046875)
-texture = ExtResource("4_srh1p")
-centered = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2"]
-position = Vector2(33, 3)
-shape = SubResource("RectangleShape2D_hmkuf")
-
-[node name="Platform3" type="StaticBody2D" parent="Platforms"]
-position = Vector2(1112, 39)
-
-[node name="Icon" type="Sprite2D" parent="Platforms/Platform3"]
-scale = Vector2(0.515625, 0.046875)
-texture = ExtResource("4_srh1p")
-centered = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3"]
-position = Vector2(33, 3)
-shape = SubResource("RectangleShape2D_hmkuf")
+[node name="Rock" parent="Platforms" instance=ExtResource("22_q8kxe")]
+position = Vector2(1092, 82)
 
 [node name="PuzzleObjects" type="Node2D" parent="."]
 position = Vector2(1141, -44)
@@ -212,6 +182,12 @@ position = Vector2(1141, -44)
 [node name="BeginingPuzzle" type="Sprite2D" parent="PuzzleObjects/Sprites"]
 position = Vector2(451.5, 38)
 texture = ExtResource("28_q2xun")
+
+[node name="InvisibleWall" type="StaticBody2D" parent="PuzzleObjects/Sprites/BeginingPuzzle"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleObjects/Sprites/BeginingPuzzle/InvisibleWall"]
+position = Vector2(45.5, -70)
+shape = SubResource("RectangleShape2D_1rgj4")
 
 [node name="BrokenBridge" type="Sprite2D" parent="PuzzleObjects/Sprites"]
 position = Vector2(-307, 25)
@@ -227,14 +203,21 @@ shape = SubResource("RectangleShape2D_qs31p")
 position = Vector2(133, -32.5)
 texture = ExtResource("30_577wq")
 
+[node name="TreeCollision" type="StaticBody2D" parent="PuzzleObjects/Sprites/BrokenTree"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleObjects/Sprites/BrokenTree/TreeCollision"]
+position = Vector2(5, -1)
+shape = SubResource("RectangleShape2D_mtdxp")
+
 [node name="Indicators" type="Node2D" parent="PuzzleObjects"]
 
-[node name="PuzzleIndicator" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("28_m5tlm")]
+[node name="PuzzleIndicator" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
 position = Vector2(451.5, -2)
 puzzle_scene = ExtResource("32_58wvc")
 puzzle_group = "Puzzle1Colliders"
 fixed_sprite = ExtResource("28_q2xun")
 sprite_object = NodePath("../../Sprites/BeginingPuzzle")
+sprite_collision = NodePath("../../Sprites/BeginingPuzzle/InvisibleWall/CollisionShape2D")
 
 [node name="PuzzleIndicator2" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
 position = Vector2(-306, -22)
@@ -244,12 +227,13 @@ fixed_sprite = ExtResource("34_ynee1")
 sprite_object = NodePath("../../Sprites/BrokenBridge")
 sprite_collision = NodePath("../../Sprites/BrokenBridge/BridgeCollision/CollisionShape2D")
 
-[node name="PuzzleIndicator3" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("28_m5tlm")]
+[node name="PuzzleIndicator3" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
 position = Vector2(89, -88.5)
 puzzle_scene = ExtResource("35_50h6p")
 puzzle_group = "Puzzle3Colliders"
 fixed_sprite = ExtResource("36_tnrut")
 sprite_object = NodePath("../../Sprites/BrokenTree")
+sprite_collision = NodePath("../../Sprites/BrokenTree/TreeCollision/CollisionShape2D")
 
 [node name="UIAudio" type="Node" parent="."]
 unique_name_in_owner = true
