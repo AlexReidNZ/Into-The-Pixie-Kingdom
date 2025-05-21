@@ -274,14 +274,14 @@ _data = {
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w4v88"]
 normal = Vector2(1, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rgj4"]
-size = Vector2(20, 156)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wwohj"]
+normal = Vector2(-1, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs31p"]
-size = Vector2(124, 43)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rm13f"]
+normal = Vector2(-1, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtdxp"]
-size = Vector2(30, 153)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jp8wa"]
+normal = Vector2(-1, 0)
 
 [node name="PlatformLevel" type="Node2D"]
 texture_filter = 1
@@ -478,12 +478,18 @@ position = Vector2(0, 318)
 
 [node name="Gorse" type="Sprite2D" parent="Objects"]
 z_index = 11
-position = Vector2(566, -41)
+position = Vector2(825, -40)
 texture = ExtResource("14_tej4t")
 
 [node name="Bushes" type="Sprite2D" parent="Objects"]
 z_index = 11
 position = Vector2(1103, -23)
+texture = ExtResource("10_t4k28")
+
+[node name="Bushes2" type="Sprite2D" parent="Objects"]
+z_index = 11
+position = Vector2(534, -23)
+scale = Vector2(-1, 1)
 texture = ExtResource("10_t4k28")
 
 [node name="SideBushes2" type="Sprite2D" parent="Objects"]
@@ -529,8 +535,8 @@ texture = ExtResource("28_q2xun")
 [node name="InvisibleWall" type="StaticBody2D" parent="PuzzleObjects/Sprites/BeginingPuzzle"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleObjects/Sprites/BeginingPuzzle/InvisibleWall"]
-position = Vector2(45.5, -70)
-shape = SubResource("RectangleShape2D_1rgj4")
+position = Vector2(28.5, -70)
+shape = SubResource("WorldBoundaryShape2D_wwohj")
 
 [node name="BrokenBridge" type="Sprite2D" parent="PuzzleObjects/Sprites"]
 position = Vector2(-307, 25)
@@ -539,8 +545,8 @@ texture = ExtResource("29_y6ysw")
 [node name="BridgeCollision" type="StaticBody2D" parent="PuzzleObjects/Sprites/BrokenBridge"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleObjects/Sprites/BrokenBridge/BridgeCollision"]
-position = Vector2(-2, 0)
-shape = SubResource("RectangleShape2D_qs31p")
+position = Vector2(-64, -23)
+shape = SubResource("WorldBoundaryShape2D_rm13f")
 
 [node name="BrokenTree" type="Sprite2D" parent="PuzzleObjects/Sprites"]
 position = Vector2(133, -32.5)
@@ -549,8 +555,8 @@ texture = ExtResource("30_577wq")
 [node name="TreeCollision" type="StaticBody2D" parent="PuzzleObjects/Sprites/BrokenTree"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleObjects/Sprites/BrokenTree/TreeCollision"]
-position = Vector2(5, -1)
-shape = SubResource("RectangleShape2D_mtdxp")
+position = Vector2(24, -2.5)
+shape = SubResource("WorldBoundaryShape2D_jp8wa")
 
 [node name="Indicators" type="Node2D" parent="PuzzleObjects"]
 
