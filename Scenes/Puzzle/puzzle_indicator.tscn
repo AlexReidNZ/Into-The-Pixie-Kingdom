@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjh0ek7l4pjl8"]
+[gd_scene load_steps=6 format=3 uid="uid://cjh0ek7l4pjl8"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle/puzzle_indicator.gd" id="1_m3ox0"]
 [ext_resource type="Texture2D" uid="uid://l1j2r8ua1qjo" path="res://Sprites/Puzzle/PuzzleIndicator_Resized.png" id="2_sdjtt"]
+[ext_resource type="Script" path="res://Scripts/puzzle/detection_area.gd" id="3_gfudm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01r35"]
 size = Vector2(40, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4de65"]
+size = Vector2(292.5, 185)
+
 [node name="PuzzleIndicator" type="Area2D"]
+visible = false
 position = Vector2(106, -71)
 script = ExtResource("1_m3ox0")
 
@@ -18,5 +23,13 @@ shape = SubResource("RectangleShape2D_01r35")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="DetectionArea" type="Area2D" parent="."]
+script = ExtResource("3_gfudm")
+
+[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("RectangleShape2D_4de65")
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="body_entered" from="DetectionArea" to="DetectionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="DetectionArea" method="_on_body_exited"]
