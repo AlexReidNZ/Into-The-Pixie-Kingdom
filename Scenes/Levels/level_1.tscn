@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://ceia108gqkgrh"]
+[gd_scene load_steps=92 format=3 uid="uid://ceia108gqkgrh"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
 [ext_resource type="VideoStream" path="res://itpk animatic.ogv" id="2_ghah1"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://dwlx5ktrds0wt" path="res://Sprites/npc king.png" id="34_5beqd"]
 [ext_resource type="Texture2D" uid="uid://dh5ntwaktn4la" path="res://Sprites/Puzzle/worldSprites/Fixed Bridge.png" id="34_ynee1"]
 [ext_resource type="PackedScene" uid="uid://doot1xvshlh6h" path="res://Scenes/Puzzle/puzzle03.tscn" id="35_50h6p"]
+[ext_resource type="AudioStream" uid="uid://cgm3p7yd0ogmc" path="res://Audio/TextScroll/dialogue.wav" id="35_jacky"]
 [ext_resource type="Texture2D" uid="uid://cs2vvvlyoxyvs" path="res://Sprites/Puzzle/worldSprites/Fixed Tree.png" id="36_tnrut"]
 [ext_resource type="Script" path="res://Scripts/cutscene_controller.gd" id="38_wtp3f"]
 
@@ -784,7 +785,7 @@ position = Vector2(2538, 204)
 [node name="Sprite" type="AnimatedSprite2D" parent="CutsceneController/PixieKing"]
 sprite_frames = SubResource("SpriteFrames_x258j")
 autoplay = "default"
-frame_progress = 0.101226
+frame_progress = 0.957376
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CutsceneController/PixieKing"]
 root_node = NodePath("../Sprite")
@@ -799,7 +800,7 @@ position = Vector2(-79, -38)
 [node name="Audio" type="Node" parent="CutsceneController/PixieKing"]
 
 [node name="Dialogue" type="AudioStreamPlayer" parent="CutsceneController/PixieKing/Audio"]
-stream = ExtResource("8_aqnd5")
+stream = ExtResource("35_jacky")
 
 [connection signal="area_entered" from="GameEndTrigger" to="CanvasLayer/PauseMenu" method="_on_game_end_trigger_area_entered"]
 
