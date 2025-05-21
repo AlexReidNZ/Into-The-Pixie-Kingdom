@@ -3,8 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
 [ext_resource type="VideoStream" path="res://itpk animatic.ogv" id="2_ghah1"]
 [ext_resource type="Texture2D" uid="uid://cmpfh3mh4vjiq" path="res://Sprites/Ivy Path Backgrounds/Background.png" id="2_ji2qm"]
-[ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="3_i2w1q"]
-[ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="4_srh1p"]
+[ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="3_u8vf5"]
 [ext_resource type="Script" path="res://Scripts/npc.gd" id="6_du0my"]
 [ext_resource type="AudioStream" uid="uid://c3ibrpwhmts2e" path="res://Audio/TextScroll/TextScroll.wav" id="6_ilghy"]
 [ext_resource type="Texture2D" uid="uid://y5fjlsakfeth" path="res://Sprites/ground1.png" id="7_g0htd"]
@@ -39,10 +38,10 @@ radius = 42.6175
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mr6wc"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b06dh"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_c258f"]
 radius = 13.0652
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bhmoq"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ot7kp"]
 radius = 40.3113
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhv45"]
@@ -77,7 +76,7 @@ region = Rect2(126, 0, 21, 44)
 atlas = ExtResource("11_hpcfm")
 region = Rect2(147, 0, 21, 44)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_uo2af"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_fe5r0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -109,6 +108,20 @@ animations = [{
 "speed": 8.3
 }]
 
+[sub_resource type="Animation" id="Animation_0vawj"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Hedera/AnimatedSprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+
 [sub_resource type="Animation" id="Animation_cr7kg"]
 resource_name = "float"
 loop_mode = 2
@@ -122,20 +135,6 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(-1, -0.25, 0, 0.39, 0, 1, -0.39, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
-}
-
-[sub_resource type="Animation" id="Animation_0vawj"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Hedera/AnimatedSprite2D:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tu5a0"]
@@ -192,7 +191,7 @@ region = Rect2(290, 0, 29, 46)
 atlas = ExtResource("14_spg3n")
 region = Rect2(319, 0, 29, 46)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4bvcu"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_gb0p0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -236,6 +235,20 @@ animations = [{
 "speed": 8.3
 }]
 
+[sub_resource type="Animation" id="Animation_1q4km"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_drybh"]
 resource_name = "float"
 length = 1.4
@@ -252,20 +265,6 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.4)
 }
 
-[sub_resource type="Animation" id="Animation_1q4km"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1hk4u"]
 _data = {
 "RESET": SubResource("Animation_1q4km"),
@@ -275,11 +274,14 @@ _data = {
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w4v88"]
 normal = Vector2(1, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmkuf"]
-size = Vector2(66, 6)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rgj4"]
+size = Vector2(20, 156)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qs31p"]
 size = Vector2(124, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtdxp"]
+size = Vector2(30, 153)
 
 [node name="PlatformLevel" type="Node2D"]
 texture_filter = 1
@@ -307,6 +309,7 @@ game_end_trigger = NodePath("../../GameEndTrigger")
 [node name="Layer0" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
 scale = Vector2(0.5, 0.5)
+motion_scale = Vector2(0.25, 1)
 motion_mirroring = Vector2(1570, 0)
 
 [node name="BigBackground" type="Sprite2D" parent="ParallaxBackground/Layer0"]
@@ -316,17 +319,17 @@ centered = false
 
 [node name="GameEndTrigger" type="Area2D" parent="."]
 z_index = 10
-position = Vector2(1906.5, 278)
+position = Vector2(1878, 269)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameEndTrigger"]
 position = Vector2(3.5, 7)
 shape = SubResource("CircleShape2D_x48l1")
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(-50, 314)
+position = Vector2(-50, 315)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-position = Vector2(297, -1)
+position = Vector2(0, -1)
 shape = SubResource("WorldBoundaryShape2D_mr6wc")
 
 [node name="Ground Sprites" type="Node2D" parent="Ground"]
@@ -356,7 +359,7 @@ position = Vector2(1908, -22)
 scale = Vector2(1, 0.939394)
 texture = ExtResource("8_l1qk3")
 
-[node name="Player" parent="." instance=ExtResource("3_i2w1q")]
+[node name="Player" parent="." instance=ExtResource("3_u8vf5")]
 unique_name_in_owner = true
 
 [node name="Lamina" type="CharacterBody2D" parent="."]
@@ -372,7 +375,7 @@ visible = false
 position = Vector2(0, 2)
 rotation = 3.14159
 scale = Vector2(1.14809, 1.14809)
-shape = SubResource("CircleShape2D_b06dh")
+shape = SubResource("CircleShape2D_c258f")
 disabled = true
 
 [node name="ChatDetection" type="Area2D" parent="Lamina"]
@@ -384,7 +387,7 @@ script = ExtResource("9_x6ged")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lamina/ChatDetection"]
 visible = false
 position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_bhmoq")
+shape = SubResource("CircleShape2D_ot7kp")
 
 [node name="Sprite2D" type="Sprite2D" parent="Lamina"]
 visible = false
@@ -403,9 +406,8 @@ stream = ExtResource("6_ilghy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Lamina"]
 position = Vector2(0, -1)
 scale = Vector2(0.571429, 0.571429)
-sprite_frames = SubResource("SpriteFrames_uo2af")
+sprite_frames = SubResource("SpriteFrames_fe5r0")
 autoplay = "default"
-frame_progress = 0.410509
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Lamina"]
 libraries = {
@@ -426,7 +428,7 @@ visible = false
 position = Vector2(0, 2)
 rotation = 3.14159
 scale = Vector2(1.14809, 1.14809)
-shape = SubResource("CircleShape2D_b06dh")
+shape = SubResource("CircleShape2D_c258f")
 disabled = true
 
 [node name="ChatDetection" type="Area2D" parent="Hedera"]
@@ -438,7 +440,7 @@ script = ExtResource("9_x6ged")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hedera/ChatDetection"]
 visible = false
 position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_bhmoq")
+shape = SubResource("CircleShape2D_ot7kp")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hedera"]
 visible = false
@@ -456,9 +458,8 @@ stream = ExtResource("8_aqnd5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hedera"]
 scale = Vector2(0.551724, 0.551724)
-sprite_frames = SubResource("SpriteFrames_4bvcu")
+sprite_frames = SubResource("SpriteFrames_gb0p0")
 autoplay = "default"
-frame_progress = 0.358158
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hedera"]
 libraries = {
@@ -467,13 +468,13 @@ libraries = {
 autoplay = "float"
 
 [node name="Boundary" type="StaticBody2D" parent="."]
-position = Vector2(-88, 259)
+position = Vector2(-85, -17)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
 shape = SubResource("WorldBoundaryShape2D_w4v88")
 
 [node name="Objects" type="Node2D" parent="."]
-position = Vector2(0, 320)
+position = Vector2(0, 318)
 
 [node name="Gorse" type="Sprite2D" parent="Objects"]
 z_index = 11
@@ -505,43 +506,16 @@ position = Vector2(75, -19)
 texture = ExtResource("13_svo3r")
 
 [node name="Platforms" type="Node2D" parent="."]
-position = Vector2(22, 204)
+position = Vector2(22, 214)
 
-[node name="Platform" type="StaticBody2D" parent="Platforms"]
-position = Vector2(1011, 57)
+[node name="Rock" parent="Platforms" instance=ExtResource("22_q8kxe")]
+position = Vector2(1092, 82)
 
-[node name="Icon" type="Sprite2D" parent="Platforms/Platform"]
-scale = Vector2(0.515625, 0.046875)
-texture = ExtResource("4_srh1p")
-centered = false
+[node name="Platforms2" type="Node2D" parent="."]
+position = Vector2(22, 214)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform"]
-position = Vector2(33, 3)
-shape = SubResource("RectangleShape2D_hmkuf")
-
-[node name="Platform2" type="StaticBody2D" parent="Platforms"]
-position = Vector2(901, 76)
-
-[node name="Icon" type="Sprite2D" parent="Platforms/Platform2"]
-scale = Vector2(0.515625, 0.046875)
-texture = ExtResource("4_srh1p")
-centered = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2"]
-position = Vector2(33, 3)
-shape = SubResource("RectangleShape2D_hmkuf")
-
-[node name="Platform3" type="StaticBody2D" parent="Platforms"]
-position = Vector2(1112, 39)
-
-[node name="Icon" type="Sprite2D" parent="Platforms/Platform3"]
-scale = Vector2(0.515625, 0.046875)
-texture = ExtResource("4_srh1p")
-centered = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3"]
-position = Vector2(33, 3)
-shape = SubResource("RectangleShape2D_hmkuf")
+[node name="Rock" parent="Platforms2" instance=ExtResource("22_q8kxe")]
+position = Vector2(1092, 82)
 
 [node name="PuzzleObjects" type="Node2D" parent="."]
 position = Vector2(1141, 276)
@@ -551,6 +525,12 @@ position = Vector2(1141, 276)
 [node name="BeginingPuzzle" type="Sprite2D" parent="PuzzleObjects/Sprites"]
 position = Vector2(451.5, 38)
 texture = ExtResource("28_q2xun")
+
+[node name="InvisibleWall" type="StaticBody2D" parent="PuzzleObjects/Sprites/BeginingPuzzle"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleObjects/Sprites/BeginingPuzzle/InvisibleWall"]
+position = Vector2(45.5, -70)
+shape = SubResource("RectangleShape2D_1rgj4")
 
 [node name="BrokenBridge" type="Sprite2D" parent="PuzzleObjects/Sprites"]
 position = Vector2(-307, 25)
@@ -566,29 +546,37 @@ shape = SubResource("RectangleShape2D_qs31p")
 position = Vector2(133, -32.5)
 texture = ExtResource("30_577wq")
 
+[node name="TreeCollision" type="StaticBody2D" parent="PuzzleObjects/Sprites/BrokenTree"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleObjects/Sprites/BrokenTree/TreeCollision"]
+position = Vector2(5, -1)
+shape = SubResource("RectangleShape2D_mtdxp")
+
 [node name="Indicators" type="Node2D" parent="PuzzleObjects"]
 
-[node name="PuzzleIndicator" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("28_m5tlm")]
+[node name="PuzzleIndicator" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
 position = Vector2(451.5, -2)
-puzzle_scene = ExtResource("32_58wvc")
-puzzle_group = "Puzzle1Colliders"
+puzzle_scene = ExtResource("35_50h6p")
+puzzle_group = "Puzzle3Colliders"
 fixed_sprite = ExtResource("28_q2xun")
 sprite_object = NodePath("../../Sprites/BeginingPuzzle")
+sprite_collision = NodePath("../../Sprites/BeginingPuzzle/InvisibleWall/CollisionShape2D")
 
 [node name="PuzzleIndicator2" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
 position = Vector2(-306, -22)
-puzzle_scene = ExtResource("33_rqe47")
-puzzle_group = "Puzzle2Colliders"
+puzzle_scene = ExtResource("32_58wvc")
+puzzle_group = "Puzzle1Colliders"
 fixed_sprite = ExtResource("34_ynee1")
 sprite_object = NodePath("../../Sprites/BrokenBridge")
 sprite_collision = NodePath("../../Sprites/BrokenBridge/BridgeCollision/CollisionShape2D")
 
-[node name="PuzzleIndicator3" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object") instance=ExtResource("28_m5tlm")]
+[node name="PuzzleIndicator3" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
 position = Vector2(89, -88.5)
-puzzle_scene = ExtResource("35_50h6p")
-puzzle_group = "Puzzle3Colliders"
+puzzle_scene = ExtResource("33_rqe47")
+puzzle_group = "Puzzle2Colliders"
 fixed_sprite = ExtResource("36_tnrut")
 sprite_object = NodePath("../../Sprites/BrokenTree")
+sprite_collision = NodePath("../../Sprites/BrokenTree/TreeCollision/CollisionShape2D")
 
 [node name="UIAudio" type="Node" parent="."]
 unique_name_in_owner = true
