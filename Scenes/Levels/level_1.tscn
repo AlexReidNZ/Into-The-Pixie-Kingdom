@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://ceia108gqkgrh"]
+[gd_scene load_steps=69 format=3 uid="uid://ceia108gqkgrh"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
 [ext_resource type="Texture2D" uid="uid://cmpfh3mh4vjiq" path="res://Sprites/Ivy Path Backgrounds/Background.png" id="2_ji2qm"]
@@ -109,6 +109,41 @@ animations = [{
 "speed": 8.3
 }]
 
+[sub_resource type="Animation" id="Animation_cr7kg"]
+resource_name = "float"
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.39, 0, 1, -0.39, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_0vawj"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Hedera/AnimatedSprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tu5a0"]
+_data = {
+"RESET": SubResource("Animation_0vawj"),
+"float": SubResource("Animation_cr7kg")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1pxhu"]
 atlas = ExtResource("14_spg3n")
 region = Rect2(0, 0, 29, 46)
@@ -201,6 +236,42 @@ animations = [{
 "speed": 8.3
 }]
 
+[sub_resource type="Animation" id="Animation_drybh"]
+resource_name = "float"
+length = 1.4
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.39, 0, -1, -0.39, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.4)
+}
+
+[sub_resource type="Animation" id="Animation_1q4km"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1hk4u"]
+_data = {
+"RESET": SubResource("Animation_1q4km"),
+"float": SubResource("Animation_drybh")
+}
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w4v88"]
 normal = Vector2(1, 0)
 
@@ -277,7 +348,7 @@ texture = ExtResource("8_l1qk3")
 unique_name_in_owner = true
 
 [node name="Lamina" type="CharacterBody2D" parent="."]
-position = Vector2(357, 332)
+position = Vector2(480, 259)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("6_du0my")
@@ -318,14 +389,20 @@ position = Vector2(-30, -26)
 stream = ExtResource("12_xkt45")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Lamina"]
-position = Vector2(0, 1)
+position = Vector2(0, -1)
 scale = Vector2(0.571429, 0.571429)
 sprite_frames = SubResource("SpriteFrames_uo2af")
 autoplay = "default"
 frame_progress = 0.410509
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lamina"]
+libraries = {
+"": SubResource("AnimationLibrary_tu5a0")
+}
+autoplay = "float"
+
 [node name="Hedera" type="CharacterBody2D" parent="."]
-position = Vector2(398, 327)
+position = Vector2(503, 256)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("6_du0my")
@@ -366,11 +443,16 @@ position = Vector2(-30, -26)
 stream = ExtResource("12_xkt45")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hedera"]
-position = Vector2(0, 1)
 scale = Vector2(0.551724, 0.551724)
 sprite_frames = SubResource("SpriteFrames_4bvcu")
 autoplay = "default"
 frame_progress = 0.358158
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hedera"]
+libraries = {
+"": SubResource("AnimationLibrary_1hk4u")
+}
+autoplay = "float"
 
 [node name="Boundary" type="StaticBody2D" parent="."]
 position = Vector2(-88, 259)
@@ -507,14 +589,23 @@ volume_db = -5.971
 [node name="Click" type="AudioStreamPlayer" parent="UIAudio"]
 stream = ExtResource("26_6qdgh")
 
-[node name="CutsceneController" type="Node" parent="." node_paths=PackedStringArray("left_boundary", "lamina", "hedera")]
+[node name="CutsceneController" type="Node" parent="." node_paths=PackedStringArray("left_boundary", "lamina", "hedera", "mystery_speaker")]
 unique_name_in_owner = true
 script = ExtResource("38_wtp3f")
 left_boundary = NodePath("../Boundary")
 lamina = NodePath("../Lamina")
 hedera = NodePath("../Hedera")
+mystery_speaker = NodePath("MysterySpeaker")
 
-[node name="MysterySpeaker" type="Marker2D" parent="CutsceneController"]
+[node name="MysterySpeaker" type="Node2D" parent="CutsceneController"]
+position = Vector2(130, 258)
+
+[node name="DialogueTailPos" type="Marker2D" parent="CutsceneController/MysterySpeaker"]
+
+[node name="Audio" type="Node" parent="CutsceneController/MysterySpeaker"]
+
+[node name="Dialogue" type="AudioStreamPlayer" parent="CutsceneController/MysterySpeaker/Audio"]
+stream = ExtResource("12_xkt45")
 
 [connection signal="area_entered" from="GameEndTrigger" to="CanvasLayer/PauseMenu" method="_on_game_end_trigger_area_entered"]
 
