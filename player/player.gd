@@ -89,12 +89,12 @@ func _on_animation_finished() -> void:
 		
 		
 func _on_animation_frame_changed() -> void:
-	if move_state not in [MoveState.WALKING, MoveState.RUNNING]:
+	if move_state not in [MoveState.WALKING, MoveState.RUNNING, MoveState.CUTSCENE]:
 		return
 	if shush:
 		return
 	# play walk sounds when foot touches ground
-	if animator.frame in walk_step_frames:
+	if animator.frame in walk_step_frames and animator.animation in ["walk", "run"]:
 		audio.play_walk()
 	
 	
