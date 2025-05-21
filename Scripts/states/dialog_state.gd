@@ -1,6 +1,8 @@
 extends BaseState
 class_name DialogState
 
+signal dialogue_finished
+
 const BUBBLE_OFFSET        := Vector2(-50, 0)
 const MAX_BUBBLE_WIDTH     := 300
 const MAX_BUBBLE_HEIGHT    := 999
@@ -25,7 +27,7 @@ func enter(data = null) -> void:
 		return state_machine.change_state("Idle")
 	dialog_lines = data.duplicate()
 	idx = 0
-	_disable_player()
+	#_disable_player()
 	_create_bubble()
 	call_deferred("_start_line") # ensures correct scene tree timing
 
@@ -50,7 +52,7 @@ func _start_line() -> void:
 
 func _start_line_async() -> void:
 	full_text = str(dialog_lines[idx].get("line", ""))
-	await _pre_size_bubble(full_text)
+	_pre_size_bubble(full_text)
 	dialog_label.text = ""
 	char_i = 0
 	typing = true
@@ -113,7 +115,9 @@ func exit() -> void:
 		bubble_instance.queue_free()
 		bubble_instance = null
 	dialog_lines.clear()
-	_enable_player()
+	dialogue_finished.emit()
+	print("dialogue finished!!")
+	# _enable_player()
 
 func _disable_player() -> void:
 	if state_machine.player_node:

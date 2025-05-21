@@ -12,9 +12,9 @@ var player_node: Player = null
 var main_node: Node = null
 
 # State instances
-var idle_state
-var dialog_state
-var current_state
+var idle_state: BaseState
+var dialog_state: BaseState
+var current_state: BaseState
 var states = {}
 
 # Called when the state machine is added to the scene
