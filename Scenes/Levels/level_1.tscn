@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://brsjqcylvbq04" path="res://Sprites/SideBushes2.png" id="11_ytc3w"]
 [ext_resource type="Texture2D" uid="uid://cxisagdugws2h" path="res://Sprites/SideBushes.png" id="13_svo3r"]
 [ext_resource type="Texture2D" uid="uid://b5ionch14vyu8" path="res://Sprites/Gorse.png" id="14_tej4t"]
-[ext_resource type="PackedScene" path="res://Scenes/rock.tscn" id="22_q8kxe"]
+[ext_resource type="PackedScene" uid="uid://dm65n77dur5bu" path="res://Scenes/rock.tscn" id="22_q8kxe"]
 [ext_resource type="PackedScene" uid="uid://cdsd4l7hvxuqn" path="res://Scenes/npc_body.tscn" id="23_yprgw"]
 [ext_resource type="Script" path="res://Scripts/ui_audio.gd" id="24_fpwxx"]
 [ext_resource type="Texture2D" uid="uid://c4crobg2ixorf" path="res://Sprites/Lamina.png" id="24_x36lw"]
