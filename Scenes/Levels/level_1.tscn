@@ -1,8 +1,9 @@
-[gd_scene load_steps=69 format=3 uid="uid://ceia108gqkgrh"]
+[gd_scene load_steps=70 format=3 uid="uid://ceia108gqkgrh"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
 [ext_resource type="VideoStream" path="res://itpk animatic.ogv" id="2_ghah1"]
 [ext_resource type="Texture2D" uid="uid://cmpfh3mh4vjiq" path="res://Sprites/Ivy Path Backgrounds/Background.png" id="2_ji2qm"]
+[ext_resource type="PackedScene" uid="uid://dd61yudqmwpgh" path="res://Scenes/level_select.tscn" id="3_pm445"]
 [ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="3_u8vf5"]
 [ext_resource type="Script" path="res://Scripts/npc.gd" id="6_du0my"]
 [ext_resource type="AudioStream" uid="uid://c3ibrpwhmts2e" path="res://Audio/TextScroll/TextScroll.wav" id="6_ilghy"]
@@ -17,8 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://chsimatstvpdj" path="res://Sprites/npc4 femenine.png" id="14_spg3n"]
 [ext_resource type="Texture2D" uid="uid://b5ionch14vyu8" path="res://Sprites/Gorse.png" id="14_tej4t"]
 [ext_resource type="PackedScene" uid="uid://dm65n77dur5bu" path="res://Scenes/rock.tscn" id="22_q8kxe"]
-[ext_resource type="PackedScene" uid="uid://cdsd4l7hvxuqn" path="res://Scenes/npc_body.tscn" id="23_yprgw"]
-[ext_resource type="PackedScene" path="res://Scenes/rock.tscn" id="22_q8kxe"]
 [ext_resource type="Script" path="res://Scripts/ui_audio.gd" id="24_fpwxx"]
 [ext_resource type="Texture2D" uid="uid://c4crobg2ixorf" path="res://Sprites/Lamina.png" id="24_x36lw"]
 [ext_resource type="Texture2D" uid="uid://ctu5riag25ib1" path="res://Sprites/Hedera.png" id="25_jp23x"]
@@ -306,6 +305,9 @@ expand = true
 visible = false
 game_end_trigger = NodePath("../../GameEndTrigger")
 
+[node name="LevelSelect" parent="CanvasLayer" instance=ExtResource("3_pm445")]
+visible = false
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Layer0" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -478,11 +480,6 @@ shape = SubResource("WorldBoundaryShape2D_w4v88")
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2(0, 318)
 
-[node name="Gorse" type="Sprite2D" parent="Objects"]
-z_index = 11
-position = Vector2(825, -40)
-texture = ExtResource("14_tej4t")
-
 [node name="Bushes" type="Sprite2D" parent="Objects"]
 z_index = 11
 position = Vector2(1103, -23)
@@ -540,7 +537,13 @@ texture = ExtResource("28_q2xun")
 position = Vector2(28.5, -70)
 shape = SubResource("WorldBoundaryShape2D_wwohj")
 
+[node name="Gorse" type="Sprite2D" parent="PuzzleObjects/Sprites"]
+z_index = 8
+position = Vector2(-316, 4)
+texture = ExtResource("14_tej4t")
+
 [node name="BrokenBridge" type="Sprite2D" parent="PuzzleObjects/Sprites"]
+z_index = 9
 position = Vector2(-307, 25)
 texture = ExtResource("29_y6ysw")
 

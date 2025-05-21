@@ -1,5 +1,6 @@
 extends Control
 
+@onready var cutscene_controller: CutsceneController = %CutsceneController
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +13,9 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file.call_deferred("res://Scenes/Levels/level_1.tscn")
+	hide()
+	if !cutscene_controller.has_started_cutscene:
+		cutscene_controller.play_opening_cutscene()
 
 
 func _on_button_3_pressed() -> void:

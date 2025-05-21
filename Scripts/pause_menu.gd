@@ -6,7 +6,9 @@ extends Control
 @onready var game_end_text: Label = $GameEnd
 @onready var play_button: TextureButton = $Resume
 @onready var ui_audio: UIAudio = %UIAudio
-@onready var cutscene_controller: CutsceneController = %CutsceneController
+@onready var level_select: Control = $"../LevelSelect"
+
+var if_level_opened = false
 
 
 func _ready():
@@ -15,10 +17,11 @@ func _ready():
 
 
 func resume():
+	if !if_level_opened:
+		level_select.show()
+		if_level_opened = true
 	get_tree().paused = false
 	hide()
-	if !cutscene_controller.has_started_cutscene:
-		cutscene_controller.play_opening_cutscene()
 	
 
 func pause():

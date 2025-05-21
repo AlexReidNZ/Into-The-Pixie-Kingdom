@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dd61yudqmwpgh"]
+[gd_scene load_steps=10 format=3 uid="uid://dd61yudqmwpgh"]
 
 [ext_resource type="Texture2D" uid="uid://b1h6db3bfo3hb" path="res://Scenes/Levels/ITPK - Level Select Sprites/Background.png" id="1_q8dbf"]
 [ext_resource type="Script" path="res://Scenes/level_select.gd" id="1_qis2p"]
 [ext_resource type="Texture2D" uid="uid://b8jf3b3y4b1a2" path="res://Scenes/Levels/ITPK - Level Select Sprites/ivypath.png" id="2_otrf7"]
+[ext_resource type="Texture2D" uid="uid://u1bipax4sfvp" path="res://Sprites/ITPK - Main Menu Sprites/Background.png" id="2_uf1pr"]
 [ext_resource type="Texture2D" uid="uid://7uxfm1xny6rc" path="res://Scenes/Levels/ITPK - Level Select Sprites/Scrolls2.png" id="3_fsfkf"]
 [ext_resource type="FontFile" uid="uid://bldy0gwiyc0yt" path="res://Fonts/test fonts/Vividly-Regular.ttf" id="4_2kodc"]
 [ext_resource type="Texture2D" uid="uid://dkaheanlgsaph" path="res://Scenes/Levels/ITPK - Level Select Sprites/mushroomvillage.png" id="5_u6jh7"]
@@ -18,6 +19,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qis2p")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uf1pr")
+expand_mode = 1
 
 [node name="Background" type="TextureRect" parent="."]
 texture_filter = 1
