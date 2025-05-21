@@ -15,6 +15,10 @@ var dialog_state: DialogState
 	
 	
 func play_opening_cutscene() -> void:
+	if Input.is_key_pressed(KEY_F) and Input.is_key_pressed(KEY_J):
+		end_cutscene()
+		return
+
 	# initialize
 	has_started_cutscene = true
 	player.move_state = Player.MoveState.CUTSCENE
@@ -27,7 +31,6 @@ func play_opening_cutscene() -> void:
 	tween_property(camera, "zoom", Vector2(3, 3), 6)
 	await get_tree().create_timer(1).timeout
 	await player_walk_to_position_x(190, 50)
-	left_boundary.global_position.x = 0
 	
 	# lamina calls out from nowhere
 	DialogStateMachineAuto.offer_dialog([
@@ -86,6 +89,11 @@ func play_opening_cutscene() -> void:
 	await dialog_state.dialogue_finished
 
 	# exit cutscene
+	end_cutscene()
+
+
+func end_cutscene() -> void:
+	left_boundary.global_position.x = 0
 	tween_property(hedera, "global_position", Vector2(797, 247), 4)
 	await get_tree().create_timer(0.25).timeout
 	tween_property(lamina, "global_position", Vector2(757, 247), 4)
