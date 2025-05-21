@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://ceia108gqkgrh"]
+[gd_scene load_steps=91 format=3 uid="uid://ceia108gqkgrh"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
 [ext_resource type="VideoStream" path="res://itpk animatic.ogv" id="2_ghah1"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://uicaseo12kg1" path="res://Sprites/Puzzle/worldSprites/Broken Tree.png" id="30_577wq"]
 [ext_resource type="PackedScene" uid="uid://bhs05ayfbjvxk" path="res://Scenes/Puzzle/puzzle.tscn" id="32_58wvc"]
 [ext_resource type="PackedScene" uid="uid://d0q7ekijn3xcg" path="res://Scenes/Puzzle/puzzle02.tscn" id="33_rqe47"]
+[ext_resource type="Texture2D" uid="uid://dwlx5ktrds0wt" path="res://Sprites/npc king.png" id="34_5beqd"]
 [ext_resource type="Texture2D" uid="uid://dh5ntwaktn4la" path="res://Sprites/Puzzle/worldSprites/Fixed Bridge.png" id="34_ynee1"]
 [ext_resource type="PackedScene" uid="uid://doot1xvshlh6h" path="res://Scenes/Puzzle/puzzle03.tscn" id="35_50h6p"]
 [ext_resource type="Texture2D" uid="uid://cs2vvvlyoxyvs" path="res://Sprites/Puzzle/worldSprites/Fixed Tree.png" id="36_tnrut"]
@@ -284,6 +285,162 @@ normal = Vector2(-1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jp8wa"]
 normal = Vector2(-1, 0)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkr7v"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(0, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0faq2"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(51, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixg3m"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(102, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8p8o"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(153, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udypf"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(204, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocogv"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(255, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1skot"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(306, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpyx2"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(357, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkoig"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(408, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xcgb"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(459, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65tke"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(510, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g6tc"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(561, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kedy"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(612, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpk2s"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(663, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2b5r"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(714, 0, 51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi3d0"]
+atlas = ExtResource("34_5beqd")
+region = Rect2(765, 0, 51, 59)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x258j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkr7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0faq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixg3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8p8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udypf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocogv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1skot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpyx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkoig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xcgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65tke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g6tc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kedy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpk2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2b5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi3d0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.3
+}]
+
+[sub_resource type="Animation" id="Animation_lfrew"]
+resource_name = "float"
+length = 0.8
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.39, 0, 1, -0.39, 0, 0.25, 0),
+"times": PackedFloat32Array(0.0333333, 0.8)
+}
+
+[sub_resource type="Animation" id="Animation_bioih"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cd1a3"]
+_data = {
+"RESET": SubResource("Animation_bioih"),
+"float": SubResource("Animation_lfrew")
+}
+
 [node name="PlatformLevel" type="Node2D"]
 texture_filter = 1
 
@@ -333,7 +490,7 @@ shape = SubResource("CircleShape2D_x48l1")
 position = Vector2(-50, 315)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-position = Vector2(0, -1)
+position = Vector2(0, -4)
 shape = SubResource("WorldBoundaryShape2D_mr6wc")
 
 [node name="Ground Sprites" type="Node2D" parent="Ground"]
@@ -600,7 +757,7 @@ volume_db = -5.971
 [node name="Click" type="AudioStreamPlayer" parent="UIAudio"]
 stream = ExtResource("26_6qdgh")
 
-[node name="CutsceneController" type="Node" parent="." node_paths=PackedStringArray("animatic", "left_boundary", "lamina", "hedera", "mystery_speaker")]
+[node name="CutsceneController" type="Node" parent="." node_paths=PackedStringArray("animatic", "left_boundary", "lamina", "hedera", "mystery_speaker", "pixie_king")]
 unique_name_in_owner = true
 script = ExtResource("38_wtp3f")
 animatic = NodePath("../CanvasLayer/Animatic")
@@ -608,6 +765,7 @@ left_boundary = NodePath("../Boundary")
 lamina = NodePath("../Lamina")
 hedera = NodePath("../Hedera")
 mystery_speaker = NodePath("MysterySpeaker")
+pixie_king = NodePath("PixieKing")
 
 [node name="MysterySpeaker" type="Node2D" parent="CutsceneController"]
 position = Vector2(130, 258)
@@ -618,6 +776,30 @@ position = Vector2(130, 258)
 
 [node name="Dialogue" type="AudioStreamPlayer" parent="CutsceneController/MysterySpeaker/Audio"]
 stream = ExtResource("6_ilghy")
+
+[node name="PixieKing" type="Node2D" parent="CutsceneController"]
+texture_filter = 1
+position = Vector2(2538, 204)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="CutsceneController/PixieKing"]
+sprite_frames = SubResource("SpriteFrames_x258j")
+autoplay = "default"
+frame_progress = 0.101226
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CutsceneController/PixieKing"]
+root_node = NodePath("../Sprite")
+libraries = {
+"": SubResource("AnimationLibrary_cd1a3")
+}
+autoplay = "float"
+
+[node name="DialogueTailPos" type="Marker2D" parent="CutsceneController/PixieKing"]
+position = Vector2(-79, -38)
+
+[node name="Audio" type="Node" parent="CutsceneController/PixieKing"]
+
+[node name="Dialogue" type="AudioStreamPlayer" parent="CutsceneController/PixieKing/Audio"]
+stream = ExtResource("8_aqnd5")
 
 [connection signal="area_entered" from="GameEndTrigger" to="CanvasLayer/PauseMenu" method="_on_game_end_trigger_area_entered"]
 
