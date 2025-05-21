@@ -64,23 +64,7 @@ var move_state := MoveState.IDLE:
 func _process(delta: float) -> void:
 	calculate_velocity_x(delta)
 	calculate_velocity_y(delta)
-	
-	if move_state == MoveState.JUMP_ANTICIPATING:
-		jump_anticipation_time = clampf(
-				jump_anticipation_time + delta,
-				0, 
-				jump_anticipation_max_time_sec)
-		anticipation_amount = inverse_lerp(
-				0,       
-				jump_anticipation_max_time_sec, 
-				jump_anticipation_time)  
-	else:
-		jump_anticipation_time = 0
-		anticipation_amount = 0
-
-	if jump_queued:
-		try_jump()
-
+	calculate_jump(delta)
 	move_and_slide()
 	
 	
@@ -89,6 +73,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		move_state = MoveState.JUMP_ANTICIPATING
 	if event.is_action_released("jump"):
 		queue_jump()
+	
 	
 func _on_animation_looped() -> void:
 	if move_state == MoveState.IDLE:
@@ -117,6 +102,8 @@ func calculate_velocity_x(delta: float) -> void:
 	if move_state == MoveState.PAUSED:
 		velocity.x = 0
 		return
+	if move_state == MoveState.CUTSCENE: return
+	
 	var direction := Input.get_axis("move_left", "move_right")
 	if move_state == MoveState.LANDING:
 		direction = 0
@@ -158,7 +145,26 @@ func calculate_velocity_y(delta: float) -> void:
 		move_state = MoveState.FALLING
 		
 		
+func calculate_jump(delta: float) -> void:
+	if move_state == MoveState.JUMP_ANTICIPATING:
+		jump_anticipation_time = clampf(
+				jump_anticipation_time + delta,
+				0, 
+				jump_anticipation_max_time_sec)
+		anticipation_amount = inverse_lerp(
+				0,       
+				jump_anticipation_max_time_sec, 
+				jump_anticipation_time)  
+	else:
+		jump_anticipation_time = 0
+		anticipation_amount = 0
+
+	if jump_queued:
+		try_jump()
+		
+		
 func queue_jump() -> void:
+	if move_state == MoveState.CUTSCENE: return
 	last_jump_input_time_ms = Time.get_ticks_msec()
 	jump_queued = true
 	

@@ -1,6 +1,6 @@
 [gd_scene load_steps=84 format=3 uid="uid://boc6l1kkktvup"]
 
-[ext_resource type="Script" path="res://platformer/player.gd" id="1_mehl8"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_mehl8"]
 [ext_resource type="Texture2D" uid="uid://chq8makw0y7iw" path="res://player/animations/standing idle.png" id="2_6cm6y"]
 [ext_resource type="Texture2D" uid="uid://d0a8yljs8hedc" path="res://player/animations/jumping animation.png" id="2_bxljb"]
 [ext_resource type="Texture2D" uid="uid://fn343n3qltlk" path="res://player/animations/look around.png" id="3_bgbgm"]
@@ -593,15 +593,22 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 10
+position = Vector2(-30, 296)
 script = ExtResource("1_mehl8")
+speed = 69
+acceleration = 0.2
+deceleration = 0.14
+jump_velocity = 300
+jump_anticipation_multiplier = 1.5
+coyote_time_ms = 75
+animate_look_around_chance = 0.15
 walk_step_frames = Array[int]([0, 5])
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-190, -125)
-anchor_mode = 0
 zoom = Vector2(2, 2)
 limit_left = 0
-limit_bottom = 0
+limit_bottom = 324
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 

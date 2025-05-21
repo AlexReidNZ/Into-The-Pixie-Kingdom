@@ -25,7 +25,7 @@ func enter(data = null) -> void:
 		return state_machine.change_state("Idle")
 	dialog_lines = data.duplicate()
 	idx = 0
-	_disable_player()
+	#_disable_player()
 	_create_bubble()
 	call_deferred("_start_line") # ensures correct scene tree timing
 
