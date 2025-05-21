@@ -2,10 +2,9 @@ extends Control
 
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file.call_deferred("res://Scenes/Levels/level_1.tscn")
+	get_tree().change_scene_to_file.call_deferred("res://Scenes/level_select.tscn")
 
 func _on_options_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_exit_pressed() -> void:
-	get_tree().quit()

@@ -1,0 +1,139 @@
+[gd_scene load_steps=9 format=3 uid="uid://dd61yudqmwpgh"]
+
+[ext_resource type="Texture2D" uid="uid://b1h6db3bfo3hb" path="res://Scenes/Levels/ITPK - Level Select Sprites/Background.png" id="1_q8dbf"]
+[ext_resource type="Script" path="res://Scenes/level_select.gd" id="1_qis2p"]
+[ext_resource type="Texture2D" uid="uid://b8jf3b3y4b1a2" path="res://Scenes/Levels/ITPK - Level Select Sprites/ivypath.png" id="2_otrf7"]
+[ext_resource type="Texture2D" uid="uid://7uxfm1xny6rc" path="res://Scenes/Levels/ITPK - Level Select Sprites/Scrolls2.png" id="3_fsfkf"]
+[ext_resource type="FontFile" uid="uid://bldy0gwiyc0yt" path="res://Fonts/test fonts/Vividly-Regular.ttf" id="4_2kodc"]
+[ext_resource type="Texture2D" uid="uid://dkaheanlgsaph" path="res://Scenes/Levels/ITPK - Level Select Sprites/mushroomvillage.png" id="5_u6jh7"]
+[ext_resource type="Texture2D" uid="uid://c7ucehj10r7r2" path="res://Scenes/Levels/ITPK - Level Select Sprites/naiadscreek.png" id="6_c8qml"]
+[ext_resource type="Texture2D" uid="uid://d4jyrmi7auhrf" path="res://Scenes/Levels/ITPK - Level Select Sprites/Scrolls3.png" id="7_nuexb"]
+
+[node name="LevelSelect" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qis2p")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.997784, 0.997784)
+texture = ExtResource("1_q8dbf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background"]
+texture_filter = 1
+layout_mode = 1
+offset_left = 216.48
+offset_top = 192.426
+offset_right = 374.48
+offset_bottom = 249.426
+scale = Vector2(4.49284, 4.49284)
+
+[node name="Button" type="Button" parent="Background/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_hover_color = Color(0.738759, 0.713741, 0.66978, 1)
+icon = ExtResource("2_otrf7")
+flat = true
+
+[node name="Sprite2D" type="TextureRect" parent="Background/HBoxContainer/Button"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.828
+offset_top = 55.0
+offset_right = 46.828
+offset_bottom = 67.0
+texture = ExtResource("3_fsfkf")
+
+[node name="Label" type="Label" parent="Background/HBoxContainer/Button/Sprite2D"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.4994
+offset_top = 4.24188
+offset_right = 99.4994
+offset_bottom = 23.2419
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.109804, 0.258824, 0.0705882, 1)
+theme_override_fonts/font = ExtResource("4_2kodc")
+theme_override_font_sizes/font_size = 4
+text = "Ivy Path"
+
+[node name="Button3" type="Button" parent="Background/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_hover_color = Color(0.738759, 0.713741, 0.66978, 1)
+disabled = true
+icon = ExtResource("5_u6jh7")
+flat = true
+
+[node name="Sprite2D" type="TextureRect" parent="Background/HBoxContainer/Button3"]
+layout_mode = 0
+offset_left = 3.329
+offset_top = 55.0
+offset_right = 46.329
+offset_bottom = 67.0
+texture = ExtResource("3_fsfkf")
+
+[node name="Label" type="Label" parent="Background/HBoxContainer/Button3/Sprite2D"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.14616
+offset_top = 3.5433
+offset_right = 9.14616
+offset_bottom = 3.5433
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.717647, 0.133333, 0.12549, 1)
+theme_override_fonts/font = ExtResource("4_2kodc")
+theme_override_font_sizes/font_size = 4
+text = "Mushroom Village"
+
+[node name="Button2" type="Button" parent="Background/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_hover_color = Color(0.738759, 0.713741, 0.66978, 1)
+disabled = true
+icon = ExtResource("6_c8qml")
+flat = true
+
+[node name="Sprite2D" type="TextureRect" parent="Background/HBoxContainer/Button2"]
+layout_mode = 0
+offset_left = 3.31243
+offset_top = 55.0
+offset_right = 46.3124
+offset_bottom = 67.0
+texture = ExtResource("7_nuexb")
+
+[node name="Label" type="Label" parent="Background/HBoxContainer/Button2/Sprite2D"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.2405
+offset_top = 3.70436
+offset_right = 12.2405
+offset_bottom = 3.70436
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.415686, 0.368627, 0.643137, 1)
+theme_override_fonts/font = ExtResource("4_2kodc")
+theme_override_font_sizes/font_size = 4
+text = "Naiad Screek"
+
+[connection signal="pressed" from="Background/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Background/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Background/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
