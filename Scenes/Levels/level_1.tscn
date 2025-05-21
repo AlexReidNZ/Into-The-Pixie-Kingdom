@@ -729,7 +729,7 @@ dialogue_audio = ExtResource("8_aqnd5")
 position = Vector2(-50, 314)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-position = Vector2(0, 1)
+position = Vector2(297, -1)
 shape = SubResource("WorldBoundaryShape2D_mr6wc")
 
 [node name="Ground Sprites" type="Node2D" parent="Ground"]
