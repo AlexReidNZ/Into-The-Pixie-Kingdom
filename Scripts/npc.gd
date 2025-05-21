@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name NPC
 
 @export var sprite: Texture
 @onready var sprite_2d: Sprite2D = $Sprite2D

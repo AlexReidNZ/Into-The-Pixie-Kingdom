@@ -17,6 +17,7 @@ collision_mask = 3
 script = ExtResource("1_3ivoq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 2)
 rotation = 3.14159
 scale = Vector2(1.14809, 1.14809)
@@ -30,6 +31,7 @@ collision_mask = 3
 script = ExtResource("1_dc6p1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChatDetection"]
+visible = false
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_bhmoq")
 
