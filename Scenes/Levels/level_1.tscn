@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
 [ext_resource type="Texture2D" uid="uid://cmpfh3mh4vjiq" path="res://Sprites/Ivy Path Backgrounds/Background.png" id="2_ji2qm"]
 [ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="3_u8vf5"]
-[ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="4_srh1p"]
 [ext_resource type="AudioStream" uid="uid://c3ibrpwhmts2e" path="res://Audio/TextScroll/TextScroll.wav" id="6_ilghy"]
 [ext_resource type="Texture2D" uid="uid://y5fjlsakfeth" path="res://Sprites/ground1.png" id="7_g0htd"]
 [ext_resource type="AudioStream" uid="uid://bnxrci2plytfh" path="res://Audio/TextScroll/TextScroll3.wav" id="8_aqnd5"]
@@ -213,24 +212,24 @@ shape = SubResource("RectangleShape2D_mtdxp")
 
 [node name="PuzzleIndicator" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
 position = Vector2(451.5, -2)
-puzzle_scene = ExtResource("32_58wvc")
-puzzle_group = "Puzzle1Colliders"
+puzzle_scene = ExtResource("35_50h6p")
+puzzle_group = "Puzzle3Colliders"
 fixed_sprite = ExtResource("28_q2xun")
 sprite_object = NodePath("../../Sprites/BeginingPuzzle")
 sprite_collision = NodePath("../../Sprites/BeginingPuzzle/InvisibleWall/CollisionShape2D")
 
 [node name="PuzzleIndicator2" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
 position = Vector2(-306, -22)
-puzzle_scene = ExtResource("33_rqe47")
-puzzle_group = "Puzzle2Colliders"
+puzzle_scene = ExtResource("32_58wvc")
+puzzle_group = "Puzzle1Colliders"
 fixed_sprite = ExtResource("34_ynee1")
 sprite_object = NodePath("../../Sprites/BrokenBridge")
 sprite_collision = NodePath("../../Sprites/BrokenBridge/BridgeCollision/CollisionShape2D")
 
 [node name="PuzzleIndicator3" parent="PuzzleObjects/Indicators" node_paths=PackedStringArray("sprite_object", "sprite_collision") instance=ExtResource("28_m5tlm")]
 position = Vector2(89, -88.5)
-puzzle_scene = ExtResource("35_50h6p")
-puzzle_group = "Puzzle3Colliders"
+puzzle_scene = ExtResource("33_rqe47")
+puzzle_group = "Puzzle2Colliders"
 fixed_sprite = ExtResource("36_tnrut")
 sprite_object = NodePath("../../Sprites/BrokenTree")
 sprite_collision = NodePath("../../Sprites/BrokenTree/TreeCollision/CollisionShape2D")
