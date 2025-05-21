@@ -31,7 +31,7 @@ func play_opening_cutscene() -> void:
 	
 	# lamina calls out from nowhere
 	DialogStateMachineAuto.offer_dialog([
-		{"speaker": "MysterySpeaker", "line": "Miss!"},
+			{"speaker": "MysterySpeaker", "line": "Miss!"},
 	])
 	dialog_state.tail_sprite.visible = false
 	await dialog_state.dialogue_finished
@@ -44,8 +44,8 @@ func play_opening_cutscene() -> void:
 
 	# lamina still trying to get attention
 	DialogStateMachineAuto.offer_dialog([
-		{"speaker": "MysterySpeaker", "line": "Excuse me! Miss!!"},
-		{"speaker": "MysterySpeaker", "line": "Can you hear us young lady?"},
+			{"speaker": "MysterySpeaker", "line": "Excuse me! Miss!!"},
+			{"speaker": "MysterySpeaker", "line": "Can you hear us young lady?"},
 	])
 	dialog_state.tail_sprite.visible = false
 	await dialog_state.dialogue_finished
@@ -56,7 +56,7 @@ func play_opening_cutscene() -> void:
 	await player_walk_to_position_x(235, 15)
 	await get_tree().create_timer(1).timeout
 	DialogStateMachineAuto.offer_dialog([
-		{"speaker": "Player", "line": "...?"},
+			{"speaker": "Player", "line": "...?"},
 	])
 	await dialog_state.dialogue_finished
 
@@ -64,13 +64,34 @@ func play_opening_cutscene() -> void:
 	mystery_speaker.global_position.x += 45
 	await get_tree().create_timer(0.5).timeout
 	DialogStateMachineAuto.offer_dialog([
-		{"speaker": "MysterySpeaker", "line": "Over here!"},
+			{"speaker": "MysterySpeaker", "line": "Over here!"},
 	])
 	dialog_state.tail_sprite.visible = false
 	await dialog_state.dialogue_finished
 
 	# Pixies fly in
+	lamina.visible = true
+	hedera.visible = true
+	tween_property(lamina, "global_position", Vector2(316, 250), 4)
+	await get_tree().create_timer(0.25).timeout
+	tween_property(hedera, "global_position", Vector2(336, 250), 4)
+	await tween_property(camera, "position", Vector2(35, 0), 4)
 
+	# the rest of the dialogue
+	DialogStateMachineAuto.offer_dialog(
+			DialogDatabase.get_dialog(lamina.name)
+			# [{"speaker": "Player", "line": "pretend that all the dialog just happened"},
+			# {"speaker": "Lamina", "line": "yea ok i will"},]
+	)
+	await dialog_state.dialogue_finished
+
+	# exit cutscene
+	tween_property(hedera, "global_position", Vector2(797, 247), 4)
+	await get_tree().create_timer(0.25).timeout
+	tween_property(lamina, "global_position", Vector2(757, 247), 4)
+	tween_property(camera, "zoom", Vector2(2, 2), 4)
+	player.move_state = Player.MoveState.IDLE
+	lamina.get_node("ChatDetection").has_spoken = true
 
 	
 func player_walk_to_position_x(x: float, speed: float) -> void:

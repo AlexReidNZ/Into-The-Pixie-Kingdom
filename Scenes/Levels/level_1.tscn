@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://ceia108gqkgrh"]
+[gd_scene load_steps=68 format=3 uid="uid://ceia108gqkgrh"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
 [ext_resource type="Texture2D" uid="uid://cmpfh3mh4vjiq" path="res://Sprites/Ivy Path Backgrounds/Background.png" id="2_ji2qm"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://c7nr7kx1bk2hc" path="res://Sprites/Bushes.png" id="10_t4k28"]
 [ext_resource type="Texture2D" uid="uid://bh5hk8t1tdkbt" path="res://Sprites/npc3 masculine1.png" id="11_hpcfm"]
 [ext_resource type="Texture2D" uid="uid://brsjqcylvbq04" path="res://Sprites/SideBushes2.png" id="11_ytc3w"]
-[ext_resource type="AudioStream" uid="uid://ylsqb2eukwxp" path="res://Audio/TextScroll/TextScroll2.wav" id="12_xkt45"]
 [ext_resource type="Texture2D" uid="uid://cxisagdugws2h" path="res://Sprites/SideBushes.png" id="13_svo3r"]
 [ext_resource type="Texture2D" uid="uid://chsimatstvpdj" path="res://Sprites/npc4 femenine.png" id="14_spg3n"]
 [ext_resource type="Texture2D" uid="uid://b5ionch14vyu8" path="res://Sprites/Gorse.png" id="14_tej4t"]
@@ -386,7 +385,7 @@ position = Vector2(-30, -26)
 [node name="Audio" type="Node" parent="Lamina"]
 
 [node name="Dialogue" type="AudioStreamPlayer" parent="Lamina/Audio"]
-stream = ExtResource("12_xkt45")
+stream = ExtResource("6_ilghy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Lamina"]
 position = Vector2(0, -1)
@@ -440,7 +439,7 @@ position = Vector2(-30, -26)
 [node name="Audio" type="Node" parent="Hedera"]
 
 [node name="Dialogue" type="AudioStreamPlayer" parent="Hedera/Audio"]
-stream = ExtResource("12_xkt45")
+stream = ExtResource("8_aqnd5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hedera"]
 scale = Vector2(0.551724, 0.551724)
@@ -605,7 +604,7 @@ position = Vector2(130, 258)
 [node name="Audio" type="Node" parent="CutsceneController/MysterySpeaker"]
 
 [node name="Dialogue" type="AudioStreamPlayer" parent="CutsceneController/MysterySpeaker/Audio"]
-stream = ExtResource("12_xkt45")
+stream = ExtResource("6_ilghy")
 
 [connection signal="area_entered" from="GameEndTrigger" to="CanvasLayer/PauseMenu" method="_on_game_end_trigger_area_entered"]
 

@@ -201,11 +201,11 @@ func set_move_state(value: MoveState) -> void:
 	var continued_animation_frame = animator.frame
 	
 	if !can_set_move_state(value): 
-		print("could not set state.")
-		print("from: %s to: %s" % [MoveState.keys()[move_state], MoveState.keys()[value]])
+		#print("could not set state.")
+		#print("from: %s to: %s" % [MoveState.keys()[move_state], MoveState.keys()[value]])
 		return
-	print("setting state.")
-	print("from: %s to: %s" % [MoveState.keys()[move_state], MoveState.keys()[value]])
+	#print("setting state.")
+	#print("from: %s to: %s" % [MoveState.keys()[move_state], MoveState.keys()[value]])
 	
 	var continue_animation_states := [MoveState.RUNNING, MoveState.WALKING]
 	continue_animation = (move_state in continue_animation_states
@@ -231,6 +231,6 @@ func can_set_move_state(value: MoveState) -> bool:
 		MoveState.PAUSED:
 			return value == MoveState.IDLE
 		MoveState.CUTSCENE:
-			return value == MoveState.PAUSED
+			return value == MoveState.IDLE
 			
 	return true # ran all checks. assume it's fine.
