@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://ceia108gqkgrh"]
+[gd_scene load_steps=117 format=3 uid="uid://ceia108gqkgrh"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
 [ext_resource type="Texture2D" uid="uid://cmpfh3mh4vjiq" path="res://Sprites/Ivy Path Backgrounds/Background.png" id="2_ji2qm"]
@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://dh5ntwaktn4la" path="res://Sprites/Puzzle/worldSprites/Fixed Bridge.png" id="34_ynee1"]
 [ext_resource type="PackedScene" uid="uid://doot1xvshlh6h" path="res://Scenes/Puzzle/puzzle03.tscn" id="35_50h6p"]
 [ext_resource type="Texture2D" uid="uid://cs2vvvlyoxyvs" path="res://Sprites/Puzzle/worldSprites/Fixed Tree.png" id="36_tnrut"]
+[ext_resource type="Script" path="res://Scripts/cutscene_controller.gd" id="38_wtp3f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x48l1"]
 radius = 42.6175
@@ -666,7 +667,7 @@ shape = SubResource("CircleShape2D_x48l1")
 [node name="Player" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 z_index = 10
-position = Vector2(44, 274)
+position = Vector2(-50, 264)
 script = ExtResource("3_so3te")
 speed = 69
 acceleration = 0.2
@@ -760,7 +761,7 @@ scale = Vector2(1, 0.939394)
 texture = ExtResource("8_l1qk3")
 
 [node name="Boundary" type="StaticBody2D" parent="."]
-position = Vector2(0, 320)
+position = Vector2(-88, 259)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
 shape = SubResource("WorldBoundaryShape2D_w4v88")
@@ -893,6 +894,9 @@ volume_db = -5.971
 
 [node name="Click" type="AudioStreamPlayer" parent="UIAudio"]
 stream = ExtResource("26_6qdgh")
+
+[node name="CutsceneController" type="Node" parent="."]
+script = ExtResource("38_wtp3f")
 
 [connection signal="area_entered" from="GameEndTrigger" to="CanvasLayer/PauseMenu" method="_on_game_end_trigger_area_entered"]
 [connection signal="animation_finished" from="Player/AnimatedSprite2D" to="Player" method="_on_animation_finished"]

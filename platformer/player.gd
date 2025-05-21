@@ -10,6 +10,7 @@ enum MoveState {
 	FALLING,
 	LANDING,
 	PAUSED,
+	CUTSCENE,
 }
 
 const animations := {
@@ -21,6 +22,7 @@ const animations := {
 	MoveState.FALLING: "fall",
 	MoveState.LANDING: "land",
 	MoveState.PAUSED: "paused",
+	MoveState.CUTSCENE: "paused",
 }
 
 ## Walking rate in pixels per second
@@ -192,20 +194,16 @@ func set_move_state(value: MoveState) -> void:
 	var continue_animation := false
 	var continued_animation_frame = animator.frame
 	
-	# some states can only path to certain other states
-	match move_state:
-		MoveState.JUMP_ANTICIPATING:
-			if value not in [MoveState.JUMPING, MoveState.FALLING, MoveState.PAUSED]:
-				return
-		MoveState.RUNNING:
-			if value == MoveState.WALKING:
-				continue_animation = true
-		MoveState.WALKING:
-			if value == MoveState.RUNNING:
-				continue_animation = true
-		MoveState.PAUSED:
-			if value != MoveState.IDLE:
-				return
+	if !can_set_move_state(value): 
+		print("could not set state.")
+		print("from: %s to: %s" % [MoveState.keys()[move_state], MoveState.keys()[value]])
+		return
+	print("setting state.")
+	print("from: %s to: %s" % [MoveState.keys()[move_state], MoveState.keys()[value]])
+	
+	var continue_animation_states := [MoveState.RUNNING, MoveState.WALKING]
+	continue_animation = (move_state in continue_animation_states
+			and value in continue_animation_states)
 	
 	move_state = value
 	shush = continue_animation
@@ -214,4 +212,19 @@ func set_move_state(value: MoveState) -> void:
 	if continue_animation:
 		animator.frame = continued_animation_frame
 
-	
+
+func can_set_move_state(value: MoveState) -> bool:
+	# any state can lead to paused/cutscene
+	if value in [MoveState.PAUSED, MoveState.CUTSCENE]:
+		return true
+	# some states can only path to other specific states
+	match move_state:
+		# the player must either jump or lose the ability to jump
+		MoveState.JUMP_ANTICIPATING:
+			return value in [MoveState.JUMPING, MoveState.FALLING]
+		MoveState.PAUSED:
+			return value == MoveState.IDLE
+		MoveState.CUTSCENE:
+			return value == MoveState.PAUSED
+			
+	return true # ran all checks. assume it's fine.
