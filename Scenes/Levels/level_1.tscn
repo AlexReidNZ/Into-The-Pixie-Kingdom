@@ -1,6 +1,7 @@
-[gd_scene load_steps=68 format=3 uid="uid://ceia108gqkgrh"]
+[gd_scene load_steps=69 format=3 uid="uid://ceia108gqkgrh"]
 
 [ext_resource type="PackedScene" uid="uid://b6srab5ljjrdi" path="res://Scenes/pause_menu.tscn" id="1_tt3mb"]
+[ext_resource type="VideoStream" path="res://itpk animatic.ogv" id="2_ghah1"]
 [ext_resource type="Texture2D" uid="uid://cmpfh3mh4vjiq" path="res://Sprites/Ivy Path Backgrounds/Background.png" id="2_ji2qm"]
 [ext_resource type="PackedScene" uid="uid://boc6l1kkktvup" path="res://player/player.tscn" id="3_i2w1q"]
 [ext_resource type="Texture2D" uid="uid://ca56kg7jr5m0y" path="res://Sprites/icon.svg" id="4_srh1p"]
@@ -284,6 +285,18 @@ size = Vector2(124, 43)
 texture_filter = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Animatic" type="VideoStreamPlayer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+stream = ExtResource("2_ghah1")
+expand = true
 
 [node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_end_trigger") instance=ExtResource("1_tt3mb")]
 visible = false
@@ -588,9 +601,10 @@ volume_db = -5.971
 [node name="Click" type="AudioStreamPlayer" parent="UIAudio"]
 stream = ExtResource("26_6qdgh")
 
-[node name="CutsceneController" type="Node" parent="." node_paths=PackedStringArray("left_boundary", "lamina", "hedera", "mystery_speaker")]
+[node name="CutsceneController" type="Node" parent="." node_paths=PackedStringArray("animatic", "left_boundary", "lamina", "hedera", "mystery_speaker")]
 unique_name_in_owner = true
 script = ExtResource("38_wtp3f")
+animatic = NodePath("../CanvasLayer/Animatic")
 left_boundary = NodePath("../Boundary")
 lamina = NodePath("../Lamina")
 hedera = NodePath("../Hedera")

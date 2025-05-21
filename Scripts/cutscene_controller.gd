@@ -2,6 +2,7 @@ extends Node
 class_name CutsceneController
 
 
+@export var animatic: VideoStreamPlayer
 @export var left_boundary: StaticBody2D
 @export var lamina: NPC
 @export var hedera: NPC
@@ -26,6 +27,9 @@ func play_opening_cutscene() -> void:
 	lamina.visible = false
 	hedera.visible = false
 	mystery_speaker.global_position = Vector2(260, 260)
+		
+	animatic.play()
+	await animatic.finished
 	
 	# walk on screen
 	tween_property(camera, "zoom", Vector2(3, 3), 6)
