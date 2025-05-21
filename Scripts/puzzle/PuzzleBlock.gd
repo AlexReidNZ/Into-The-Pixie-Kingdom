@@ -17,9 +17,9 @@ var initial_scale
 func _ready() -> void:
 	initial_scale = transform.get_scale()
 
-func  _process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if draggable:
-		if Input.is_action_just_pressed("click"): #Set slot taken to false for all colliding shapes
+		if Input.is_action_just_pressed("click"):
 			start_drag()
 		if Input.is_action_pressed("click") and puzzleManager.current_dragging_piece == self:
 			global_position = get_global_mouse_position()
@@ -52,32 +52,46 @@ func drop_piece():
 			global_position -= total_offset / count
 	else:
 		for area in gridColliders:
-			if area.has_overlapping_areas(): #if pos not valid and overlaps grid, return to start pos
+			if area.has_overlapping_areas():
 				global_position = start_pos
 				break
-	await get_tree().create_timer(0.05).timeout #This is a hacky fix, but its the only way I can figure out to get it working
+	await get_tree().create_timer(0.05).timeout
+	# Safely clear old slots
 	for slot in current_overlaps:
-		slot.slotTaken = false
+		if slot and slot.has_method("slotTaken"):
+			slot.slotTaken = false
+	# Set new slots taken
 	for area in gridColliders:
 		if area.has_overlapping_areas():
-			area.get_overlapping_areas()[0].slotTaken = true
+			var slot = area.get_overlapping_areas()[0]
+			if slot and slot.has_method("slotTaken"):
+				slot.slotTaken = true
 	puzzle_audio.play_place_block()
 
 func start_drag():
 	puzzle_audio.play_pickup_block()
+	# Free up any slots you are currently occupying (with safety)
+	for area in gridColliders:
+		if area.has_overlapping_areas():
+			var slot = area.get_overlapping_areas()[0]
+			if slot and slot.has_method("slotTaken"):
+				slot.slotTaken = false
 	current_overlaps.clear()
 	start_pos = global_position
 	puzzleManager.is_dragging = true
 	puzzleManager.current_dragging_piece = self
 	for area in gridColliders:
-		if area.has_overlapping_areas(): #if piece is in the grid
-			current_overlaps.append(area.get_overlapping_areas()[0])
+		if area.has_overlapping_areas():
+			var slot = area.get_overlapping_areas()[0]
+			if slot and not current_overlaps.has(slot):
+				current_overlaps.append(slot)
 
 func is_valid_position():
 	for area in gridColliders:
-		if !area.has_overlapping_areas(): #these colliders only detect grid squares, so this checks each spot is over a grid square
+		if !area.has_overlapping_areas():
 			return false
-		elif area.get_overlapping_areas()[0].slotTaken and !current_overlaps.has(area.get_overlapping_areas()[0]): #if the slot it overlaps is already taken
+		var slot = area.get_overlapping_areas()[0]
+		if slot and slot.slotTaken and not current_overlaps.has(slot):
 			return false
 	return true
 
