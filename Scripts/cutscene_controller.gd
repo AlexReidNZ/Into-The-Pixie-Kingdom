@@ -7,6 +7,7 @@ class_name CutsceneController
 @export var lamina: NPC
 @export var hedera: NPC
 @export var mystery_speaker: Node2D
+@export var pixie_king: Node2D
 
 var has_started_cutscene := false
 var dialog_state: DialogState
@@ -17,7 +18,7 @@ var dialog_state: DialogState
 	
 func play_opening_cutscene() -> void:
 	if Input.is_key_pressed(KEY_F) and Input.is_key_pressed(KEY_J):
-		end_cutscene()
+		end_opening_cutscene()
 		return
 
 	# initialize
@@ -93,10 +94,10 @@ func play_opening_cutscene() -> void:
 	await dialog_state.dialogue_finished
 
 	# exit cutscene
-	end_cutscene()
+	end_opening_cutscene()
 
 
-func end_cutscene() -> void:
+func end_opening_cutscene() -> void:
 	left_boundary.global_position.x = 0
 	tween_property(hedera, "global_position", Vector2(797, 247), 4)
 	await get_tree().create_timer(0.25).timeout
@@ -104,6 +105,25 @@ func end_cutscene() -> void:
 	tween_property(camera, "zoom", Vector2(2, 2), 4)
 	player.move_state = Player.MoveState.IDLE
 	lamina.get_node("ChatDetection").has_spoken = true
+
+
+func play_temp_ending_cutscene() -> void:
+	# initialize
+	player.move_state = Player.MoveState.CUTSCENE
+	player.velocity.x = 0
+	player.animator.play("idle")
+	player.animator.scale.x = 1
+
+	# tween_property(camera, "zoom", Vector2(3, 3), 6)
+	await tween_property(pixie_king, "global_position", Vector2(2073, 210), 4)
+
+	DialogStateMachineAuto.offer_dialog([
+			{"speaker": "PixieKing", "line": "Thank you for playing this demo"},
+			{"speaker": "Player", "line": "You're welcome"},
+	])
+	dialog_state = DialogStateMachineAuto.dialog_state
+	await dialog_state.dialogue_finished
+	await get_tree().create_timer(0.5).timeout
 
 	
 func player_walk_to_position_x(x: float, speed: float) -> void:

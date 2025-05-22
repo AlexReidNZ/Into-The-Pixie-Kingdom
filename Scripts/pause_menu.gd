@@ -54,6 +54,7 @@ func _on_button_hover() -> void:
 
 func _on_game_end_trigger_area_entered(body):
 	if body.name == "Player":
+		await %CutsceneController.play_temp_ending_cutscene()
 		game_end_text.visible = true
 		play_button.visible = false
 		pause()
